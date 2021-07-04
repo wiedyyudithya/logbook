@@ -1,0 +1,15 @@
+[
+    {
+      "No": 1,
+      "Kategori Jenis Kelamin Pasien": "1,2",
+      "Kategori Kasus": "1",
+      "Kode Kegiatan": "1",
+      "Kategori Pasien": "2,3",
+      "Data Dasar Pasien": "{{jabatan_pasien}} {{nama_pasien}}, {{umur_pasien}} th, BB : {{berat_pasien}} kg, TB : {{tinggi_pasien}} cm",
+      "Unit Pelayanan": "2,3",
+      "Data Ringkasan Penyakit": "S : \nKeluhan Utama : \nPasien datang dengan keluhan nyeri ulu hati sejak {{onset}} yang lalu. \n\nKeluhan Tambahan : \nPasien sering sendawa.  \n\nRiwayat Penyakit Sekarang : \nPasien datang untuk berobat dengan keluhan nyeri ulu hati sejak {{onset}} yang lalu. Nyeri dirasakan seperti ditusuk-tusuk. Nyeri dirasakan terus-terusan sepanjang hari. Pasien mengaku sering telat makan, jika telat makan ulu hati selalu terasa nyeri seperti ditusuk-tusuk. Kadang-kadang nyeri ulu hati terasa seperti menembus hingga ke bagian belakang. Selain itu, pasien menjadi sering sendawa. \n\nRiwayat Penyakit Dahulu : \nRiwayat magh ({{riwayat_maag}})\nRiwayat hipertensi (-)\nRiwayat diabetes (-)\nRiwayat penyakit jantung (-)\n\nRiwayat Penyakit Keluarga : \nRiwayat maag ({{maag_keluarga}})\nRiwayat hipertensi ({{hipertensi_keluarga}})\nRiwayat diabetes ({{diabetes_keluarga}})\nRiwayat penyakit jantung (-)\n\nRiwayat Pengobatan : \nPasien belum mengkonsumsi obat untuk meringankan keluhan. \n\nO :\n\nKU : tampak sakit sedang\nKesadaran : compos mentis\nTD : {{systole}}/{{diastole}} mmHg ; PR: {{pr}} x/min ; RR: {{rr}} x/min ; T: {{suhu}} C\nMata : KA (-/-); SI (-/-)\nHidung : Sekret (-/-) \nMulut : Bibir kering (-); Faring Hiperemis (-)\nThorax : pergerakan dinding dada simetris \nCOR : S1 & S2 reguler ; Murmur (-);  Gallop (-) \nPulmo : Vesikuler (+/+); rhonki (-/-); wheezing (-/-)\nAbdomen : Supple, datar,  BU (+) N; Nyeri tekan epigastrium (+)\nEkstremitas : Akral hangat; nadi teraba kuat, CRT < 2 detik; edema (-)",
+      "Diagnosis": "Dyspepsia",
+      "Penatalaksanaan": "Farmakologi :\nAntasida doen 500 mg tab No. XV S 3 dd 1 a.c\nRanitidine 150 mg tab No. X S 2 dd 1 a.c\n\nNon-farmakologi :\nMakan dalam porsi sedikit dengan frekuensi sering (2 jam sekali makan)\nHindari makanan yang pedas, asam, dan berlemak",
+      "Tindakan medis": ""
+    }
+  ]

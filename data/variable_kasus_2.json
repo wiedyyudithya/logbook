@@ -1,0 +1,36 @@
+[
+    {
+      "nama_pasien": "Jika JK wanita, maka: Ny. (A-Z)",
+      "umur_pasien": "#RANGENUMBER(18, 75, 1)",
+      "berat_pasien": "#RANGENUMBER(45, 80, 1)",
+      "tinggi_pasien": "#RANGENUMBER(150, 170, 1)",
+      "onset": "1-4 hari",
+      "onset2": "1-6 hari",
+      "hipertensi_keluarga": "#SELECTION('+','-')",
+      "diabetes_keluarga": "#SELECTION('+','-')",
+      "systole": "#RANGENUMBER(111, 139, 1)",
+      "diastole": "#RANGENUMBER(65, 89, 1)",
+      "pr": "#RANGENUMBER(60, 100, 1)",
+      "rr": "#RANGENUMBER(16, 22, 1)",
+      "suhu": "#RANGENUMBER(36.3, 38.4, 0.1)",
+      "tonsil_kanan": "#SELECTION('T2','T3')",
+      "Tonsil_kiri": "#SELECTION('T2', 'T3')"
+    },
+    {
+      "nama_pasien": "Tn. (A-Z)",
+      "umur_pasien": "#RANGENUMBER(18, 75, 1)",
+      "berat_pasien": "#RANGENUMBER(50, 80, 1)",
+      "tinggi_pasien": "#RANGENUMBER(150, 180, 1)",
+      "onset": "1-4 hari",
+      "onset2": "1-6 hari",
+      "hipertensi_keluarga": "#SELECTION('+','-')",
+      "diabetes_keluarga": "#SELECTION('+','-')",
+      "systole": "#RANGENUMBER(111, 139, 1)",
+      "diastole": "#RANGENUMBER(65, 89, 1)",
+      "pr": "#RANGENUMBER(60, 100, 1)",
+      "rr": "#RANGENUMBER(16, 22, 1)",
+      "suhu": "#RANGENUMBER(36.3, 38.4, 0.1)",
+      "tonsil_kanan": "#SELECTION('T2','T3')",
+      "Tonsil_kiri": "#SELECTION('T2','T3')"
+    }
+  ]

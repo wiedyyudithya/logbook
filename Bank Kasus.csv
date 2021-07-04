@@ -1,0 +1,171 @@
+No,Kategori Jenis Kelamin Pasien,Kategori Umur Pasien (tahun),Kategori Kasus,Kode Kegiatan,Kategori Pasien,Data Dasar Pasien,Unit Pelayanan,Data Ringkasan Penyakit,Diagnosis,Penatalaksanaan,Tindakan medis
+1,"Pria, Wanita",#RANGE(18-75),Non-Covid,Medik,"Dewasa, lansia","{{nama_pasien}}, {{umur_pasien}} th, BB : {{berat_pasien}} kg, TB : {{tinggi_pasien}} cm","RS - UGD, Puskesmas","S : 
+Keluhan Utama : 
+Pasien datang dengan keluhan nyeri ulu hati sejak {{onset}} yang lalu. 
+
+Keluhan Tambahan : 
+Pasien sering sendawa.  
+
+Riwayat Penyakit Sekarang : 
+Pasien datang untuk berobat dengan keluhan nyeri ulu hati sejak {{onset}} yang lalu. Nyeri dirasakan seperti ditusuk-tusuk. Nyeri dirasakan terus-terusan sepanjang hari. Pasien mengaku sering telat makan, jika telat makan ulu hati selalu terasa nyeri seperti ditusuk-tusuk. Kadang-kadang nyeri ulu hati terasa seperti menembus hingga ke bagian belakang. Selain itu, pasien menjadi sering sendawa. 
+
+Riwayat Penyakit Dahulu : 
+Riwayat magh ({{riwayat_maag}})
+Riwayat hipertensi (-)
+Riwayat diabetes (-)
+Riwayat penyakit jantung (-)
+
+Riwayat Penyakit Keluarga : 
+Riwayat maag ({{maag_keluarga}})
+Riwayat hipertensi ({{hipertensi_keluarga}})
+Riwayat diabetes ({diabetes_keluarga}})
+Riwayat penyakit jantung (-)
+
+Riwayat Pengobatan : 
+Pasien belum mengkonsumsi obat untuk meringankan keluhan. 
+
+O :
+
+KU : tampak sakit sedang
+Kesadaran : compos mentis
+TD : {{systole}}/{{diastole}} mmHg ; PR: {{pr}} x/min ; RR: {{rr}} x/min ; T: {{suhu}} C
+Mata : KA (-/-); SI (-/-)
+Hidung : Sekret (-/-) 
+Mulut : Bibir kering (-); Faring Hiperemis (-)
+Thorax : pergerakan dinding dada simetris 
+COR : S1 & S2 reguler ; Murmur (-);  Gallop (-) 
+Pulmo : Vesikuler (+/+); rhonki (-/-); wheezing (-/-)
+Abdomen : Supple, datar,  BU (+) N; Nyeri tekan epigastrium (+)
+Ekstremitas : Akral hangat; nadi teraba kuat, CRT < 2 detik; edema (-)",Dyspepsia,"Farmakologi :
+Antasida doen 500 mg tab No. XV S 3 dd 1 a.c
+Ranitidine 150 mg tab No. X S 2 dd 1 a.c
+
+Non-farmakologi :
+Makan dalam porsi sedikit dengan frekuensi sering (2 jam sekali makan)
+Hindari makanan yang pedas, asam, dan berlemak ",
+2,"Pria, Wanita",#RANGE(18-75),Kasus suspek,Medik,"Dewasa, lansia","{{nama_pasien}}, {{umur_pasien}} th, BB : {{berat_pasien}} kg, TB : {{tinggi_pasien}} cm","RS - UGD, Puskesmas","S :
+Keluhan Utama : 
+Pasien datang dengan keluhan nyeri menelan sejak {{onset}} yang lalu.
+
+Keluhan Tambahan : 
+Badan meriang, batuk, dan pilek. 
+
+Riwayat Penyakit Sekarang : 
+Pasien datang untuk berobat ke Puskesmas dengan keluhan nyeri menelan sejak {{onset}} yang lalu. Nyeri menelan dirasakan seperti perih terutama saat menelan makanan apapun baik berbentuk kasar maupun halus. Nyeri menelan dirasakan mengganggu oleh pasien. Selain itu, pasien juga mengeluhkan badan terasa meriang namun tidak diukur dengan termometer. Pasien juga mengeluhkan batuk tidak berdahak dan pilek. Hal ini juga dirasakan sejak {{onset2}} hari yang lalu. Sesak napas, mual, dan muntah disangkal oleh pasien. Pasien tidak merokok. 
+
+Riwayat Penyakit Dahulu : - 
+
+Riwayat Penyakit Keluarga : 
+Tidak ada yang menderita gejala yang sama seperti pasien di keluarga pasien.
+Riwayat hipertensi ({{hipertensi_keluarga}})
+Riwayat diabetes ({diabetes_keluarga}})
+
+Riwayat Pengobatan : 
+Pasien belum mengkonsumsi obat apapun untuk meringankan keluhan. 
+
+O :
+
+KU : tampak sakit sedang
+Kesadaran : compos mentis
+TD : {{systole}}/{{diastole}} mmHg ; PR: {{pr}} x/min ; RR: {{rr}} x/min ; T: {{suhu}} C
+Mata : KA (-/-); SI (-/-)
+Hidung : Sekret (+/+) 
+Mulut : Bibir kering (-); Faring Hiperemis (+); Tonsil ({{tonsil_kanan/{{tonsil_kiri}}) hiperemis
+Thorax : pergerakan dinding dada simetris 
+COR : S1 & S2 reguler ; Murmur (-);  Gallop (S3) (-) 
+Pulmo : Vesikuler (+/+); rhonki (-/-); wheezing (-/-)
+Abdomen : Supple, datar,  BU (+) N; NT (-)
+Ekstremitas : Akral hangat; nadi teraba kuat, CRT < 2 detik; edema (-)","Acute tonsillitis, acute upper respiratory infections of multiple and unspecified sites, acute pharyngitis","Farmakologi :
+Paracetamol 500 mg tab No. XV S 3 dd 1 p.c
+Guaifenesin Guaicolat 100 mg tab No. XV S 3 dd 1 p.c
+CTM 4 mg tab No. XV S 3 dd 1 p.c
+Vitamin C tab No. X S 1 dd 1 p.c
+Rencanakan swab PCR Covid-19
+
+Non-farmakologi :
+Edukasi isolasi mandiri selama minimal 10 hari
+Banyak mengkonsumsi air putih
+Menghindari makanan yang berminyak dan pedas
+Menghindari konsumsi air es ",
+3,"Pria, Wanita",#RANGE(18-75),Non-Covid,Bedah,"Dewasa, lansia","{{nama_pasien}}, {{umur_pasien}} th, BB : {{berat_pasien}} kg, TB : {{tinggi_pasien}} cm","RS - UGD, Puskesmas","S:
+Pasien datang dengan keluhan jari jempol kaki {{jempol_kaki}} tertusuk duri kecil sejak {{onset}} yang lalu. Saat ini jempol terasa bengkak, nyeri (+), dan terasa bernanah pada bagian dalamnya. Akibatnya pasien sulit mengggerakkan jempol.
+
+Riwayat Penyakit Dahulu : - 
+Riwayat hipertensi (-)
+Riwayat diabetes (-)
+Alergi (-)
+
+Riwayat Penyakit Keluarga : 
+Riwayat hipertensi ({{hipertensi_keluarga}})
+Riwayat diabetes ({{diabetes_keluarga}})
+Alergi (-)
+
+Riwayat Pengobatan : 
+Pasien hanya meminum obat nyeri yang dibeli di warung, nyeri berkurang sedikit.
+
+O:
+KU : tampak sakit sedang
+Kesadaran : compos mentis
+TD : {{systole}}/{{diastole}} mmHg ; PR: {{pr}} x/min ; RR: {{rr}} x/min ; T: {{suhu}} C
+Mata : KA (-/-); SI (-/-)
+Hidung : Sekret (-/-) 
+Mulut : Bibir kering (-); Faring Hiperemis (-)
+Thorax : pergerakan dinding dada simetris 
+COR : S1 & S2 reguler ; Murmur (-);  Gallop (-) 
+Pulmo : Vesikuler (+/+); rhonki (-/-); wheezing (-/-)
+Abdomen : Supple, datar,  BU (+) N; Nyeri tekan epigastrium (-)
+Ekstremitas : Akral hangat; nadi teraba kuat, CRT < 2 detik; edema (-)
+Status lokalis: a/r digiti 1 pedis {{jempol_kaki2}} terdapat massa berdiameter +- {{diameter}} cm, fluktuasi (+), pus (+), nyeri (+), eritema (+)","Cutaneous abscess, furuncle and carbuncle","Insisi drainase abses
+Amoxicillin 3 x 500 mg PO 5 hari
+Natrium diklofenak 3x25 mg PO prn nyeri
+Kontrol ulang luka 3 hari kemudian
+Edukasi jaga kebersihan luka, harus tetap kering","Bedah minor, menjahit luka"
+4,"Pria, Wanita",#RANGE(45-85),Non-Covid,Bedah,"Dewasa, lansia","{{nama_pasien}}, {{umur_pasien}} th, BB : {{berat_pasien}} kg, TB : {{tinggi_pasien}} cm","RS - UGD, Puskesmas","S:
+Pasien datang dibawa keluarga dengan luka di telapak kaki {{telapak_kaki}}, tidak sembuh2 sejak {{onset}} yang lalu, bernanah, nyeri minimal. Pasien merasa sudah mati rasa pada ujung2 jari kaki dan jari tangan. Riw. DM sejak {{onset_dm}} tahun yang lalu, tidak rutin berobat karena merasa sudah sembuh. Riw. HT (-). Riw DM pada keluarga {{diabetes_keluarga}}. Riw. merokok {{riw_merokok}}, minum alkohol (-)
+O:
+KU: Tampak sakit sedang
+Kesadaran: CM GCS 15
+TD : {{systole}}/{{diastole}} mmHg ; PR: {{pr}} x/min ; RR: {{rr}} x/min T: {{suhu}} C
+
+Kepala: normocephali, deformitas (-)
+Mata: konjungtiva anemis -/-, sklera ikterik -/-
+Leher: KGB tidak teraba
+Paru: vesikuler +/+, rhonki -/-, wheezing -/-
+Jantung: BJ 1 dan 2 reguler, murmur (-), gallop (-)
+Abdomen: BU (+), datar, supel, nyeri tekan (-)
+Ekstremitas: akral hangat, CRT <2 detik, edema -/-/-/-, sensorik menurun
+Status lokalis: a/r plantar pedis {{plantar_pedis}} terdapat ulkus diabetik, pus (+), diameter {{diameter}} cm, kedalaman {{kedalaman}} cm, jaringan sekitar kemerahan
+
+GDS: {{GDS}} mg/dL","Unspecified diabetes mellitus, Essential (primary) hypertension, Ulcer of lower limb, not elsewhere classified","Wound debridement
+Metformin 3x500 mg PO
+Captopril 2x25 mg PO
+Amoxicillin 3x500 mg PO 7 hari (habiskan)
+PCT 3x500 mg PO prn nyeri
+Kontrol ulang luka 3 hari kemudian, pastikan tidak basah dan kotor
+Edukasi minum obat teratur dan kontrol gula darah",Bedah minor
+5,"Pria, Wanita",#RANGE(56-90),Non-Covid,Kegawat-daruratan,Lansia,"{{nama_pasien}}, {{umur_pasien}} th, BB : {{berat_pasien}} kg, TB : {{tinggi_pasien}} cm",RS - UGD,"S:
+Pasien datang diantar keluarga dengan keluhan berbicara tidak jelas tiba-tiba +- {{onset}} yang lalu. Kelemahan tubuh sisi {{sisi_lemah}} (+) dialami sejak +- {{onset_lemah}} yang lalu. Keluhan seperti ini sebelumnya (-), hanya pernah mengalami gejala stroke ringan, namun tidak dibawa berobat rutin. Keluhan lain seperti mual (-), muntah (-), nyeri kepala (-), kejang (-). Riwayat sakit DM disangkal oleh keluarga. Riwayat darah tinggi (+).
+
+O :
+KU tampak sakit sedang
+Kesadaran: delirium, GCS E4VxM6
+TD: {{systole}}/{{diastole}} mmHg ; PR: {{pr}} x/min ; RR: {{rr}} x/min ; T: {{suhu}} C ; SpO2: {{spo2}} %
+Kepala: konjungtiva anemis -/-, sklera ikterik -/-
+Wajah: Bibir mencong ke arah {{bibir_mencong}}, sulcus nasolabial {{nasolabial}} dangkal, sisi lateral mata {{mata}} tampak jatuh
+Leher: pembesaran KGB -/-, tiroid (-), JVP tidak meningkat
+Pulmo:  vesikular +/+, rhonki -/-, wheezing - /-
+Jantung: S1 dan S2 reguler, murmur (-), gallop (-)
+Abdomen: BU (+) supel, distensi (-), NT epigastrium (-) hepatosplenomegali (-)
+Ekstremitas: akral hangat, CRT <2 detik, edema -/-/-/-
+Motorik kesan lateralisasi {{lateralisasi}}
+Refleks Babinski: {{babinski}}
+
+GDS: {{gds}} mg/dL","Essential (primary) hypertension, Stroke, not specified as haemorrhage or infarction, Unspecified diabetes mellitus","IVFD RL 20tpm
+Pasang NGT
+Pasang DC catheter
+Inj. Citicolin 1x500 mg IV
+Metformin 3x500mg per NGT
+Captopril 3x25 mg per NGT 
+Rencana pemeriksaan lab DL, fungsi hati, fungsi ginjal, elektrolit, swab antigen Covid-19
+Rencana pencitraan thoraks AP, CT-scan kepala
+Konsul ke dokter Sp.S","Memasang infus, memasang kateter, memasang NGT"

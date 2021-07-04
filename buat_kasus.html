@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | Advanced form elements</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Bootstrap Color Picker -->
+  <link rel="stylesheet" href="plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  <!-- Bootstrap4 Duallistbox -->
+  <link rel="stylesheet" href="plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+  <!-- BS Stepper -->
+  <link rel="stylesheet" href="plugins/bs-stepper/css/bs-stepper.min.css">
+  <!-- dropzonejs -->
+  <link rel="stylesheet" href="plugins/dropzone/min/dropzone.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">  
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="buat_kasus.html" class="nav-link">Buat Kasus</a>
+      </li>
+    </ul>
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">AdminLTE 3</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="buat_kasus.html" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Buat Kasus
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Buat Kasus</h1>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="card card-default">
+          <div class="card-header">
+            <h3 class="card-title">Form Buat Kasus</h3>
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="card-body">
+            <form id="generateForm">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Rentang Tanggal</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="far fa-calendar-alt"></i>
+                        </span>
+                      </div>
+                      <input type="text" class="form-control float-right" name="inputTanggal" id="rangeDate">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Pilihan Hari</label>
+                    <select class="select2" multiple="multiple" name="selectHari" data-placeholder="Pilih Hari" style="width: 100%;">
+                      <option value="1" selected>Senin</option>
+                      <option value="2" selected>Selasa</option>
+                      <option value="3" selected>Rabu</option>
+                      <option value="4" selected>Kamis</option>
+                      <option value="5" selected>Jumat</option>
+                      <option value="6" selected>Sabtu</option>
+                      <option value="7" selected>Minggu</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Dokter Pendamping</label>
+                    <select class="form-control select2" style="width: 100%;" name="selectDokterPendamping" id="selectDokterPendamping">
+                      <option value="0">Mohon Pilih Dokter Pendamping</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Jenis Kelamin</label>
+                    <select class="form-control select2" style="width: 100%;" name="selectJenisKelamin" onchange="checkValidKasus()">
+                      <option value="0" selected="selected">Semua</option>
+                      <option value="1">Pria</option>
+                      <option value="2">Wanita</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Kode Kegiatan</label>
+                    <select class="select2" multiple="multiple" name="selectKodeKegiatan" onchange="checkValidKasus()" data-placeholder="Pilih Kode Kegiatan" style="width: 100%;">
+                      <option value="1" selected>MEDIK</option>
+                      <option value="2" selected>BEDAH</option>
+                      <option value="3" selected>KEGAWAT-DARURATAN</option>
+                      <option value="4" selected>KEBIDANAN DAN PERINATAL</option>
+                      <option value="5" selected>KEJIWAAN</option>
+                      <option value="6" selected>MEDIKOLEGAL</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Unit Pelayanan</label>
+                    <select class="select2" multiple="multiple" name="selectUnitPelayanan" onchange="checkValidKasus()" data-placeholder="Pilih Kode Kegiatan" style="width: 100%;">
+                      <option value="1" selected>Stase 1 - RS - Poli</option>
+                      <option value="2" selected>Stase 2 - RS - UGD</option>
+                      <option value="3" selected>Stase 3 - Puskesmas</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Kategori Kasus</label>
+                    <select class="select2" multiple="multiple" name="selectKategoriKasus" onchange="checkValidKasus()" data-placeholder="Pilih Kode Kegiatan" style="width: 100%;">
+                      <option value="1" selected>Non-Covid</option>
+                      <option value="2" selected>Kasus Suspek</option>
+                      <option value="3" selected>Kasus Probable</option>
+                      <option value="4" selected>Kontak Erat</option>
+                      <option value="5" selected>Kasus Konfirmasi</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <h5><b>Jumlah Kasus</b></h5>
+              <div class="row">
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label>Bayi - Anak [<label id="validBayiAnak">0</label>]</label> 
+                    <div class="input-group mb-3">
+                      <input type="number" class="form-control" min=0 value=10 name="txtBayiAnak">
+                      <div class="input-group-append">
+                        <span class="input-group-text">kasus</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label>Dewasa [<label id="validDewasa">0</label>]</label>
+                    <div class="input-group mb-3">
+                      <input type="number" class="form-control" min=0 value=10 name="txtDewasa">
+                      <div class="input-group-append">
+                        <span class="input-group-text">kasus</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label>Lansia [<label id="validLansia">0</label>]</label>
+                    <div class="input-group mb-3">
+                      <input type="number" class="form-control" min=0 value=10 name="txtLansia">
+                      <div class="input-group-append">
+                        <span class="input-group-text">kasus</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Generate</button>
+            </form>
+          </div>
+          <div class="card-footer">
+              
+          </div>
+        </div>
+        <!-- /.card -->
+      </div>
+    </section>
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Generated Data</h3>
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <table id="example" class="table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <th>No.</th>
+                    <th>Jenis Kasus</th>
+                    <th>Kategori Pasien</th>
+                    <th>Kode Kegiatan</th>
+                    <th>Unit Pelayanan</th>
+                    <th>Kategori Kasus</th>
+                    <th>Data Pasien</th>
+                  </tr>
+                  </thead>
+                  <tbody id="testBody"></tbody>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="content">
+      <div class="container-fluid">
+        <div class="card card-default">
+          <div class="card-header">
+            <h3 class="card-title">Detail <label id="no-kasus"></label></h3>
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="card-body">
+            <form id="viewForm">
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label>Dokter Pendamping</label>
+                    <select class="form-control select2" style="width: 100%;"id="dokter-pendamping">
+                      <option value="0">Mohon Pilih Dokter Pendamping</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label>Kode Kegiatan</label>
+                    <select class="form-control select2" style="width: 100%;" id="kode-kegiatan" disabled>
+                      <option value=""></option>
+                      <option value="1">MEDIK</option>
+                      <option value="2">BEDAH</option>
+                      <option value="3">KEGAWAT-DARURATAN</option>
+                      <option value="4">KEBIDANAN DAN PERINATAL</option>
+                      <option value="5">KEJIWAAN</option>
+                      <option value="6">MEDIKOLEGAL</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label>Unit Pelayanan</label>
+                    <select class="form-control select2" style="width: 100%;" id="unit-pelayanan" disabled>
+                      <option value=""></option>
+                      <option value="1">Stase 1 - RS - Poli</option>
+                      <option value="2">Stase 2 - RS - UGD</option>
+                      <option value="3">Stase 3 - Puskesmas</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label>Kategori Pasien</label>
+                    <select class="form-control select2" style="width: 100%;" id="kode-pasien" disabled>
+                      <option value=""></option>
+                      <option value="1">Anak - Bayi</option>
+                      <option value="2">Dewasa</option>
+                      <option value="3">Lansia</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label>Kategori Kasus</label>
+                    <select class="form-control select2" style="width: 100%;" id="kode-kasus" disabled>
+                      <option value=""></option>
+                      <option value="1">Non-Covid</option>
+                      <option value="2">Kasus Suspek</option>
+                      <option value="3">Kasus Probable</option>
+                      <option value="4">Kontak Erat</option>
+                      <option value="5">Kasus Konfirmasi</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label>Jenis Kelamin</label>
+                    <select class="form-control select2" style="width: 100%;" id="jenis-kelamin" disabled>
+                      <option value=""></option>
+                      <option value="1">Pria</option>
+                      <option value="2">Wanita</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 mb-3">
+                  <label>Data Dasar Pasien (Contoh: Tn.X; 30th; 170cm; 70kg)</label>
+                  <textarea class="form-control" id="pasien" rows="3"  maxlength="250" placeholder="Ketik Data Dasar Pasien di sini (maks. 250 karakter)"></textarea>
+                </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12 mb-3">
+                    <label>Data Ringkasan Penyakit</label>
+                    <textarea class="form-control" id="penyakit" rows="10" maxlength="500" placeholder="Ketik Data Ringkasan Penyakit di sini (boleh lebih dari 500 karakter)"></textarea>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12 mb-3">
+                    <label>Diagnosis</label>
+                    <textarea class="form-control" id="diagnosis" rows="3" ></textarea>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12 mb-3">
+                    <label>Data Penatalaksanaan</label>
+                    <textarea class="form-control" id="penatalaksanaan" rows="3" maxlength="500" placeholder="Ketik Data Penatalaksanaan di sini (boleh lebih dari 500 karakter)"></textarea>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12 mb-3">
+                    <label>Isi Data Penatalaksanaan catatan & Usulan dokter pendamping terhadap kinerja</label>
+                    <textarea class="form-control" id="pe" rows="3" maxlength="500" placeholder="Ketik Data Penatalaksanaan di sini (boleh lebih dari 500 karakter)"></textarea>
+                  </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Copy</button>
+            </form>
+          </div>
+          <div class="card-footer">
+              
+          </div>
+        </div>
+        <!-- /.card -->
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.1.0
+    </div>
+    <strong>Copyright &copy; 2021 <a href="http://logbook.internsip.kemkes.go.id/">Logbook Internsip</a>.</strong> All rights reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- jquery-validation -->
+<script src="plugins/jquery-validation/jquery.validate.min.js"></script>
+<script src="plugins/jquery-validation/additional-methods.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="plugins/jszip/jszip.min.js"></script>
+<script src="plugins/pdfmake/pdfmake.min.js"></script>
+<script src="plugins/pdfmake/vfs_fonts.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- Select2 -->
+<script src="plugins/select2/js/select2.full.min.js"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<!-- InputMask -->
+<script src="plugins/moment/moment.min.js"></script>
+<script src="plugins/inputmask/jquery.inputmask.min.js"></script>
+<!-- date-range-picker -->
+<script src="plugins/daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap color picker -->
+<script src="plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Bootstrap Switch -->
+<script src="plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+<!-- BS-Stepper -->
+<script src="plugins/bs-stepper/js/bs-stepper.min.js"></script>
+<!-- dropzonejs -->
+<script src="plugins/dropzone/min/dropzone.min.js"></script>
+<!-- date-range-picker -->
+<script src="plugins/daterangepicker/daterangepicker.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+<!-- RandExp -->
+<script src="https://github.com/fent/randexp.js/releases/download/v0.4.3/randexp.min.js"></script>
+<!-- Page specific script -->
+<script>
+  var bankKasus;
+  var dokterPendamping;
+  var variableKasus = new Map();
+  function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
+  }
+
+  function setVariableKasus(kasusNumber){
+    if (!variableKasus.has(kasusNumber)){
+      var nameFile = "data/variable_kasus_" + kasusNumber + ".json";
+      $.getJSON(nameFile, function(data) {         
+          variableKasus[kasusNumber] = data;
+      });
+    };
+  }
+
+  function checkValidKasus(){
+    let payload = {
+        jenis_kelamin: $('select[name="selectJenisKelamin"]').val(),
+        kode_kegiatan: $('select[name="selectKodeKegiatan"]').val(),
+        unit_pelayanan: $('select[name="selectUnitPelayanan"]').val(),
+        kategori_kasus: $('select[name="selectKategoriKasus"]').val()
+    }
+    let validData = getValidKasus(payload);
+    
+    if (validData[0] !== undefined){
+      $("#validBayiAnak").text(validData[0].length);
+    }
+    if (validData[1] !== undefined){
+      $("#validDewasa").text(validData[1].length);
+    }
+    if (validData[2] !== undefined){
+      $("#validLansia").text(validData[2].length);
+    }
+  }
+
+  function getValidKasus(payload){
+      let listValidIndexKasusBayiAnak = []
+      let listValidIndexKasusDewasa = []
+      let listValidIndexKasusLansia = []
+
+      for (let key in bankKasus) {
+        let kasus = bankKasus[key];
+
+        // Filter Jenis Kelamin
+        if (payload.jenis_kelamin != 0){
+           jenis_kelamins = kasus["Kategori Jenis Kelamin Pasien"].split(',');
+           let okJenisKelamin = false;
+           for (let index in jenis_kelamins) {
+              if (jenis_kelamins[index] === payload.jenis_kelamin) {
+                okJenisKelamin = true
+              }
+           }
+           if (!okJenisKelamin){
+             continue;
+           }
+        }
+        
+        // Filter Kode Kegiatan
+        kode_kegiatans = kasus["Kode Kegiatan"].split(',');
+        let okKodeKegiatan = false;
+        for (let indexPayLoad in payload.kode_kegiatan) {
+          for (let index in kode_kegiatans) {
+              if (kode_kegiatans[index] === payload.kode_kegiatan[indexPayLoad]) {
+                  okKodeKegiatan = true
+              }
+          }
+        }
+        if (!okKodeKegiatan){
+             continue;
+        }
+
+
+        // Filter Unit Pelayanan
+        unit_pelayanans = kasus["Unit Pelayanan"].split(',');
+        let okUnitPelayanan = false;
+        for (let indexPayLoad in payload.unit_pelayanan) {
+          for (let index in unit_pelayanans) {
+              if (unit_pelayanans[index] === payload.unit_pelayanan[indexPayLoad]) {
+                  okUnitPelayanan = true
+              }
+          }
+        }
+        if (!okUnitPelayanan){
+             continue;
+        }
+
+        // Filter Kategori Kasus
+        kategori_kasuss = kasus["Kategori Kasus"].split(',');
+        var okKategoriKasus = false;
+        for (let indexPayLoad in payload.kategori_kasus) {
+          for (let index in kategori_kasuss) {
+              if (kategori_kasuss[index] === payload.kategori_kasus[indexPayLoad]) {
+                  okKategoriKasus = true
+              }
+          }
+        }
+        if (!okKategoriKasus){
+             continue;
+        }
+
+         // Filter Kategori Pasien
+        kategori_pasiens = kasus["Kategori Pasien"].split(',');
+        for (let index in kategori_pasiens) {
+          // Bayi - Anak 
+          if (kategori_pasiens[index] === "1") {
+            listValidIndexKasusBayiAnak.push(key);
+          } else if (kategori_pasiens[index] === "2") { // Dewasa
+            listValidIndexKasusDewasa.push(key);
+          } else if (kategori_pasiens[index] === "3") { // Lansia
+            listValidIndexKasusLansia.push(key);
+          }
+        }
+      }
+
+      return [listValidIndexKasusBayiAnak, listValidIndexKasusDewasa, listValidIndexKasusLansia];
+  }
+
+  function intersect(a, b) {
+    var setA = new Set(a);
+    var setB = new Set(b);
+    var intersection = new Set([...setA].filter(x => setB.has(x)));
+    return Array.from(intersection);
+  }
+
+
+  function toArrayInt(str){
+    var result = str.split(',').map(function(item) {
+        return parseInt(item, 10);
+    });
+    return result
+  }
+  
+  function getNameOptionSelect2(dom, val){
+    var datas = $(dom).select2("data");
+    for (let key in datas) {
+      let data = datas[key];
+      if (data.id == val){
+        return data.text
+      } 
+    }
+    return "";
+  };
+
+  function viewGeneratedData(row){
+    $("#no-kasus").html("Kasus No. " + row.getAttribute("data-no-kasus"));
+    $("#kode-kegiatan").val(row.getAttribute("data-kode-kegiatan"));
+    $("#unit-pelayanan").val(row.getAttribute("data-unit-pelayanan"));
+
+    $("#kode-pasien").val(row.getAttribute("data-kode-pasien"));
+    $("#kode-kasus").val(row.getAttribute("data-kode-kasus"));
+    $("#jenis-kelamin").val(row.getAttribute("data-jenis-kelamin"));
+
+    $("#pasien").val(row.getAttribute("data-pasien"));
+    $("#penyakit").val(row.getAttribute("data-penyakit"));
+    $("#dokter-pendamping").val(row.getAttribute("data-dokter-pendamping"));
+
+    $('.select2').select2();
+  }
+
+  function loadTableData(items){
+    $('#example').DataTable().clear().destroy();
+    const table = document.getElementById("testBody");
+    table.innerHTML = "";
+    let i = 1;
+    for (let key in items) {
+      let item = items[key];
+       
+      let row = table.insertRow();
+
+      row.setAttribute("data-no-kasus", i);
+      row.setAttribute("data-kode-kegiatan", item["txtKodeKegiatan"]);
+      row.setAttribute("data-unit-pelayanan", item["txtUnitPelayanan"]);
+      row.setAttribute("data-kode-pasien", item["txtKodePasien"]);
+      row.setAttribute("data-kode-kasus", item["txtKodeKasus"]);
+      row.setAttribute("data-jenis-kelamin", item["txtJenisKelamin"]);
+      row.setAttribute("data-pasien", item["Data Dasar Pasien"]);
+      row.setAttribute("data-penyakit", item["Data Ringkasan Penyakit"]);
+      row.setAttribute("data-dokter-pendamping", item["txtDokterPendamping"]);
+
+      row.setAttribute("onclick","viewGeneratedData(this)");
+      let x = row.insertCell(0);
+      x.innerHTML = i++;
+      x = row.insertCell(1);
+      x.innerHTML = "Kasus " + item["No"];
+      x = row.insertCell(2);
+      let kodePasien = item["txtKodePasien"];
+      if (kodePasien === 1){
+        x.innerHTML = "Bayi - Anak";
+      } else if (kodePasien === 2){
+        x.innerHTML = "Dewasa";
+      } else {
+        x.innerHTML = "Lansia";
+      }
+      x = row.insertCell(3);
+      x.innerHTML = getNameOptionSelect2($('select[name="selectKodeKegiatan"]'), item["txtKodeKegiatan"]);
+      x = row.insertCell(4);
+      x.innerHTML = getNameOptionSelect2($('select[name="selectUnitPelayanan"]'), item["txtUnitPelayanan"]);
+      x = row.insertCell(5);
+      x.innerHTML = getNameOptionSelect2($('select[name="selectKategoriKasus"]'), item["txtKodeKasus"]);
+      x = row.insertCell(6);
+      x.innerHTML = item["Data Dasar Pasien"];
+    }
+    $('#example').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+    });
+  }
+
+  function randomKasus(jumlahKasus, listValidKasus, payload, kategoriPasien){
+      var cases = []
+      var i;
+      for (i = 1; i <= jumlahKasus; i++) {
+          var keyKasus = getRndInteger(0, listValidKasus.length-1)
+          cases.push(randomVariable(bankKasus[keyKasus], payload, kategoriPasien))
+      }
+      return cases;
+  }
+
+
+  function randomVariable(kasus, payload, kategoriPasien){
+    let newKasus = Object.create(kasus)
+    newKasus["txtKodePasien"] = kategoriPasien;
+    // jenis kelamin
+    let jenisKelamin = parseInt(payload.jenis_kelamin, 10);
+    if (jenisKelamin == 0){
+        jenisKelamin = getRndInteger(1, 2);
+    }
+    newKasus["txtJenisKelamin"] = jenisKelamin;
+
+    newKasus["txtDokterPendamping"] = payload.dokter;
+
+    // kode kegiatan
+    let kodeKegiatans = intersect(newKasus["Kode Kegiatan"], payload.kode_kegiatan);
+    if (kodeKegiatans.length > 0) {
+        let randomKodeKegiatan = kodeKegiatans[getRndInteger(0, kodeKegiatans.length -1)];
+        newKasus["txtKodeKegiatan"] = parseInt(randomKodeKegiatan, 10);
+    }
+   
+    // unit pelayanan
+    let unitPelayanan = intersect(newKasus["Unit Pelayanan"], payload.unit_pelayanan);
+    if (unitPelayanan.length > 0) {
+        let randomUnitPelayanan = unitPelayanan[getRndInteger(0, unitPelayanan.length-1)];
+        newKasus["txtUnitPelayanan"] = parseInt(randomUnitPelayanan, 10);
+    }
+
+    // kategori Kasus
+    let kategoriKasus = intersect(newKasus["Kategori Kasus"], payload.kategori_kasus);
+    if (kategoriKasus.length > 0) {
+        let randomKategoriKasus = kategoriKasus[getRndInteger(0, kategoriKasus.length-1)];
+        newKasus["txtKodeKasus"] = parseInt(randomKategoriKasus, 10);
+    }
+
+    var collectionVariableKasus = variableKasus[newKasus["No"]];
+    if (collectionVariableKasus !== undefined){
+      let variable = collectionVariableKasus[getRndInteger(0, collectionVariableKasus.length-1)];
+      let newVariable = Object.create(variable)
+      let dictionary = {
+          jenis_kelamin: jenisKelamin
+      }; 
+      for (const property in newVariable) {
+        newVariable[property] = replaceVariable(newVariable[property], dictionary);
+        newVariable[property] = EVAL(newVariable[property]);
+        dictionary[property] = newVariable[property];
+        newKasus["Data Dasar Pasien"] = newKasus["Data Dasar Pasien"].replace("{{" + property + "}}", newVariable[property]);
+        newKasus["Data Ringkasan Penyakit"] = newKasus["Data Ringkasan Penyakit"].replace("{{" + property + "}}", newVariable[property]);
+        newKasus["Penatalaksanaan"] = newKasus["Penatalaksanaan"].replace("{{" + property + "}}", newVariable[property]);
+        newKasus["Tindakan medis"] = newKasus["Tindakan medis"].replace("{{" + property + "}}", newVariable[property]);
+      }
+    }
+ 
+    return newKasus;
+  }
+
+  function replaceVariable(str, dictionary){
+    for (const property in dictionary) {
+        str = str.replace("{{" + property + "}}", dictionary[property]);
+    }
+    return str;
+  }
+
+  function RANDOMCHAR(str){
+    if (str !== undefined && str.length > 0){
+      let index = getRndInteger(0, str.length-1);
+      return str[index];
+    }
+    return "";
+  }
+
+
+  function IFTHENELSE(condition, return1, return2){
+    if(eval(condition)){
+        return return1;
+    }else{
+      return return2;
+    }
+  }
+
+  function RANGENUMBER(minValue, maxValue, inc){
+    return Math.floor(Math.random() * (maxValue - minValue + inc) ) + minValue; 
+  }
+
+  function SELECTION(...options){
+    if (options.length > 0){
+        return options[getRndInteger(0, options.length-1)]
+    }
+    return "";
+  }
+
+  function EVAL(exp){
+    try {
+      var result;
+      if (exp !== undefined && exp[0] === "#"){
+        let newExp = exp.substring(1, exp.length);
+        eval( "result = " + newExp + ";");
+        return result;
+      }
+      return exp;
+    }
+    catch(err) {
+      console.log(err.message);
+    }
+  }
+
+  $(document).ready(function() {
+    $.getJSON('data/bank_kasus.json', function(data) {         
+        bankKasus = data;
+        for (let key in bankKasus) {
+          let kasus = bankKasus[key];
+          setVariableKasus(kasus["No"]);
+        }
+        checkValidKasus();
+    });
+
+    $.getJSON('data/dokter_pendamping.json', function(data) {         
+        dokterPendamping = data;
+        var selectDokterPendamping = $('#selectDokterPendamping');
+        var selectViewDokterPendamping = $('#dokter-pendamping');
+        for (let key in dokterPendamping) {
+          let dokter = dokterPendamping[key];
+          selectDokterPendamping.append(
+              $('<option></option>').val(dokter["val"]).html(dokter["text"])
+          );
+          selectViewDokterPendamping.append(
+              $('<option></option>').val(dokter["val"]).html(dokter["text"])
+          );
+        }
+        $('.select2').select2();
+    });
+    
+    $('#example').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+    });
+  });
+
+  $(function () {
+    $('#generateForm').validate({
+      rules: {
+        selectJenisKelamin: {
+          required: true,
+        }, 
+        selectKodeKegiatan: {
+          required: true,
+        },
+        selectUnitPelayanan: {
+          required: true,
+        },
+        selectKategoriKasus: {
+          required: true
+        },
+      },
+      errorElement: 'span',
+      errorPlacement: function (error, element) {
+        error.addClass('invalid-feedback');
+        element.closest('.form-group').append(error);
+      },
+      highlight: function (element, errorClass, validClass) {
+        $(element).addClass('is-invalid');
+      },
+      unhighlight: function (element, errorClass, validClass) {
+        $(element).removeClass('is-invalid');
+      },
+      submitHandler: function(form) {
+        var inputs=$(form).find(':input');
+        var payload = {
+            jenis_kelamin: $('select[name="selectJenisKelamin"]').val(),
+            kode_kegiatan: $('select[name="selectKodeKegiatan"]').val(),
+            unit_pelayanan: $('select[name="selectUnitPelayanan"]').val(),
+            kategori_kasus: $('select[name="selectKategoriKasus"]').val(),
+            bayi_anak : inputs.filter('[name=txtBayiAnak]').val(), 
+            dewasa : inputs.filter('[name=txtDewasa]').val(),
+            lansia : inputs.filter('[name=txtLansia]').val(),
+            dokter : $('select[name="selectDokterPendamping"]').val(),
+        }
+
+        let validData = getValidKasus(payload);
+        let cases = [];
+        if (validData[0] !== undefined && validData[0].length > 0 && payload.bayi_anak > 0){
+            let x = randomKasus(payload.bayi_anak, validData[0], payload, 1);
+            cases = cases.concat(x);
+        }
+        if (validData[1] !== undefined && validData[1].length > 0 && payload.dewasa > 0){
+            let y = randomKasus(payload.dewasa, validData[1], payload, 2);
+            cases = cases.concat(y);
+        }
+        if (validData[2] !== undefined && validData[2].length > 0 && payload.lansia > 0){
+            let z = randomKasus(payload.lansia, validData[2], payload, 3);
+            cases = cases.concat(z);
+        }
+        loadTableData(cases);
+      }
+    });
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+
+    $('#rangeDate').daterangepicker({
+      locale: {
+        format: 'DD-MMM-YYYY'
+      }
+    })
+  })
+
+  
+</script>
+</body>
+</html>
