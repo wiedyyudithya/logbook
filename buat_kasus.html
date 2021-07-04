@@ -294,15 +294,15 @@
               <div class="row">
                 <div class="col-md-3">
                   <div class="form-group">
-                    <label>Dokter Pendamping</label>
-                    <select class="form-control select2" style="width: 100%;"id="dokter-pendamping">
+                    <label>Tgl Pelayanan</label>
+                    <select class="form-control select2" style="width: 100%;"id="">
                       <option value="0">Mohon Pilih Dokter Pendamping</option>
                     </select>
                   </div>
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-3">
                   <div class="form-group">
                     <label>Kode Kegiatan</label>
                     <select class="form-control select2" style="width: 100%;" id="kode-kegiatan" disabled>
@@ -316,7 +316,9 @@
                     </select>
                   </div>
                 </div>
-                <div class="col-md-2">
+              </div>
+              <div class="row">
+                <div class="col-md-3">
                   <div class="form-group">
                     <label>Unit Pelayanan</label>
                     <select class="form-control select2" style="width: 100%;" id="unit-pelayanan" disabled>
@@ -327,7 +329,19 @@
                     </select>
                   </div>
                 </div>
-                <div class="col-md-2">
+              </div>
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label>Pendamping</label>
+                    <select class="form-control select2" style="width: 100%;"id="dokter-pendamping">
+                      <option value="0">Mohon Pilih Dokter Pendamping</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3">
                   <div class="form-group">
                     <label>Kategori Pasien</label>
                     <select class="form-control select2" style="width: 100%;" id="kode-pasien" disabled>
@@ -338,7 +352,9 @@
                     </select>
                   </div>
                 </div>
-                <div class="col-md-2">
+              </div>
+              <div class="row">
+                <div class="col-md-3">
                   <div class="form-group">
                     <label>Kategori Kasus</label>
                     <select class="form-control select2" style="width: 100%;" id="kode-kasus" disabled>
@@ -351,7 +367,9 @@
                     </select>
                   </div>
                 </div>
-                <div class="col-md-2">
+              </div>
+              <div class="row">
+                <div class="col-md-3">
                   <div class="form-group">
                     <label>Jenis Kelamin</label>
                     <select class="form-control select2" style="width: 100%;" id="jenis-kelamin" disabled>
@@ -362,7 +380,6 @@
                   </div>
                 </div>
               </div>
-
               <div class="row">
                 <div class="col-md-12 mb-3">
                   <label>Data Dasar Pasien (Contoh: Tn.X; 30th; 170cm; 70kg)</label>
@@ -378,7 +395,8 @@
               <div class="row">
                   <div class="col-md-12 mb-3">
                     <label>Diagnosis</label>
-                    <textarea class="form-control" id="diagnosis" rows="3" ></textarea>
+                    <select class="select2" multiple="multiple" id="selectDiagnosis"  data-placeholder="Pilih Diagnosis" style="width: 100%;">
+                    </select>
                   </div>
               </div>
               <div class="row">
@@ -388,9 +406,16 @@
                   </div>
               </div>
               <div class="row">
+                <div class="col-md-12 mb-3">
+                  <label>Tindakan Medis</label>
+                  <select class="select2" multiple="multiple" id="selectTindakanMedis" data-placeholder="Pilih Tindakan Medis" style="width: 100%;">
+                  </select>
+                </div>
+              </div>
+              <div class="row">
                   <div class="col-md-12 mb-3">
                     <label>Isi Data Penatalaksanaan catatan & Usulan dokter pendamping terhadap kinerja</label>
-                    <textarea class="form-control" id="pe" rows="3" maxlength="500" placeholder="Ketik Data Penatalaksanaan di sini (boleh lebih dari 500 karakter)"></textarea>
+                    <textarea class="form-control" id="usulan" rows="3" maxlength="500" placeholder="Ketik Data Penatalaksanaan di sini (boleh lebih dari 500 karakter)"></textarea>
                   </div>
               </div>
               <button type="submit" class="btn btn-primary">Copy</button>
@@ -468,8 +493,10 @@
 <script src="https://github.com/fent/randexp.js/releases/download/v0.4.3/randexp.min.js"></script>
 <!-- Page specific script -->
 <script>
+  var data;
   var bankKasus;
   var dokterPendamping;
+  var diagnosis;
   var variableKasus = new Map();
   function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
@@ -613,6 +640,9 @@
   };
 
   function viewGeneratedData(row){
+
+    console.log(data[row.getAttribute("data-index")]);
+
     $("#no-kasus").html("Kasus No. " + row.getAttribute("data-no-kasus"));
     $("#kode-kegiatan").val(row.getAttribute("data-kode-kegiatan"));
     $("#unit-pelayanan").val(row.getAttribute("data-unit-pelayanan"));
@@ -629,28 +659,19 @@
   }
 
   function loadTableData(items){
+    data = items;
+    console.log(data);
     $('#example').DataTable().clear().destroy();
     const table = document.getElementById("testBody");
     table.innerHTML = "";
-    let i = 1;
+    let i = 0;
     for (let key in items) {
       let item = items[key];
-       
       let row = table.insertRow();
-
-      row.setAttribute("data-no-kasus", i);
-      row.setAttribute("data-kode-kegiatan", item["txtKodeKegiatan"]);
-      row.setAttribute("data-unit-pelayanan", item["txtUnitPelayanan"]);
-      row.setAttribute("data-kode-pasien", item["txtKodePasien"]);
-      row.setAttribute("data-kode-kasus", item["txtKodeKasus"]);
-      row.setAttribute("data-jenis-kelamin", item["txtJenisKelamin"]);
-      row.setAttribute("data-pasien", item["Data Dasar Pasien"]);
-      row.setAttribute("data-penyakit", item["Data Ringkasan Penyakit"]);
-      row.setAttribute("data-dokter-pendamping", item["txtDokterPendamping"]);
-
+      row.setAttribute("data-index", i);
       row.setAttribute("onclick","viewGeneratedData(this)");
       let x = row.insertCell(0);
-      x.innerHTML = i++;
+      x.innerHTML = ++i;
       x = row.insertCell(1);
       x.innerHTML = "Kasus " + item["No"];
       x = row.insertCell(2);
@@ -740,7 +761,6 @@
         newKasus["Data Dasar Pasien"] = newKasus["Data Dasar Pasien"].replace("{{" + property + "}}", newVariable[property]);
         newKasus["Data Ringkasan Penyakit"] = newKasus["Data Ringkasan Penyakit"].replace("{{" + property + "}}", newVariable[property]);
         newKasus["Penatalaksanaan"] = newKasus["Penatalaksanaan"].replace("{{" + property + "}}", newVariable[property]);
-        newKasus["Tindakan medis"] = newKasus["Tindakan medis"].replace("{{" + property + "}}", newVariable[property]);
       }
     }
  
@@ -822,7 +842,30 @@
         }
         $('.select2').select2();
     });
+
+    $.getJSON('data/diagnosis.json', function(data) {         
+        var selectDiagnosis = $('#selectDiagnosis');
+        for (let key in data) {
+          let diagnosis = data[key];
+          selectDiagnosis.append(
+              $('<option></option>').val(diagnosis["val"]).html(diagnosis["text"])
+          );
+        }
+        $('.select2').select2();
+    });
     
+    $.getJSON('data/tindakan_medis.json', function(data) {         
+        var selectTindakanMedis = $('#selectTindakanMedis');
+        for (let key in data) {
+          let tindakanMedis = data[key];
+          selectTindakanMedis.append(
+              $('<option></option>').val(tindakanMedis["val"]).html(tindakanMedis["text"])
+          );
+        }
+        $('.select2').select2();
+    });
+    
+
     $('#example').DataTable({
         "paging": true,
         "lengthChange": false,
