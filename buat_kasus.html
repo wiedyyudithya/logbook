@@ -139,7 +139,7 @@
                       <option value="4" selected>Kamis</option>
                       <option value="5" selected>Jumat</option>
                       <option value="6" selected>Sabtu</option>
-                      <option value="7" selected>Minggu</option>
+                      <option value="0" selected>Minggu</option>
                     </select>
                   </div>
                 </div>
@@ -450,6 +450,7 @@
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="plugins/moment/moment.min.js"></script>
 <!-- jquery-validation -->
 <script src="plugins/jquery-validation/jquery.validate.min.js"></script>
 <script src="plugins/jquery-validation/additional-methods.min.js"></script>
@@ -490,7 +491,7 @@
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 <!-- RandExp -->
-<script src="https://github.com/fent/randexp.js/releases/download/v0.4.3/randexp.min.js"></script>
+<script src="https://github.com/datejs/Datejs/blob/master/build/date.js"></script>
 <!-- Page specific script -->
 <script>
   var data;
@@ -640,10 +641,9 @@
   };
 
   function viewGeneratedData(row){
+    let index = row.getAttribute("data-index");
 
-    console.log(data[row.getAttribute("data-index")]);
-
-    $("#no-kasus").html("Kasus No. " + row.getAttribute("data-no-kasus"));
+    $("#no-kasus").html("Kasus No. " + ++index);
     $("#kode-kegiatan").val(row.getAttribute("data-kode-kegiatan"));
     $("#unit-pelayanan").val(row.getAttribute("data-unit-pelayanan"));
 
@@ -752,11 +752,12 @@
       let variable = collectionVariableKasus[getRndInteger(0, collectionVariableKasus.length-1)];
       let newVariable = Object.create(variable)
       let dictionary = {
-          jenis_kelamin: jenisKelamin
+          jenis_kelamin: jenisKelamin,
+          kategori_pasien : kategoriPasien,
       }; 
       for (const property in newVariable) {
         newVariable[property] = replaceVariable(newVariable[property], dictionary);
-        newVariable[property] = EVAL(newVariable[property]);
+        newVariable[property] = EVAL(newVariable[property], property);
         dictionary[property] = newVariable[property];
         newKasus["Data Dasar Pasien"] = newKasus["Data Dasar Pasien"].replace("{{" + property + "}}", newVariable[property]);
         newKasus["Data Ringkasan Penyakit"] = newKasus["Data Ringkasan Penyakit"].replace("{{" + property + "}}", newVariable[property]);
@@ -795,6 +796,33 @@
     return Math.floor(Math.random() * (maxValue - minValue + inc) ) + minValue; 
   }
 
+  function RANGENUMBERUMUR(kategoriPasien, minValue, maxValue, inc){
+    if (kategoriPasien === 1){
+        if (maxValue > 17){
+            maxValue = 17;
+        }
+        if (minValue < 0){
+            maxValue = 0;
+        }
+    }
+
+    if (kategoriPasien === 2){
+        if (maxValue > 55){
+            maxValue = 55;
+        }
+        if (minValue < 18){
+            minValue = 18;
+        }
+    }
+
+    if (kategoriPasien === 3){
+        if (minValue < 56){
+            minValue = 56;
+        }
+    } 
+    return Math.floor(Math.random() * (maxValue - minValue + inc) ) + minValue; 
+  }
+
   function SELECTION(...options){
     if (options.length > 0){
         return options[getRndInteger(0, options.length-1)]
@@ -802,7 +830,7 @@
     return "";
   }
 
-  function EVAL(exp){
+  function EVAL(exp, property){
     try {
       var result;
       if (exp !== undefined && exp[0] === "#"){
@@ -813,7 +841,7 @@
       return exp;
     }
     catch(err) {
-      console.log(err.message);
+      console.log(property + " : " + err.message);
     }
   }
 
@@ -877,6 +905,28 @@
     });
   });
 
+  function getValidTanggal(rangeDate, hari){
+      try {
+        let dates = rangeDate.split(' - ');
+        let startDate = moment(dates[0], "DD/MM/YYYY"); 
+        let endDate = moment(dates[1], "DD/MM/YYYY"); 
+
+        var validTanggal = [];
+        var loop = new Date(startDate);
+        while(loop <= endDate){
+          if (hari.includes(""+ loop.getDay())){
+            validTanggal.push(new Date(loop));         
+          }
+          var newDate = loop.setDate(loop.getDate() + 1);
+          loop = new Date(newDate);
+        }
+        return validTanggal;
+      }
+      catch(err) {
+        console.log(err.message);
+      }
+  }
+
   $(function () {
     $('#generateForm').validate({
       rules: {
@@ -907,6 +957,8 @@
       submitHandler: function(form) {
         var inputs=$(form).find(':input');
         var payload = {
+            date_range: $('#rangeDate').val(),
+            hari: $('select[name="selectHari"]').val(),
             jenis_kelamin: $('select[name="selectJenisKelamin"]').val(),
             kode_kegiatan: $('select[name="selectKodeKegiatan"]').val(),
             unit_pelayanan: $('select[name="selectUnitPelayanan"]').val(),
@@ -916,7 +968,7 @@
             lansia : inputs.filter('[name=txtLansia]').val(),
             dokter : $('select[name="selectDokterPendamping"]').val(),
         }
-
+        let validTanggal = getValidTanggal(payload.date_range, payload.hari);
         let validData = getValidKasus(payload);
         let cases = [];
         if (validData[0] !== undefined && validData[0].length > 0 && payload.bayi_anak > 0){
@@ -931,7 +983,21 @@
             let z = randomKasus(payload.lansia, validData[2], payload, 3);
             cases = cases.concat(z);
         }
-        loadTableData(cases);
+
+        try {
+          if (cases.length <= validTanggal.length){
+            for (let key in cases) {
+              cases[key]["Tanggal"] = moment(validTanggal[key]).format('DD/MM/YYYY');
+            }
+          }else{
+            for (let key in cases) {
+              cases[key]["Tanggal"] = moment(validTanggal[Math.floor(key/(cases.length/validTanggal.length))]).format('DD/MM/YYYY');
+            }
+          }
+          loadTableData(cases);
+        } catch (error) {
+          console.log(error,message);
+        }
       }
     });
     //Initialize Select2 Elements
@@ -944,7 +1010,7 @@
 
     $('#rangeDate').daterangepicker({
       locale: {
-        format: 'DD-MMM-YYYY'
+        format: 'DD/MM/YYYY'
       }
     })
   })
