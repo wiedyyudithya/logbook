@@ -295,9 +295,12 @@
                 <div class="col-md-3">
                   <div class="form-group">
                     <label>Tgl Pelayanan</label>
-                    <select class="form-control select2" style="width: 100%;"id="">
-                      <option value="0">Mohon Pilih Dokter Pendamping</option>
-                    </select>
+                    <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                      <input type="text" id="tgl-pelayanan" class="form-control datetimepicker-input" data-target="#reservationdate"/>
+                      <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                      </div>
+                  </div>
                   </div>
                 </div>
               </div>
@@ -642,25 +645,27 @@
 
   function viewGeneratedData(row){
     let index = row.getAttribute("data-index");
+    console.log(data[index]);
+    $("#tgl-pelayanan").val(data[index]["Tanggal"]);
+    $("#kode-kegiatan").val(data[index]["txtKodeKegiatan"]);
+    $("#unit-pelayanan").val(data[index]["txtUnitPelayanan"]);
 
+    $("#kode-pasien").val(data[index]["txtKodePasien"]);
+    $("#kode-kasus").val(data[index]["txtKodeKasus"]);
+    $("#jenis-kelamin").val(data[index]["txtJenisKelamin"]);
+    $("#dokter-pendamping").val(data[index]["txtDokterPendamping"]);
+
+    $("#pasien").val(data[index]["Data Dasar Pasien"]);
+    $("#penyakit").val(data[index]["Data Ringkasan Penyakit"]);
+    $("#penatalaksanaan").val(data[index]["Penatalaksanaan"]);
+    $("#selectTindakanMedis").val(data[index]["Tindakan Medis"].split(","));
+    $("#selectDiagnosis").val(data[index]["Diagnosis"].split(","));
     $("#no-kasus").html("Kasus No. " + ++index);
-    $("#kode-kegiatan").val(row.getAttribute("data-kode-kegiatan"));
-    $("#unit-pelayanan").val(row.getAttribute("data-unit-pelayanan"));
-
-    $("#kode-pasien").val(row.getAttribute("data-kode-pasien"));
-    $("#kode-kasus").val(row.getAttribute("data-kode-kasus"));
-    $("#jenis-kelamin").val(row.getAttribute("data-jenis-kelamin"));
-
-    $("#pasien").val(row.getAttribute("data-pasien"));
-    $("#penyakit").val(row.getAttribute("data-penyakit"));
-    $("#dokter-pendamping").val(row.getAttribute("data-dokter-pendamping"));
-
     $('.select2').select2();
   }
 
   function loadTableData(items){
     data = items;
-    console.log(data);
     $('#example').DataTable().clear().destroy();
     const table = document.getElementById("testBody");
     table.innerHTML = "";
@@ -717,6 +722,7 @@
   function randomVariable(kasus, payload, kategoriPasien){
     let newKasus = Object.create(kasus)
     newKasus["txtKodePasien"] = kategoriPasien;
+
     // jenis kelamin
     let jenisKelamin = parseInt(payload.jenis_kelamin, 10);
     if (jenisKelamin == 0){
@@ -759,12 +765,14 @@
         newVariable[property] = replaceVariable(newVariable[property], dictionary);
         newVariable[property] = EVAL(newVariable[property], property);
         dictionary[property] = newVariable[property];
-        newKasus["Data Dasar Pasien"] = newKasus["Data Dasar Pasien"].replace("{{" + property + "}}", newVariable[property]);
-        newKasus["Data Ringkasan Penyakit"] = newKasus["Data Ringkasan Penyakit"].replace("{{" + property + "}}", newVariable[property]);
-        newKasus["Penatalaksanaan"] = newKasus["Penatalaksanaan"].replace("{{" + property + "}}", newVariable[property]);
+        newKasus["Data Dasar Pasien"] = newKasus["Data Dasar Pasien"].replaceAll("{{" + property + "}}", newVariable[property]);
+        newKasus["Data Ringkasan Penyakit"] = newKasus["Data Ringkasan Penyakit"].replaceAll("{{" + property + "}}", newVariable[property]);
+        newKasus["Penatalaksanaan"] = newKasus["Penatalaksanaan"].replaceAll("{{" + property + "}}", newVariable[property]);
       }
     }
- 
+
+    newKasus["Tindakan Medis"] = kasus["Tindakan Medis"];
+    newKasus["Diagnosis"] = kasus["Diagnosis"];
     return newKasus;
   }
 
@@ -1013,6 +1021,11 @@
         format: 'DD/MM/YYYY'
       }
     })
+
+    $('#reservationdate').datetimepicker({
+        format: 'DD/MM/YYYY'
+    });
+
   })
 
   
