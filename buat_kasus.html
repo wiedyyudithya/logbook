@@ -296,7 +296,7 @@
                   <div class="form-group">
                     <label>Tgl Pelayanan</label>
                     <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                      <input type="text" id="tgl-pelayanan" class="form-control datetimepicker-input" data-target="#reservationdate"/>
+                      <input type="text" name="txtTglBorang" id="tgl-pelayanan" class="form-control datetimepicker-input" data-target="#reservationdate"/>
                       <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                           <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                       </div>
@@ -308,7 +308,7 @@
                 <div class="col-md-3">
                   <div class="form-group">
                     <label>Kode Kegiatan</label>
-                    <select class="form-control select2" style="width: 100%;" id="kode-kegiatan" disabled>
+                    <select name="txtKodeKegiatan" class="form-control select2" style="width: 100%;" id="kode-kegiatan" disabled>
                       <option value=""></option>
                       <option value="1">MEDIK</option>
                       <option value="2">BEDAH</option>
@@ -324,7 +324,7 @@
                 <div class="col-md-3">
                   <div class="form-group">
                     <label>Unit Pelayanan</label>
-                    <select class="form-control select2" style="width: 100%;" id="unit-pelayanan" disabled>
+                    <select name="txtUnitPelayanan" class="form-control select2" style="width: 100%;" id="unit-pelayanan" disabled>
                       <option value=""></option>
                       <option value="1">Stase 1 - RS - Poli</option>
                       <option value="2">Stase 2 - RS - UGD</option>
@@ -337,7 +337,7 @@
                 <div class="col-md-3">
                   <div class="form-group">
                     <label>Pendamping</label>
-                    <select class="form-control select2" style="width: 100%;"id="dokter-pendamping">
+                    <select name="txtDokterPendamping" class="form-control select2" style="width: 100%;"id="dokter-pendamping">
                       <option value="0">Mohon Pilih Dokter Pendamping</option>
                     </select>
                   </div>
@@ -347,7 +347,7 @@
                 <div class="col-md-3">
                   <div class="form-group">
                     <label>Kategori Pasien</label>
-                    <select class="form-control select2" style="width: 100%;" id="kode-pasien" disabled>
+                    <select name="txtKodePasien" class="form-control select2" style="width: 100%;" id="kode-pasien" disabled>
                       <option value=""></option>
                       <option value="1">Anak - Bayi</option>
                       <option value="2">Dewasa</option>
@@ -360,7 +360,7 @@
                 <div class="col-md-3">
                   <div class="form-group">
                     <label>Kategori Kasus</label>
-                    <select class="form-control select2" style="width: 100%;" id="kode-kasus" disabled>
+                    <select name="" class="form-control select2" style="width: 100%;" id="kode-kasus" disabled>
                       <option value=""></option>
                       <option value="1">Non-Covid</option>
                       <option value="2">Kasus Suspek</option>
@@ -421,7 +421,7 @@
                     <textarea class="form-control" id="usulan" rows="3" maxlength="500" placeholder="Ketik Data Penatalaksanaan di sini (boleh lebih dari 500 karakter)"></textarea>
                   </div>
               </div>
-              <button type="submit" class="btn btn-primary">Copy</button>
+              <button type="submit" class="btn btn-primary">Save To Logbook</button>
             </form>
           </div>
           <div class="card-footer">
@@ -645,7 +645,6 @@
 
   function viewGeneratedData(row){
     let index = row.getAttribute("data-index");
-    console.log(data[index]);
     $("#tgl-pelayanan").val(data[index]["Tanggal"]);
     $("#kode-kegiatan").val(data[index]["txtKodeKegiatan"]);
     $("#unit-pelayanan").val(data[index]["txtUnitPelayanan"]);
@@ -1008,6 +1007,94 @@
         }
       }
     });
+    
+    
+    $('#viewForm').validate({
+      rules: {
+        txtTglBorang: {
+          required: true,
+        }, 
+        txtKodeKegiatan: {
+          required: true,
+        },
+        txtUnitPelayanan: {
+          required: true,
+        },
+        txtDokterPendamping: {
+          required: true
+        },
+        txtKodePasien: {
+          required: true,
+        },
+        txtKodeKasus: {
+          required: true
+        },
+      },
+      errorElement: 'span',
+      errorPlacement: function (error, element) {
+        error.addClass('invalid-feedback');
+        element.closest('.form-group').append(error);
+      },
+      highlight: function (element, errorClass, validClass) {
+        $(element).addClass('is-invalid');
+      },
+      unhighlight: function (element, errorClass, validClass) {
+        $(element).removeClass('is-invalid');
+      },
+      submitHandler: function(form) {
+        // var inputs=$(form).find(':input');
+        // var payload = {
+        //     date_range: $('#rangeDate').val(),
+        //     hari: $('select[name="selectHari"]').val(),
+        //     jenis_kelamin: $('select[name="selectJenisKelamin"]').val(),
+        //     kode_kegiatan: $('select[name="selectKodeKegiatan"]').val(),
+        //     unit_pelayanan: $('select[name="selectUnitPelayanan"]').val(),
+        //     kategori_kasus: $('select[name="selectKategoriKasus"]').val(),
+        //     bayi_anak : inputs.filter('[name=txtBayiAnak]').val(), 
+        //     dewasa : inputs.filter('[name=txtDewasa]').val(),
+        //     lansia : inputs.filter('[name=txtLansia]').val(),
+        //     dokter : $('select[name="selectDokterPendamping"]').val(),
+        // }
+
+        // var settings = {
+        // "url": "http://logbook.internsip.kemkes.go.id/borang/aksi.php?module=peserta&submodule=bukuborang&act=catatBorang",
+        // "method": "POST",
+        // "timeout": 0,
+        // "headers": {
+        //   "Connection": "keep-alive",
+        //   "Cache-Control": "max-age=0",
+        //   "Upgrade-Insecure-Requests": "1",
+        //   "Origin": "http://logbook.internsip.kemkes.go.id",
+        //   "Content-Type": "application/x-www-form-urlencoded",
+        //   "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
+        //   "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        //   "Referer": "http://logbook.internsip.kemkes.go.id/borang/utama.php?act=cari&txtNamaCari=&module=peserta&submodule=bukuborang&q=1&p=0",
+        //   "Accept-Language": "en-US,en;q=0.9",
+        //   "Cookie": "PHPSESSID=rduom9r0vac2ukgh6fs1g5jmh2; PHPSESSID=cauaskkmubmcrdjcbojcj1qbr1"
+        // },
+        // "data": {
+        //   "txtTglBorang": "07/01/2021",
+        //   "txtKodeKegiatan": "2",
+        //   "txtUnitPelayanan": "1",
+        //   "txtDokterPendamping": "4196",
+        //   "txtKodePasien": "1",
+        //   "txtKodeKasus": "1",
+        //   "txtJenisKelamin": "1",
+        //   "txtDataDasar": "sd",
+        //   "txtRingkasan": "sds",
+        //   "txtKodeDiagnosis[]": "8008",
+        //   "txtPenatalaksanaan": "asd",
+        //   "txtTindakanMedis[]": "1",
+        //   "txtUsulan": "asdas"
+        // }
+      // };
+
+      //   $.ajax(settings).done(function (response) {
+      //     console.log(response);
+      //   });
+      }
+    });
+    
     //Initialize Select2 Elements
     $('.select2').select2()
 
@@ -1025,7 +1112,6 @@
     $('#reservationdate').datetimepicker({
         format: 'DD/MM/YYYY'
     });
-
   })
 
   
