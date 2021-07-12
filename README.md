@@ -8,6 +8,8 @@
 2. Buka file buat_kasus.html dengan browser.
 !["BUKA FILE"](https://user-images.githubusercontent.com/53747430/125224057-05616300-e2f7-11eb-89da-4084a48d7e5c.png) 
 
+3. Pilih data yang diinginkan.
+!["Tampilan Aplikasi"](https://user-images.githubusercontent.com/53747430/125224339-a4865a80-e2f7-11eb-941a-b350968a3ec2.png) 
 
 **AdminLTE** has been carefully coded with clear comments in all of its JS, SCSS and HTML files.
 SCSS has been used to increase code customizability.
