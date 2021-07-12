@@ -1,7 +1,7 @@
 var tindakanMedis = [
     {
       "val": 1,
-      "text": "MEMASANG INFUS"
+      "text": "MEMASANG INFUSS"
     },
     {
       "val": 2,
