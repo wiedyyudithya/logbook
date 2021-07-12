@@ -14,3 +14,6 @@
 4. Klik Generate.
 5. Data hasil generate akan ditampilkan
 ![image](https://user-images.githubusercontent.com/53747430/125224600-237b9300-e2f8-11eb-8048-57324d9dc93c.png)
+
+6. Klik baris table untuk melihat detail data yang dibuat.
+![image](https://user-images.githubusercontent.com/53747430/125224926-9edd4480-e2f8-11eb-8881-f038cfc34cd6.png)
