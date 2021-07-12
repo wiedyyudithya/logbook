@@ -22,7 +22,7 @@
 ## Bagaimana cara menambah Bank Kasus?
 
 1. Buka file di bank_kasus.js (data/bank_kasus.js)
-2. Tambahkan data bank_kasus dengan format seperti berikut.
+2. Tambahkan data bank_kasus dengan contoh format seperti berikut.
 ```
     {
       "No": 1,
@@ -45,3 +45,86 @@
 -  Unit Pelayanan : 1 (Stase 1 - RS - Poli), 2 (Stase 2 - RS - UGD), 3 (Stase 3 - Puskesmas)
 -  Diagnosis : Buka file diagnosis.js (data/diagnosis.js)
 -  Tindakan Medis : 1 (MEMASANG INFUS), 2 (MEMASANG KATETER), 3 (MENJAHIT LUKA), 4 (BEDAH MINOR), 5 (MEMASANG NGT), 6 (MENOLONG PARTUS NORMAL)
+
+
+## Bagaimana cara menambah Variable Kasus?
+
+1. Buka file di variable_kasus.js (data/variable_kasus.js)
+2. Tambahkan data bank_kasus dengan contoh format seperti berikut.
+```
+"5": [
+    {
+      "jabatan_pasien": "#IFTHENELSE('{{jenis_kelamin}} == 1', 'Tn.', 'Ny. ')",
+      "nama_pasien": "#RANDOMCHAR('ABCDEFGHIJKLMNOPQRSTUVWXYZ')",
+      "umur_pasien": "#RANGENUMBERUMUR({{kategori_pasien}}, 56, 90, 1)",
+      "berat_pasien": "#RANGENUMBER(45, 80, 1)",
+      "tinggi_pasien": "#RANGENUMBER(140, 170, 1)",
+      "onset": "3-24 jam",
+      "sisi_lemah": "#SELECTION('kanan','kiri')",
+      "onset_lemah": "6-12 bulan, 1-4 tahun",
+      "systole": "#RANGENUMBER(170, 210, 1)",
+      "diastole": "#RANGENUMBER(90, 130, 1)",
+      "pr": "#RANGENUMBER(80, 110, 1)",
+      "rr": "#RANGENUMBER(14, 24, 1)",
+      "suhu": "#RANGENUMBER(36.3, 37.3, 0.1)",
+      "spo2": "#RANGENUMBER(95, 100, 1)",
+      "bibir_mencong": "#IFTHENELSE('\"{{sisi_lemah}}\" === \"kanan\"', 'dextra', 'sinistra')",
+      "nasolabial": "#IFTHENELSE('\"{{sisi_lemah}}\" === \"kanan\"', 'dextra', 'sinistra')",
+      "mata": "#IFTHENELSE('\"{{sisi_lemah}}\" === \"kanan\"', 'dextra', 'sinistra')",
+      "lateralisasi": "#IFTHENELSE('\"{{sisi_lemah}}\" === \"kanan\"', 'dextra', 'sinistra')",
+      "babinski": "#IFTHENELSE('\"{{sisi_lemah}}\" === \"kanan\"', 'dextra', 'sinistra')",
+      "gds": "#RANGENUMBER(225, 340, 1)"
+    },
+    {
+      "jabatan_pasien": "#IFTHENELSE('{{jenis_kelamin}} == 1', 'Tn.', 'Ny. ')",
+      "nama_pasien": "#RANDOMCHAR('ABCDEFGHIJKLMNOPQRSTUVWXYZ')",
+      "umur_pasien": "#RANGENUMBERUMUR({{kategori_pasien}}, 56, 90, 1)",
+      "berat_pasien": "#RANGENUMBER(50, 80, 1)",
+      "tinggi_pasien": "#RANGENUMBER(150, 180, 1)",
+      "onset": "3-24 jam",
+      "sisi_lemah": "#SELECTION('kanan','kiri')",
+      "onset_lemah": "6-12 bulan, 1-4 tahun",
+      "systole": "#RANGENUMBER(170, 210, 1)",
+      "diastole": "#RANGENUMBER(90, 130, 1)",
+      "pr": "#RANGENUMBER(80, 110, 1)",
+      "rr": "#RANGENUMBER(14, 24, 1)",
+      "suhu": "#RANGENUMBER(36.3, 37.3, 0.1)",
+      "spo2": "#RANGENUMBER(95, 100, 1)",
+      "bibir_mencong": "#IFTHENELSE('\"{{sisi_lemah}}\" === \"kanan\"', 'dextra', 'sinistra')",
+      "nasolabial": "#IFTHENELSE('\"{{sisi_lemah}}\" === \"kanan\"', 'dextra', 'sinistra')",
+      "mata": "#IFTHENELSE('\"{{sisi_lemah}}\" === \"kanan\"', 'dextra', 'sinistra')",
+      "lateralisasi": "#IFTHENELSE('\"{{sisi_lemah}}\" === \"kanan\"', 'dextra', 'sinistra')",
+      "babinski": "#IFTHENELSE('\"{{sisi_lemah}}\" === \"kanan\"', 'dextra', 'sinistra')",
+      "gds": "#RANGENUMBER(225, 340, 1)"
+    },
+```
+
+### #RANDOMCHAR(string)
+Melakukan random 1 character dari suatu string.
+Contoh : #RANDOMCHAR('ABCDEFGHIJKLMNOPQRSTUVWXYZ') 
+Penjelasan : Akan mengambil 1 character dari ABCDEFGHIJKLMNOPQRSTUVWXYZ
+Contoh Hasil : H
+
+### #RANGENUMBER(minValue, maxValue, increment)
+Melakukan random angka dari dari minValue sampai maxValue dengan increment sebagai presisi angka.
+Contoh : #RANGENUMBER(225, 340, 1)
+Penjelasan : Random angka dari 225 sampai 340 dengan pembulatan angka 1.
+Contoh Hasil : 225
+
+### #RANGENUMBERUMUR(#RANGENUMBERUMUR({{kategori_pasien}}, minValue, maxValue, increment)
+Hampir sama dengan #RANGENUMBER. Hal yang membedakan adalah formula ini digunakan untuk random umur. Hal ini karena random umur harus sesuai dengan kategori pasien (Anak-anak, Dewasa, Lansia).
+Contoh : RANGENUMBERUMUR({{kategori_pasien}}, 17, 56, 1)
+Penjelasan : Random angka dari 17 sampai 56 dengan pembulatan angka 1 tetapi menyesuaikan dengan kategori pasien.
+Contoh Hasil : 17
+
+### #SELECTION (value1, value2, value3, ....)
+Random value dari pilihan value yang diberikan
+Contoh : #SELECTION(1, 56, 79, 50)
+Penjelasan : Random antara 1, 56, 79 atau 50)
+Contoh Hasil : 1
+
+### #IFTHENELSE (condition, value1, value2)
+Menampilkan value1 apabilia condition yang diberikan sesuai, jika tidak akan menampilkan value2.
+Contoh : #IFTHENELSE('\"{{sisi_lemah}}\" === \"kanan\"', 'dextra', 'sinistra')
+Penjelasan : Jika sisi lemah sama dengan kanan maka akan tampilkan dextra, jika tidak maka sinistra
+Contoh Hasil : sinistra
