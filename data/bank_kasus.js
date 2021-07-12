@@ -1,4 +1,4 @@
-[
+var bankKasus = [
     {
       "No": 1,
       "Kategori Jenis Kelamin Pasien": "1,2",

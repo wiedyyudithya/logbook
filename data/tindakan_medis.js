@@ -1,4 +1,4 @@
-[
+var tindakanMedis = [
     {
       "val": 1,
       "text": "MEMASANG INFUS"

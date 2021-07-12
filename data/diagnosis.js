@@ -1,4 +1,4 @@
-[
+var diagnosis = [
     {
       "val": 8008,
       "text": "Abdominal and pelvic pain"

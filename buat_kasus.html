@@ -31,7 +31,12 @@
   <!-- DataTables -->
   <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">  
+  <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <script src="data/bank_kasus.js" ></script>
+  <script src="data/diagnosis.js" ></script>
+  <script src="data/dokter_pendamping.js" ></script>
+  <script src="data/tindakan_medis.js" ></script>
+  <script src="data/variable_kasus.js" ></script>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -498,22 +503,19 @@
 <!-- Page specific script -->
 <script>
   var data;
-  var bankKasus;
-  var dokterPendamping;
-  var diagnosis;
-  var variableKasus = new Map();
+  // var variableKasus = new Map();
   function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
   }
 
-  function setVariableKasus(kasusNumber){
-    if (!variableKasus.has(kasusNumber)){
-      var nameFile = "data/variable_kasus_" + kasusNumber + ".json";
-      $.getJSON(nameFile, function(data) {         
-          variableKasus[kasusNumber] = data;
-      });
-    };
-  }
+  // function setVariableKasus(kasusNumber){
+  //   if (!variableKasus.has(kasusNumber)){
+  //     var nameFile = "data/variable_kasus_" + kasusNumber + ".json";
+  //     $.getJSON(nameFile, function(data) {         
+  //         variableKasus[kasusNumber] = data;
+  //     });
+  //   };
+  // }
 
   function checkValidKasus(){
     let payload = {
@@ -852,54 +854,55 @@
     }
   }
 
-  $(document).ready(function() {
-    $.getJSON('data/bank_kasus.json', function(data) {         
-        bankKasus = data;
-        for (let key in bankKasus) {
-          let kasus = bankKasus[key];
-          setVariableKasus(kasus["No"]);
-        }
-        checkValidKasus();
-    });
+  function initDokterPendamping(dokterPendamping){
+    var selectDokterPendamping = $('#selectDokterPendamping');
+    var selectViewDokterPendamping = $('#dokter-pendamping');
+    for (let key in dokterPendamping) {
+      let dokter = dokterPendamping[key];
+      selectDokterPendamping.append(
+        $('<option></option>').val(dokter["val"]).html(dokter["text"])
+      );
+      selectViewDokterPendamping.append(
+        $('<option></option>').val(dokter["val"]).html(dokter["text"])
+      );
+    }
+    $('.select2').select2();
+  }
 
-    $.getJSON('data/dokter_pendamping.json', function(data) {         
-        dokterPendamping = data;
-        var selectDokterPendamping = $('#selectDokterPendamping');
-        var selectViewDokterPendamping = $('#dokter-pendamping');
-        for (let key in dokterPendamping) {
-          let dokter = dokterPendamping[key];
-          selectDokterPendamping.append(
-              $('<option></option>').val(dokter["val"]).html(dokter["text"])
-          );
-          selectViewDokterPendamping.append(
-              $('<option></option>').val(dokter["val"]).html(dokter["text"])
-          );
-        }
-        $('.select2').select2();
-    });
-
-    $.getJSON('data/diagnosis.json', function(data) {         
-        var selectDiagnosis = $('#selectDiagnosis');
-        for (let key in data) {
-          let diagnosis = data[key];
+  function initDiagnosis(data){
+    var selectDiagnosis = $('#selectDiagnosis');
+    for (let key in data) {
+        let diagnosis = data[key];
           selectDiagnosis.append(
-              $('<option></option>').val(diagnosis["val"]).html(diagnosis["text"])
-          );
-        }
-        $('.select2').select2();
-    });
-    
-    $.getJSON('data/tindakan_medis.json', function(data) {         
-        var selectTindakanMedis = $('#selectTindakanMedis');
+          $('<option></option>').val(diagnosis["val"]).html(diagnosis["text"])
+        );
+    }
+    $('.select2').select2();
+  }
+
+  function initTindakanMedis(data){
+    var selectTindakanMedis = $('#selectTindakanMedis');
         for (let key in data) {
           let tindakanMedis = data[key];
           selectTindakanMedis.append(
               $('<option></option>').val(tindakanMedis["val"]).html(tindakanMedis["text"])
           );
         }
-        $('.select2').select2();
-    });
-    
+    $('.select2').select2();
+  } 
+  $(document).ready(function() {
+    checkValidKasus();
+    initDokterPendamping(dokterPendamping);
+    initDiagnosis(diagnosis);
+    initTindakanMedis(tindakanMedis);
+    // $.getJSON('data/bank_kasus.json', function(data) {         
+    //     bankKasus = data;
+    //     for (let key in bankKasus) {
+    //       let kasus = bankKasus[key];
+    //       setVariableKasus(kasus["No"]);
+    //     }
+       
+    // });
 
     $('#example').DataTable({
         "paging": true,
@@ -1056,42 +1059,42 @@
         //     dokter : $('select[name="selectDokterPendamping"]').val(),
         // }
 
-        // var settings = {
-        // "url": "http://logbook.internsip.kemkes.go.id/borang/aksi.php?module=peserta&submodule=bukuborang&act=catatBorang",
-        // "method": "POST",
-        // "timeout": 0,
-        // "headers": {
-        //   "Connection": "keep-alive",
-        //   "Cache-Control": "max-age=0",
-        //   "Upgrade-Insecure-Requests": "1",
-        //   "Origin": "http://logbook.internsip.kemkes.go.id",
-        //   "Content-Type": "application/x-www-form-urlencoded",
-        //   "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
-        //   "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
-        //   "Referer": "http://logbook.internsip.kemkes.go.id/borang/utama.php?act=cari&txtNamaCari=&module=peserta&submodule=bukuborang&q=1&p=0",
-        //   "Accept-Language": "en-US,en;q=0.9",
-        //   "Cookie": "PHPSESSID=rduom9r0vac2ukgh6fs1g5jmh2; PHPSESSID=cauaskkmubmcrdjcbojcj1qbr1"
-        // },
-        // "data": {
-        //   "txtTglBorang": "07/01/2021",
-        //   "txtKodeKegiatan": "2",
-        //   "txtUnitPelayanan": "1",
-        //   "txtDokterPendamping": "4196",
-        //   "txtKodePasien": "1",
-        //   "txtKodeKasus": "1",
-        //   "txtJenisKelamin": "1",
-        //   "txtDataDasar": "sd",
-        //   "txtRingkasan": "sds",
-        //   "txtKodeDiagnosis[]": "8008",
-        //   "txtPenatalaksanaan": "asd",
-        //   "txtTindakanMedis[]": "1",
-        //   "txtUsulan": "asdas"
-        // }
-      // };
+        var settings = {
+        "url": "http://logbook.internsip.kemkes.go.id/borang/aksi.php?module=peserta&submodule=bukuborang&act=catatBorang",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+          "Connection": "keep-alive",
+          "Cache-Control": "max-age=0",
+          "Upgrade-Insecure-Requests": "1",
+          "Origin": "http://logbook.internsip.kemkes.go.id",
+          "Content-Type": "application/x-www-form-urlencoded",
+          "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
+          "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+          "Referer": "http://logbook.internsip.kemkes.go.id/borang/utama.php?act=cari&txtNamaCari=&module=peserta&submodule=bukuborang&q=1&p=0",
+          "Accept-Language": "en-US,en;q=0.9",
+          "Cookie": "PHPSESSID=rduom9r0vac2ukgh6fs1g5jmh2;"
+        },
+        "data": {
+          "txtTglBorang": "07/01/2021",
+          "txtKodeKegiatan": "2",
+          "txtUnitPelayanan": "1",
+          "txtDokterPendamping": "4196",
+          "txtKodePasien": "1",
+          "txtKodeKasus": "1",
+          "txtJenisKelamin": "1",
+          "txtDataDasar": "sd",
+          "txtRingkasan": "sds",
+          "txtKodeDiagnosis[]": "8008",
+          "txtPenatalaksanaan": "asd",
+          "txtTindakanMedis[]": "1",
+          "txtUsulan": "asdas"
+        }
+      };
 
-      //   $.ajax(settings).done(function (response) {
-      //     console.log(response);
-      //   });
+        $.ajax(settings).done(function (response) {
+          console.log(response);
+        });
       }
     });
     
