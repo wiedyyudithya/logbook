@@ -13,9 +13,10 @@ Highly customizable and easy to use. Fits many screen resolutions from small mob
 ## Bagaimana untuk memulai?
 
 1. Download ZIP dan extract di local komputer.
-!["DOWNLOAD FROM GITHUB"](https://user-images.githubusercontent.com/53747430/125223274-b109b380-e2f5-11eb-9ad9-c97f560036aa.png "AdminLTE Presentation") 
+!["DOWNLOAD FROM GITHUB"](https://user-images.githubusercontent.com/53747430/125223274-b109b380-e2f5-11eb-9ad9-c97f560036aa.png) 
+
 2. Buka file buat_kasus.html dengan browser.
-!["BUKA FILE"](https://user-images.githubusercontent.com/53747430/125223899-bd424080-e2f6-11eb-8c72-487756892be8.png) 
+!["BUKA FILE"](https://user-images.githubusercontent.com/53747430/125224057-05616300-e2f7-11eb-89da-4084a48d7e5c.png) 
 
 
 **AdminLTE** has been carefully coded with clear comments in all of its JS, SCSS and HTML files.
