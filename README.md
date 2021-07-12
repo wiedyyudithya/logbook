@@ -101,30 +101,30 @@
 
 ### #RANDOMCHAR(string)
 Melakukan random 1 character dari suatu string.
-Contoh : #RANDOMCHAR('ABCDEFGHIJKLMNOPQRSTUVWXYZ') 
-Penjelasan : Akan mengambil 1 character dari ABCDEFGHIJKLMNOPQRSTUVWXYZ
-Contoh Hasil : H
+Contoh : #RANDOMCHAR('ABCDEFGHIJKLMNOPQRSTUVWXYZ'). 
+Penjelasan : Akan mengambil 1 character dari ABCDEFGHIJKLMNOPQRSTUVWXYZ.
+Contoh Hasil : H.
 
 ### #RANGENUMBER(minValue, maxValue, increment)
 Melakukan random angka dari dari minValue sampai maxValue dengan increment sebagai presisi angka.
-Contoh : #RANGENUMBER(225, 340, 1)
+Contoh : #RANGENUMBER(225, 340, 1).
 Penjelasan : Random angka dari 225 sampai 340 dengan pembulatan angka 1.
-Contoh Hasil : 225
+Contoh Hasil : 225.
 
 ### #RANGENUMBERUMUR(#RANGENUMBERUMUR({{kategori_pasien}}, minValue, maxValue, increment)
 Hampir sama dengan #RANGENUMBER. Hal yang membedakan adalah formula ini digunakan untuk random umur. Hal ini karena random umur harus sesuai dengan kategori pasien (Anak-anak, Dewasa, Lansia).
-Contoh : RANGENUMBERUMUR({{kategori_pasien}}, 17, 56, 1)
+Contoh : RANGENUMBERUMUR({{kategori_pasien}}, 17, 56, 1).
 Penjelasan : Random angka dari 17 sampai 56 dengan pembulatan angka 1 tetapi menyesuaikan dengan kategori pasien.
-Contoh Hasil : 17
+Contoh Hasil : 17.
 
 ### #SELECTION (value1, value2, value3, ....)
-Random value dari pilihan value yang diberikan
-Contoh : #SELECTION(1, 56, 79, 50)
-Penjelasan : Random antara 1, 56, 79 atau 50)
-Contoh Hasil : 1
+Random value dari pilihan value yang diberikan.
+Contoh : #SELECTION(1, 56, 79, 50).
+Penjelasan : Random antara 1, 56, 79 atau 50).
+Contoh Hasil : 1.
 
 ### #IFTHENELSE (condition, value1, value2)
 Menampilkan value1 apabilia condition yang diberikan sesuai, jika tidak akan menampilkan value2.
-Contoh : #IFTHENELSE('\"{{sisi_lemah}}\" === \"kanan\"', 'dextra', 'sinistra')
-Penjelasan : Jika sisi lemah sama dengan kanan maka akan tampilkan dextra, jika tidak maka sinistra
-Contoh Hasil : sinistra
+Contoh : #IFTHENELSE('\"{{sisi_lemah}}\" === \"kanan\"', 'dextra', 'sinistra').
+Penjelasan : Jika sisi lemah sama dengan kanan maka akan tampilkan dextra, jika tidak maka sinistra.
+Contoh Hasil : sinistra. 
