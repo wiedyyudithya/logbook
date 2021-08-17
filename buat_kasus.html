@@ -216,7 +216,7 @@
                   <div class="form-group">
                     <label>Bayi - Anak [<label id="validBayiAnak">0</label>]</label> 
                     <div class="input-group mb-3">
-                      <input type="number" class="form-control" min=0 value=0 name="txtBayiAnak">
+                      <input type="number" class="form-control" min=0 value=1 name="txtBayiAnak">
                       <div class="input-group-append">
                         <span class="input-group-text">kasus</span>
                       </div>
@@ -227,7 +227,7 @@
                   <div class="form-group">
                     <label>Dewasa [<label id="validDewasa">0</label>]</label>
                     <div class="input-group mb-3">
-                      <input type="number" class="form-control" min=0 value=0 name="txtDewasa">
+                      <input type="number" class="form-control" min=0 value=1 name="txtDewasa">
                       <div class="input-group-append">
                         <span class="input-group-text">kasus</span>
                       </div>
@@ -238,7 +238,7 @@
                   <div class="form-group">
                     <label>Lansia [<label id="validLansia">0</label>]</label>
                     <div class="input-group mb-3">
-                      <input type="number" class="form-control" min=0 value=0 name="txtLansia">
+                      <input type="number" class="form-control" min=0 value=1 name="txtLansia">
                       <div class="input-group-append">
                         <span class="input-group-text">kasus</span>
                       </div>
@@ -424,7 +424,7 @@
                     <textarea class="form-control" id="usulan" rows="3" maxlength="500" placeholder="Ketik Data Penatalaksanaan di sini (boleh lebih dari 500 karakter)"></textarea>
                   </div>
               </div>
-              <button type="submit" class="btn btn-primary">Save To Logbook</button>
+              <button type="submit" class="btn btn-primary">Copy Script</button>
             </form>
           </div>
           <div class="card-footer">
@@ -661,6 +661,7 @@
     $("#selectDiagnosis").val(data[index]["Diagnosis"].split(","));
     $("#no-kasus").html("Kasus No. " + ++index);
     $('.select2').select2();
+    $('#usulan').val();
   }
 
   function loadTableData(items){
@@ -989,11 +990,11 @@
         try {
           if (cases.length <= validTanggal.length){
             for (let key in cases) {
-              cases[key]["Tanggal"] = moment(validTanggal[key]).format('DD/MM/YYYY');
+              cases[key]["Tanggal"] = moment(validTanggal[key]).format('MM/DD/YYYY');
             }
           }else{
             for (let key in cases) {
-              cases[key]["Tanggal"] = moment(validTanggal[Math.floor(key/(cases.length/validTanggal.length))]).format('DD/MM/YYYY');
+              cases[key]["Tanggal"] = moment(validTanggal[Math.floor(key/(cases.length/validTanggal.length))]).format('MM/DD/YYYY');
             }
           }
           loadTableData(cases);
@@ -1037,56 +1038,60 @@
         $(element).removeClass('is-invalid');
       },
       submitHandler: function(form) {
-        // var inputs=$(form).find(':input');
-        // var payload = {
-        //     date_range: $('#rangeDate').val(),
-        //     hari: $('select[name="selectHari"]').val(),
-        //     jenis_kelamin: $('select[name="selectJenisKelamin"]').val(),
-        //     kode_kegiatan: $('select[name="selectKodeKegiatan"]').val(),
-        //     unit_pelayanan: $('select[name="selectUnitPelayanan"]').val(),
-        //     kategori_kasus: $('select[name="selectKategoriKasus"]').val(),
-        //     bayi_anak : inputs.filter('[name=txtBayiAnak]').val(), 
-        //     dewasa : inputs.filter('[name=txtDewasa]').val(),
-        //     lansia : inputs.filter('[name=txtLansia]').val(),
-        //     dokter : $('select[name="selectDokterPendamping"]').val(),
-        // }
 
-        var settings = {
-        "url": "http://logbook.internsip.kemkes.go.id/borang/aksi.php?module=peserta&submodule=bukuborang&act=catatBorang",
-        "method": "POST",
-        "timeout": 0,
-        "headers": {
-          "Connection": "keep-alive",
-          "Cache-Control": "max-age=0",
-          "Upgrade-Insecure-Requests": "1",
-          "Origin": "http://logbook.internsip.kemkes.go.id",
-          "Content-Type": "application/x-www-form-urlencoded",
-          "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
-          "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
-          "Referer": "http://logbook.internsip.kemkes.go.id/borang/utama.php?act=cari&txtNamaCari=&module=peserta&submodule=bukuborang&q=1&p=0",
-          "Accept-Language": "en-US,en;q=0.9",
-          "Cookie": "PHPSESSID=rduom9r0vac2ukgh6fs1g5jmh2;"
-        },
-        "data": {
-          "txtTglBorang": "07/01/2021",
-          "txtKodeKegiatan": "2",
-          "txtUnitPelayanan": "1",
-          "txtDokterPendamping": "4196",
-          "txtKodePasien": "1",
-          "txtKodeKasus": "1",
-          "txtJenisKelamin": "1",
-          "txtDataDasar": "sd",
-          "txtRingkasan": "sds",
-          "txtKodeDiagnosis[]": "8008",
-          "txtPenatalaksanaan": "asd",
-          "txtTindakanMedis[]": "1",
-          "txtUsulan": "asdas"
+        var params = {
+            "txtTglBorang": $("#tgl-pelayanan").val(),
+            "txtKodeKegiatan":  $("#kode-kegiatan").val(),
+            "txtUnitPelayanan":   $("#unit-pelayanan").val(),
+            "txtDokterPendamping": $("#dokter-pendamping").val(),
+            "txtKodePasien":  $("#kode-pasien").val(),
+            "txtKodeKasus":   $("#kode-kasus").val(),
+            "txtJenisKelamin":  $("#jenis-kelamin").val(),
+            "txtDataDasar":  $("#pasien").val(),
+            "txtRingkasan":   $("#penyakit").val(),
+            "txtKodeDiagnosis": $("#selectDiagnosis").val(),
+            "txtPenatalaksanaan": $("#penatalaksanaan").val(),
+            "txtTindakanMedis":    $("#selectTindakanMedis").val(),
+            "txtUsulan":  $("#usulan").val(),
+        };
+
+        serialize = function(obj, prefix) {
+          var str = [],
+            p;
+          for (p in obj) {
+            if (obj.hasOwnProperty(p)) {
+              var k = prefix ? prefix + "[" + p + "]" : p,
+                v = obj[p];
+              str.push((v !== null && typeof v === "object") ?
+                serialize(v, k) :
+                encodeURIComponent(k) + "=" + encodeURIComponent(v));
+            }
+          }
+          return str.join("&");
         }
-      };
 
-        $.ajax(settings).done(function (response) {
-          console.log(response);
-        });
+        copyData = `
+          fetch("http://logbook.internsip.kemkes.go.id/borang/aksi.php?module=peserta&submodule=bukuborang&act=catatBorang", {
+            "headers": {
+              "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+              "accept-language": "en-US,en;q=0.9",
+              "cache-control": "max-age=0",
+              "content-type": "application/x-www-form-urlencoded",
+              "upgrade-insecure-requests": "1"
+            },
+            "referrer": "http://logbook.internsip.kemkes.go.id/borang/utama.php?module=peserta&submodule=bukuborang",
+            "referrerPolicy": "strict-origin-when-cross-origin",
+            "body": "`+ serialize(params) +`",
+            "method": "POST",
+            "mode": "cors",
+            "credentials": "include"
+          });
+        `  
+        
+
+        /* Copy the text inside the text field */
+        navigator.clipboard.writeText(copyData)
+        alert("Data sudah dicopy di clipboard. Silahkan pindah ke halaman http://logbook.internsip.kemkes.go.id");
       }
     });
     
@@ -1100,12 +1105,12 @@
 
     $('#rangeDate').daterangepicker({
       locale: {
-        format: 'DD/MM/YYYY'
+        format: 'MM/DD/YYYY'
       }
     })
 
     $('#reservationdate').datetimepicker({
-        format: 'DD/MM/YYYY'
+        format: 'MM/DD/YYYY'
     });
   })
 

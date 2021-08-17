@@ -674,42 +674,46 @@
         //     dokter : $('select[name="selectDokterPendamping"]').val(),
         // }
 
-        var settings = {
-        "url": "http://logbook.internsip.kemkes.go.id/borang/aksi.php?module=peserta&submodule=bukuborang&act=catatBorang",
-        "method": "POST",
-        "timeout": 0,
-        "headers": {
-          "Connection": "keep-alive",
-          "Cache-Control": "max-age=0",
-          "Upgrade-Insecure-Requests": "1",
-          "Origin": "http://logbook.internsip.kemkes.go.id",
-          "Content-Type": "application/x-www-form-urlencoded",
-          "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
-          "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
-          "Referer": "http://logbook.internsip.kemkes.go.id/borang/utama.php?act=cari&txtNamaCari=&module=peserta&submodule=bukuborang&q=1&p=0",
-          "Accept-Language": "en-US,en;q=0.9",
-          "Cookie": "PHPSESSID=rduom9r0vac2ukgh6fs1g5jmh2;"
-        },
-        "data": {
-          "txtTglBorang": "07/01/2021",
-          "txtKodeKegiatan": "2",
-          "txtUnitPelayanan": "1",
-          "txtDokterPendamping": "4196",
-          "txtKodePasien": "1",
-          "txtKodeKasus": "1",
-          "txtJenisKelamin": "1",
-          "txtDataDasar": "sd",
-          "txtRingkasan": "sds",
-          "txtKodeDiagnosis[]": "8008",
-          "txtPenatalaksanaan": "asd",
-          "txtTindakanMedis[]": "1",
-          "txtUsulan": "asdas"
-        }
-      };
+        bodyData = JSON.stringify(
+          {
+            "txtTglBorang": "07/01/2021",
+            "txtKodeKegiatan": "2",
+            "txtUnitPelayanan": "1",
+            "txtDokterPendamping": "4196",
+            "txtKodePasien": "1",
+            "txtKodeKasus": "1",
+            "txtJenisKelamin": "1",
+            "txtDataDasar": "sd",
+            "txtRingkasan": "sds",
+            "txtKodeDiagnosis[]": "8008",
+            "txtPenatalaksanaan": "asd",
+            "txtTindakanMedis[]": "1",
+            "txtUsulan": "asdas"
+          }
+        )
+        copyData = `
+          fetch("http://logbook.internsip.kemkes.go.id/borang/aksi.php?module=peserta&submodule=bukuborang&act=catatBorang", {
+            "headers": {
+              "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+              "accept-language": "en-US,en;q=0.9",
+              "cache-control": "max-age=0",
+              "content-type": "application/x-www-form-urlencoded",
+              "upgrade-insecure-requests": "1"
+            },
+            "referrer": "http://logbook.internsip.kemkes.go.id/borang/utama.php?module=peserta&submodule=bukuborang",
+            "referrerPolicy": "strict-origin-when-cross-origin",
+            "body": "`+ bodyData +`",
+            "method": "POST",
+            "mode": "cors",
+            "credentials": "include"
+          });
+        `  
 
-        $.ajax(settings).done(function (response) {
-          console.log(response);
-        });
+
+        /* Copy the text inside the text field */
+        navigator.clipboard.writeText(copyData)
+        alert("Data sudah dicopy di clipboard. Silahkan pindah ke halaman http://logbook.internsip.kemkes.go.id");
+        return;
       }
     });
     
