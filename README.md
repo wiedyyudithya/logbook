@@ -18,6 +18,16 @@
 6. Klik baris table untuk melihat detail data yang dibuat.
 ![image](https://user-images.githubusercontent.com/53747430/125224926-9edd4480-e2f8-11eb-8881-f038cfc34cd6.png)
 
+7. Klik Copy Script untuk memindahkan hasil data ke tempat logbook http://logbook.internsip.kemkes.go.id/borang/utama.php?pesan=6&module=peserta&submodule=bukuborang
+![image](https://user-images.githubusercontent.com/53747430/129784792-82344770-7c49-4a93-82c5-6dea56cb3c64.png)
+
+8. Login halaman http://logbook.internsip.kemkes.go.id/borang/utama.php?pesan=6&module=peserta&submodule=bukuborang
+
+9. Inspect Element di browser dengan tekan keyword F12
+![image](https://user-images.githubusercontent.com/53747430/129785123-00487b22-a56f-412e-8180-8423fdbf7696.png)
+
+10. Paste script ke bagian console dan kemdian tekan enter untuk menjalankan script.
+![image](https://user-images.githubusercontent.com/53747430/129785372-c1635beb-ffc1-4c2f-879a-840d1fadf5c5.png)
 
 ## Bagaimana cara menambah Bank Kasus?
 
