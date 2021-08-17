@@ -1,125 +1,144 @@
-# [AdminLTE - Bootstrap 4 Admin Dashboard](https://adminlte.io)
+# Logbook Generator
 
-[![npm version](https://img.shields.io/npm/v/admin-lte/latest.svg)](https://www.npmjs.com/package/admin-lte)
-[![Packagist](https://img.shields.io/packagist/v/almasaeed2010/adminlte.svg)](https://packagist.org/packages/almasaeed2010/adminlte)
-[![cdn version](https://data.jsdelivr.com/v1/package/npm/admin-lte/badge)](https://www.jsdelivr.com/package/npm/admin-lte)
-[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/from-referrer/)
+## Bagaimana untuk memulai?
 
-**AdminLTE** is a fully responsive administration template. Based on **[Bootstrap 4.6](https://getbootstrap.com/)** framework and also the JS/jQuery plugin.
-Highly customizable and easy to use. Fits many screen resolutions from small mobile devices to large desktops.
+1. Download ZIP dan extract di local komputer.
+!["DOWNLOAD FROM GITHUB"](https://user-images.githubusercontent.com/53747430/125223274-b109b380-e2f5-11eb-9ad9-c97f560036aa.png) 
 
-**Preview on [AdminLTE.io](https://adminlte.io/themes/v3)**
+2. Buka file buat_kasus.html dengan browser.
+!["BUKA FILE"](https://user-images.githubusercontent.com/53747430/125224057-05616300-e2f7-11eb-89da-4084a48d7e5c.png) 
 
-## Looking for Premium Templates?
+3. Pilih data yang diinginkan.
+!["Tampilan Aplikasi"](https://user-images.githubusercontent.com/53747430/125224339-a4865a80-e2f7-11eb-941a-b350968a3ec2.png) 
 
-AdminLTE.io just opened a new premium templates page. Hand picked to ensure the best quality and the most affordable
-prices. Visit <https://adminlte.io/premium> for more information.
+4. Klik Generate.
+5. Data hasil generate akan ditampilkan
+![image](https://user-images.githubusercontent.com/53747430/125224600-237b9300-e2f8-11eb-8048-57324d9dc93c.png)
 
-!["AdminLTE Presentation"](https://adminlte.io/AdminLTE3.png "AdminLTE Presentation")
+6. Klik baris table untuk melihat detail data yang dibuat.
+![image](https://user-images.githubusercontent.com/53747430/125224926-9edd4480-e2f8-11eb-8881-f038cfc34cd6.png)
 
-**AdminLTE** has been carefully coded with clear comments in all of its JS, SCSS and HTML files.
-SCSS has been used to increase code customizability.
+7. Klik Copy Script untuk memindahkan hasil data ke tempat logbook http://logbook.internsip.kemkes.go.id/borang/utama.php?pesan=6&module=peserta&submodule=bukuborang
+![image](https://user-images.githubusercontent.com/53747430/129784792-82344770-7c49-4a93-82c5-6dea56cb3c64.png)
 
-## Quick start
-There are multiple ways to install AdminLTE.
+8. Login halaman http://logbook.internsip.kemkes.go.id/borang/utama.php?pesan=6&module=peserta&submodule=bukuborang
 
-### Download & Changelog:
-Always Recommended to download from GitHub latest release [AdminLTE 3](https://github.com/ColorlibHQ/AdminLTE/releases/latest) for bug free and latest features.\
-Visit the [releases](https://github.com/ColorlibHQ/AdminLTE/releases) page to view the changelog.\
-Legacy Releases are [AdminLTE 2](https://github.com/ColorlibHQ/AdminLTE/releases/tag/v2.4.18) / [AdminLTE 1](https://github.com/ColorlibHQ/AdminLTE/releases/tag/1.3.1).
+9. Inspect Element di browser dengan tekan keyword F12
+![image](https://user-images.githubusercontent.com/53747430/129785123-00487b22-a56f-412e-8180-8423fdbf7696.png)
 
-## Stable release
-### Grab from [jsdelivr](https://www.jsdelivr.com/package/npm/admin-lte) CDN:
-_**Important Note**: You needed to add separately cdn links for plugins in your project._
-```html
-<script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script>
+10. Paste script ke bagian console dan kemdian tekan enter untuk menjalankan script.
+![image](https://user-images.githubusercontent.com/53747430/129785372-c1635beb-ffc1-4c2f-879a-840d1fadf5c5.png)
+
+11. Tekan keyword F12 untuk kembali mode normal dan refresh halaman logbook.internsip.kemkes.go.id untuk melihat data yang baru ditambahkan
+
+
+## Bagaimana cara menambah Bank Kasus?
+
+1. Buka file di bank_kasus.js (data/bank_kasus.js)
+2. Tambahkan data bank_kasus dengan contoh format seperti berikut.
 ```
-```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
+    {
+      "No": 1,
+      "Kategori Jenis Kelamin Pasien": "1,2",
+      "Kategori Kasus": "1",
+      "Kode Kegiatan": "1",
+      "Kategori Pasien": "2,3",
+      "Data Dasar Pasien": "{{jabatan_pasien}} {{nama_pasien}}, {{umur_pasien}} th, BB : {{berat_pasien}} kg, TB : {{tinggi_pasien}} cm",
+      "Unit Pelayanan": "2,3",
+      "Data Ringkasan Penyakit": "S : \nKeluhan Utama : \nPasien datang dengan keluhan nyeri ulu hati sejak {{onset}} yang lalu. \n\nKeluhan Tambahan : \nPasien sering sendawa.  \n\nRiwayat Penyakit Sekarang : \nPasien datang untuk berobat dengan keluhan nyeri ulu hati sejak {{onset}} yang lalu. Nyeri dirasakan seperti ditusuk-tusuk. Nyeri dirasakan terus-terusan sepanjang hari. Pasien mengaku sering telat makan, jika telat makan ulu hati selalu terasa nyeri seperti ditusuk-tusuk. Kadang-kadang nyeri ulu hati terasa seperti menembus hingga ke bagian belakang. Selain itu, pasien menjadi sering sendawa. \n\nRiwayat Penyakit Dahulu : \nRiwayat magh ({{riwayat_maag}})\nRiwayat hipertensi (-)\nRiwayat diabetes (-)\nRiwayat penyakit jantung (-)\n\nRiwayat Penyakit Keluarga : \nRiwayat maag ({{maag_keluarga}})\nRiwayat hipertensi ({{hipertensi_keluarga}})\nRiwayat diabetes ({{diabetes_keluarga}})\nRiwayat penyakit jantung (-)\n\nRiwayat Pengobatan : \nPasien belum mengkonsumsi obat untuk meringankan keluhan. \n\nO :\n\nKU : tampak sakit sedang\nKesadaran : compos mentis\nTD : {{systole}}/{{diastole}} mmHg ; PR: {{pr}} x/min ; RR: {{rr}} x/min ; T: {{suhu}} C\nMata : KA (-/-); SI (-/-)\nHidung : Sekret (-/-) \nMulut : Bibir kering (-); Faring Hiperemis (-)\nThorax : pergerakan dinding dada simetris \nCOR : S1 & S2 reguler ; Murmur (-);  Gallop (-) \nPulmo : Vesikuler (+/+); rhonki (-/-); wheezing (-/-)\nAbdomen : Supple, datar,  BU (+) N; Nyeri tekan epigastrium (+)\nEkstremitas : Akral hangat; nadi teraba kuat, CRT < 2 detik; edema (-)",
+      "Diagnosis": "4580",
+      "Penatalaksanaan": "Farmakologi :\nAntasida doen 500 mg tab No. XV S 3 dd 1 a.c\nRanitidine 150 mg tab No. X S 2 dd 1 a.c\n\nNon-farmakologi :\nMakan dalam porsi sedikit dengan frekuensi sering (2 jam sekali makan)\nHindari makanan yang pedas, asam, dan berlemak",
+      "Tindakan Medis": ""
+    },
 ```
-### Using The Command Line:
-_**Important Note**: To install it via npm/Yarn, you need at least Node.js 10 or higher._
-#### Via npm
-```bash
-npm install admin-lte@^3.1 --save
+-  Kategori Jenis Kelamin Pasien : 1 (untuk Pria), 2 (untuk Wanita)
+-  Kategori Kasus : 1 (Non-Covid), 2 (Kasus Suspek), 3 (Kasus Probable), 4 (Kontak Erat), 5 (Kasus Konfirmasi)
+-  Kode Kegiatan : 1 (MEDIK), 2 (BEDAH), 3 (KEGAWAT-DARURATAN), 4 (KEBIDANAN DAN PERINATAL), 5 (KEJIWAAN), 6 (MEDIKOLEGAL)
+-  Kategori Pasien : 1 (Anak - Bayi), 2 (Dewasa), 3 (Lansia)
+-  Unit Pelayanan : 1 (Stase 1 - RS - Poli), 2 (Stase 2 - RS - UGD), 3 (Stase 3 - Puskesmas)
+-  Diagnosis : Buka file diagnosis.js (data/diagnosis.js)
+-  Tindakan Medis : 1 (MEMASANG INFUS), 2 (MEMASANG KATETER), 3 (MENJAHIT LUKA), 4 (BEDAH MINOR), 5 (MEMASANG NGT), 6 (MENOLONG PARTUS NORMAL)
+
+Atau mengunakan form (https://forms.gle/xGGxH45VbHRuEip97) untuk mempermudah mengisi
+
+## Bagaimana cara menambah Variable Kasus?
+
+1. Buka file di variable_kasus.js (data/variable_kasus.js)
+2. Tambahkan data bank_kasus dengan contoh format seperti berikut.
 ```
-#### Via Yarn
-```bash
-yarn add admin-lte@^3.1
+"5": [
+    {
+      "jabatan_pasien": "#IFTHENELSE('{{jenis_kelamin}} == 1', 'Tn.', 'Ny. ')",
+      "nama_pasien": "#RANDOMCHAR('ABCDEFGHIJKLMNOPQRSTUVWXYZ')",
+      "umur_pasien": "#RANGENUMBERUMUR({{kategori_pasien}}, 56, 90, 1)",
+      "berat_pasien": "#RANGENUMBER(45, 80, 1)",
+      "tinggi_pasien": "#RANGENUMBER(140, 170, 1)",
+      "onset": "3-24 jam",
+      "sisi_lemah": "#SELECTION('kanan','kiri')",
+      "onset_lemah": "6-12 bulan, 1-4 tahun",
+      "systole": "#RANGENUMBER(170, 210, 1)",
+      "diastole": "#RANGENUMBER(90, 130, 1)",
+      "pr": "#RANGENUMBER(80, 110, 1)",
+      "rr": "#RANGENUMBER(14, 24, 1)",
+      "suhu": "#RANGENUMBER(36.3, 37.3, 0.1)",
+      "spo2": "#RANGENUMBER(95, 100, 1)",
+      "bibir_mencong": "#IFTHENELSE('\"{{sisi_lemah}}\" === \"kanan\"', 'dextra', 'sinistra')",
+      "nasolabial": "#IFTHENELSE('\"{{sisi_lemah}}\" === \"kanan\"', 'dextra', 'sinistra')",
+      "mata": "#IFTHENELSE('\"{{sisi_lemah}}\" === \"kanan\"', 'dextra', 'sinistra')",
+      "lateralisasi": "#IFTHENELSE('\"{{sisi_lemah}}\" === \"kanan\"', 'dextra', 'sinistra')",
+      "babinski": "#IFTHENELSE('\"{{sisi_lemah}}\" === \"kanan\"', 'dextra', 'sinistra')",
+      "gds": "#RANGENUMBER(225, 340, 1)"
+    },
+    {
+      "jabatan_pasien": "#IFTHENELSE('{{jenis_kelamin}} == 1', 'Tn.', 'Ny. ')",
+      "nama_pasien": "#RANDOMCHAR('ABCDEFGHIJKLMNOPQRSTUVWXYZ')",
+      "umur_pasien": "#RANGENUMBERUMUR({{kategori_pasien}}, 56, 90, 1)",
+      "berat_pasien": "#RANGENUMBER(50, 80, 1)",
+      "tinggi_pasien": "#RANGENUMBER(150, 180, 1)",
+      "onset": "3-24 jam",
+      "sisi_lemah": "#SELECTION('kanan','kiri')",
+      "onset_lemah": "6-12 bulan, 1-4 tahun",
+      "systole": "#RANGENUMBER(170, 210, 1)",
+      "diastole": "#RANGENUMBER(90, 130, 1)",
+      "pr": "#RANGENUMBER(80, 110, 1)",
+      "rr": "#RANGENUMBER(14, 24, 1)",
+      "suhu": "#RANGENUMBER(36.3, 37.3, 0.1)",
+      "spo2": "#RANGENUMBER(95, 100, 1)",
+      "bibir_mencong": "#IFTHENELSE('\"{{sisi_lemah}}\" === \"kanan\"', 'dextra', 'sinistra')",
+      "nasolabial": "#IFTHENELSE('\"{{sisi_lemah}}\" === \"kanan\"', 'dextra', 'sinistra')",
+      "mata": "#IFTHENELSE('\"{{sisi_lemah}}\" === \"kanan\"', 'dextra', 'sinistra')",
+      "lateralisasi": "#IFTHENELSE('\"{{sisi_lemah}}\" === \"kanan\"', 'dextra', 'sinistra')",
+      "babinski": "#IFTHENELSE('\"{{sisi_lemah}}\" === \"kanan\"', 'dextra', 'sinistra')",
+      "gds": "#RANGENUMBER(225, 340, 1)"
+    },
 ```
-#### Via Composer
-```bash
-composer require "almasaeed2010/adminlte=~3.1"
-```
-#### Via Git
-```bash
-git clone https://github.com/ColorlibHQ/AdminLTE.git
-```
 
-## Unstable release
-### Grab from [jsdelivr](https://www.jsdelivr.com/package/npm/admin-lte) CDN:
-_**Important Note**: You needed to add separately cdn links for plugins in your project._
-```html
-<script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1.0/dist/js/adminlte.min.js"></script>
-```
-```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1.0/dist/css/adminlte.min.css">
-```
-### Using The Command Line:
-_**Important Note**: To install it via npm/Yarn, you need at least Node.js 10 or higher._
-#### Via npm
-```bash
-npm install admin-lte@^3.1.0 --save
-```
-#### Via Yarn
-```bash
-yarn add admin-lte@^3.1.0
-```
-#### Via Composer
-```bash
-composer require "almasaeed2010/adminlte=~3.1.0"
-```
-#### Via Git
-```bash
-git clone https://github.com/ColorlibHQ/AdminLTE.git
-```
+### #RANDOMCHAR(string)
+Melakukan random 1 character dari suatu string.
+Contoh : #RANDOMCHAR('ABCDEFGHIJKLMNOPQRSTUVWXYZ'). 
+Penjelasan : Akan mengambil 1 character dari ABCDEFGHIJKLMNOPQRSTUVWXYZ.
+Contoh Hasil : H.
 
-## Documentation
+### #RANGENUMBER(minValue, maxValue, increment)
+Melakukan random angka dari dari minValue sampai maxValue dengan increment sebagai presisi angka.
+Contoh : #RANGENUMBER(225, 340, 1).
+Penjelasan : Random angka dari 225 sampai 340 dengan pembulatan angka 1.
+Contoh Hasil : 225.
 
-Visit the [online documentation](https://adminlte.io/docs/3.1/) for the most
-updated guide. Information will be added on a weekly basis.
+### #RANGENUMBERUMUR(#RANGENUMBERUMUR({{kategori_pasien}}, minValue, maxValue, increment)
+Hampir sama dengan #RANGENUMBER. Hal yang membedakan adalah formula ini digunakan untuk random umur. Hal ini karena random umur harus sesuai dengan kategori pasien (Anak-anak, Dewasa, Lansia).
+Contoh : RANGENUMBERUMUR({{kategori_pasien}}, 17, 56, 1).
+Penjelasan : Random angka dari 17 sampai 56 dengan pembulatan angka 1 tetapi menyesuaikan dengan kategori pasien.
+Contoh Hasil : 17.
 
-## Browsers support
+### #SELECTION (value1, value2, value3, ....)
+Random value dari pilihan value yang diberikan.
+Contoh : #SELECTION(1, 56, 79, 50).
+Penjelasan : Random antara 1, 56, 79 atau 50).
+Contoh Hasil : 1.
 
-| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari-ios/safari-ios_48x48.png" alt="iOS Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>iOS Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/samsung-internet/samsung-internet_48x48.png" alt="Samsung" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Samsung | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Opera | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/vivaldi/vivaldi_48x48.png" alt="Vivaldi" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Vivaldi | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/electron/electron_48x48.png" alt="Electron" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Electron |
-| --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- |
-| IE10, IE11, Edge| last 2 versions| last 2 versions| last 2 versions| last 2 versions| last 2 versions| last 2 versions| last 2 versions| last 2 versions
-
-### Compile dist files
-
-To compile the dist files you need Node.js/npm, clone/download the repo then:
-
-1. `npm install` (install npm deps)
-2. _Optional:_ `npm run dev` (developer mode, autocompile with browsersync support for live demo)
-3. `npm run production` (compile css/js files)
-
-
-## Contributing
-
-Please read through our [contributing guidelines](https://github.com/ColorlibHQ/AdminLTE/tree/master/.github/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
-
-Editor preferences are available in the [editor config](https://github.com/twbs/bootstrap/blob/main/.editorconfig) for easy use in common text editors. Read more and download plugins at <https://editorconfig.org/>.
-
-
-## License
-
-AdminLTE is an open source project by [AdminLTE.io](https://adminlte.io) that is licensed under [MIT](https://opensource.org/licenses/MIT).
-AdminLTE.io reserves the right to change the license of future releases.
-
-## Image Credits
-
-- [Pixeden](http://www.pixeden.com/psd-web-elements/flat-responsive-showcase-psd)
-- [Graphicsfuel](https://www.graphicsfuel.com/2013/02/13-high-resolution-blur-backgrounds/)
-- [Pickaface](https://pickaface.net/)
-- [Unsplash](https://unsplash.com/)
-- [Uifaces](http://uifaces.com/)
+### #IFTHENELSE (condition, value1, value2)
+Menampilkan value1 apabilia condition yang diberikan sesuai, jika tidak akan menampilkan value2.
+Contoh : #IFTHENELSE('\"{{sisi_lemah}}\" === \"kanan\"', 'dextra', 'sinistra').
+Penjelasan : Jika sisi lemah sama dengan kanan maka akan tampilkan dextra, jika tidak maka sinistra.
+Contoh Hasil : sinistra. 
