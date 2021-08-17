@@ -46,6 +46,7 @@
 -  Diagnosis : Buka file diagnosis.js (data/diagnosis.js)
 -  Tindakan Medis : 1 (MEMASANG INFUS), 2 (MEMASANG KATETER), 3 (MENJAHIT LUKA), 4 (BEDAH MINOR), 5 (MEMASANG NGT), 6 (MENOLONG PARTUS NORMAL)
 
+Atau mengunakan form (https://forms.gle/xGGxH45VbHRuEip97) untuk mempermudah mengisi
 
 ## Bagaimana cara menambah Variable Kasus?
 
