@@ -29,6 +29,9 @@
 10. Paste script ke bagian console dan kemdian tekan enter untuk menjalankan script.
 ![image](https://user-images.githubusercontent.com/53747430/129785372-c1635beb-ffc1-4c2f-879a-840d1fadf5c5.png)
 
+11. Tekan keyword F12 untuk kembali mode normal dan refresh halaman logbook.internsip.kemkes.go.id untuk melihat data yang baru ditambahkan
+
+
 ## Bagaimana cara menambah Bank Kasus?
 
 1. Buka file di bank_kasus.js (data/bank_kasus.js)
