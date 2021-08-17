@@ -176,8 +176,6 @@
                     </select>
                   </div>
                 </div>
-              </div>
-              <div class="row">
                 <div class="col-md-3">
                   <div class="form-group">
                     <label>Unit Pelayanan</label>
@@ -189,8 +187,6 @@
                     </select>
                   </div>
                 </div>
-              </div>
-              <div class="row">
                 <div class="col-md-3">
                   <div class="form-group">
                     <label>Kategori Pasien</label>
@@ -202,8 +198,6 @@
                     </select>
                   </div>
                 </div>
-              </div>
-              <div class="row">
                 <div class="col-md-3">
                   <div class="form-group">
                     <label>Kategori Kasus</label>
@@ -369,11 +363,10 @@
     return "";
   };
 
-  function randomKasus(jumlahKasus, listValidKasus, kategoriPasien){
+  function randomKasus(jumlahKasus, keyKasus, listValidKasus, kategoriPasien){
       var cases = []
       var i;
       for (i = 1; i <= jumlahKasus; i++) {
-          var keyKasus = getRndInteger(0, listValidKasus.length-1)
           cases.push(randomVariable(bankKasus[keyKasus], kategoriPasien))
       }
       return cases;
@@ -594,19 +587,19 @@
       submitHandler: function(form) {
         let validData = getValidKasus($('#selectKasus').val());
         let cases = [];
+        let keyKasus = $('#selectKasus').val();
         if (validData[0] !== undefined && validData[0].length > 0){
-            let x = randomKasus(1, validData[0], 1);
+            let x = randomKasus(1, keyKasus, validData[0], 1);
             cases = cases.concat(x);
         }
         if (validData[1] !== undefined && validData[1].length > 0){
-            let y = randomKasus(1, validData[1], 2);
+            let y = randomKasus(1, keyKasus, validData[1], 2);
             cases = cases.concat(y);
         }
         if (validData[2] !== undefined && validData[2].length > 0){
-            let z = randomKasus(1, validData[2], 3);
+            let z = randomKasus(1, keyKasus, validData[2], 3);
             cases = cases.concat(z);
         }
-
         let index = getRndInteger(0, cases.length-1);
  
         $("#kode-kegiatan").val(cases[index]["txtKodeKegiatan"]);
