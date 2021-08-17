@@ -119,7 +119,7 @@
       <div class="container-fluid">
         <div class="card card-default">
           <div class="card-header">
-            <h3 class="card-title">Form Buat Kasus</h3>
+            <h3 class="card-title">Test Bank Kasus</h3>
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
@@ -131,122 +131,14 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label>Rentang Tanggal</label>
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="far fa-calendar-alt"></i>
-                        </span>
-                      </div>
-                      <input type="text" class="form-control float-right" name="inputTanggal" id="rangeDate">
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label>Pilihan Hari</label>
-                    <select class="select2" multiple="multiple" name="selectHari" data-placeholder="Pilih Hari" style="width: 100%;">
-                      <option value="1" selected>Senin</option>
-                      <option value="2" selected>Selasa</option>
-                      <option value="3" selected>Rabu</option>
-                      <option value="4" selected>Kamis</option>
-                      <option value="5" selected>Jumat</option>
-                      <option value="6" selected>Sabtu</option>
-                      <option value="0" selected>Minggu</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label>Dokter Pendamping</label>
-                    <select class="form-control select2" style="width: 100%;" name="selectDokterPendamping" id="selectDokterPendamping">
-                      <option value="0">Mohon Pilih Dokter Pendamping</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label>Jenis Kelamin</label>
-                    <select class="form-control select2" style="width: 100%;" name="selectJenisKelamin" onchange="checkValidKasus()">
-                      <option value="0" selected="selected">Semua</option>
-                      <option value="1">Pria</option>
-                      <option value="2">Wanita</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label>Kode Kegiatan</label>
-                    <select class="select2" multiple="multiple" name="selectKodeKegiatan" onchange="checkValidKasus()" data-placeholder="Pilih Kode Kegiatan" style="width: 100%;">
-                      <option value="1" selected>MEDIK</option>
-                      <option value="2" selected>BEDAH</option>
-                      <option value="3" selected>KEGAWAT-DARURATAN</option>
-                      <option value="4" selected>KEBIDANAN DAN PERINATAL</option>
-                      <option value="5" selected>KEJIWAAN</option>
-                      <option value="6" selected>MEDIKOLEGAL</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label>Unit Pelayanan</label>
-                    <select class="select2" multiple="multiple" name="selectUnitPelayanan" onchange="checkValidKasus()" data-placeholder="Pilih Kode Kegiatan" style="width: 100%;">
-                      <option value="1" selected>Stase 1 - RS - Poli</option>
-                      <option value="2" selected>Stase 2 - RS - UGD</option>
-                      <option value="3" selected>Stase 3 - Puskesmas</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label>Kategori Kasus</label>
-                    <select class="select2" multiple="multiple" name="selectKategoriKasus" onchange="checkValidKasus()" data-placeholder="Pilih Kode Kegiatan" style="width: 100%;">
-                      <option value="1" selected>Non-Covid</option>
-                      <option value="2" selected>Kasus Suspek</option>
-                      <option value="3" selected>Kasus Probable</option>
-                      <option value="4" selected>Kontak Erat</option>
-                      <option value="5" selected>Kasus Konfirmasi</option>
+                    <label>Pilih Kasus</label>
+                    <select class="select2" name="selectKasus" data-placeholder="Pilih Kasus" style="width: 100%;" id="selectKasus">
+                      <option value="">Pilih Kasus Untuk Dicoba</option>
                     </select>
                   </div>
                 </div>
               </div>
-              <h5><b>Jumlah Kasus</b></h5>
-              <div class="row">
-                <div class="col-md-2">
-                  <div class="form-group">
-                    <label>Bayi - Anak [<label id="validBayiAnak">0</label>]</label> 
-                    <div class="input-group mb-3">
-                      <input type="number" class="form-control" min=0 value=10 name="txtBayiAnak">
-                      <div class="input-group-append">
-                        <span class="input-group-text">kasus</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-2">
-                  <div class="form-group">
-                    <label>Dewasa [<label id="validDewasa">0</label>]</label>
-                    <div class="input-group mb-3">
-                      <input type="number" class="form-control" min=0 value=10 name="txtDewasa">
-                      <div class="input-group-append">
-                        <span class="input-group-text">kasus</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-2">
-                  <div class="form-group">
-                    <label>Lansia [<label id="validLansia">0</label>]</label>
-                    <div class="input-group mb-3">
-                      <input type="number" class="form-control" min=0 value=10 name="txtLansia">
-                      <div class="input-group-append">
-                        <span class="input-group-text">kasus</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary">Generate</button>
+              <button type="submit" class="btn btn-primary">Test Kasus</button>
             </form>
           </div>
           <div class="card-footer">
@@ -254,41 +146,6 @@
           </div>
         </div>
         <!-- /.card -->
-      </div>
-    </section>
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Generated Data</h3>
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="card-body">
-                <table id="example" class="table table-bordered table-hover">
-                  <thead>
-                  <tr>
-                    <th>No.</th>
-                    <th>Jenis Kasus</th>
-                    <th>Kategori Pasien</th>
-                    <th>Kode Kegiatan</th>
-                    <th>Unit Pelayanan</th>
-                    <th>Kategori Kasus</th>
-                    <th>Data Pasien</th>
-                  </tr>
-                  </thead>
-                  <tbody id="testBody"></tbody>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
     <section class="content">
@@ -304,19 +161,6 @@
           </div>
           <div class="card-body">
             <form id="viewForm">
-              <div class="row">
-                <div class="col-md-3">
-                  <div class="form-group">
-                    <label>Tgl Pelayanan</label>
-                    <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                      <input type="text" name="txtTglBorang" id="tgl-pelayanan" class="form-control datetimepicker-input" data-target="#reservationdate"/>
-                      <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                      </div>
-                  </div>
-                  </div>
-                </div>
-              </div>
               <div class="row">
                 <div class="col-md-3">
                   <div class="form-group">
@@ -342,16 +186,6 @@
                       <option value="1">Stase 1 - RS - Poli</option>
                       <option value="2">Stase 2 - RS - UGD</option>
                       <option value="3">Stase 3 - Puskesmas</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-3">
-                  <div class="form-group">
-                    <label>Pendamping</label>
-                    <select name="txtDokterPendamping" class="form-control select2" style="width: 100%;"id="dokter-pendamping">
-                      <option value="0">Mohon Pilih Dokter Pendamping</option>
                     </select>
                   </div>
                 </div>
@@ -428,13 +262,6 @@
                   </select>
                 </div>
               </div>
-              <div class="row">
-                  <div class="col-md-12 mb-3">
-                    <label>Isi Data Penatalaksanaan catatan & Usulan dokter pendamping terhadap kinerja</label>
-                    <textarea class="form-control" id="usulan" rows="3" maxlength="500" placeholder="Ketik Data Penatalaksanaan di sini (boleh lebih dari 500 karakter)"></textarea>
-                  </div>
-              </div>
-              <button type="submit" class="btn btn-primary">Save To Logbook</button>
             </form>
           </div>
           <div class="card-footer">
@@ -511,121 +338,10 @@
 <!-- Page specific script -->
 <script>
   var data;
-  // var variableKasus = new Map();
   function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
   }
-
-  // function setVariableKasus(kasusNumber){
-  //   if (!variableKasus.has(kasusNumber)){
-  //     var nameFile = "data/variable_kasus_" + kasusNumber + ".json";
-  //     $.getJSON(nameFile, function(data) {         
-  //         variableKasus[kasusNumber] = data;
-  //     });
-  //   };
-  // }
-
-  function checkValidKasus(){
-    let payload = {
-        jenis_kelamin: $('select[name="selectJenisKelamin"]').val(),
-        kode_kegiatan: $('select[name="selectKodeKegiatan"]').val(),
-        unit_pelayanan: $('select[name="selectUnitPelayanan"]').val(),
-        kategori_kasus: $('select[name="selectKategoriKasus"]').val()
-    }
-    let validData = getValidKasus(payload);
-    
-    if (validData[0] !== undefined){
-      $("#validBayiAnak").text(validData[0].length);
-    }
-    if (validData[1] !== undefined){
-      $("#validDewasa").text(validData[1].length);
-    }
-    if (validData[2] !== undefined){
-      $("#validLansia").text(validData[2].length);
-    }
-  }
-
-  function getValidKasus(payload){
-      let listValidIndexKasusBayiAnak = []
-      let listValidIndexKasusDewasa = []
-      let listValidIndexKasusLansia = []
-
-      for (let key in bankKasus) {
-        let kasus = bankKasus[key];
-
-        // Filter Jenis Kelamin
-        if (payload.jenis_kelamin != 0){
-           jenis_kelamins = kasus["Kategori Jenis Kelamin Pasien"].split(',');
-           let okJenisKelamin = false;
-           for (let index in jenis_kelamins) {
-              if (jenis_kelamins[index] === payload.jenis_kelamin) {
-                okJenisKelamin = true
-              }
-           }
-           if (!okJenisKelamin){
-             continue;
-           }
-        }
-        
-        // Filter Kode Kegiatan
-        kode_kegiatans = kasus["Kode Kegiatan"].split(',');
-        let okKodeKegiatan = false;
-        for (let indexPayLoad in payload.kode_kegiatan) {
-          for (let index in kode_kegiatans) {
-              if (kode_kegiatans[index] === payload.kode_kegiatan[indexPayLoad]) {
-                  okKodeKegiatan = true
-              }
-          }
-        }
-        if (!okKodeKegiatan){
-             continue;
-        }
-
-
-        // Filter Unit Pelayanan
-        unit_pelayanans = kasus["Unit Pelayanan"].split(',');
-        let okUnitPelayanan = false;
-        for (let indexPayLoad in payload.unit_pelayanan) {
-          for (let index in unit_pelayanans) {
-              if (unit_pelayanans[index] === payload.unit_pelayanan[indexPayLoad]) {
-                  okUnitPelayanan = true
-              }
-          }
-        }
-        if (!okUnitPelayanan){
-             continue;
-        }
-
-        // Filter Kategori Kasus
-        kategori_kasuss = kasus["Kategori Kasus"].split(',');
-        var okKategoriKasus = false;
-        for (let indexPayLoad in payload.kategori_kasus) {
-          for (let index in kategori_kasuss) {
-              if (kategori_kasuss[index] === payload.kategori_kasus[indexPayLoad]) {
-                  okKategoriKasus = true
-              }
-          }
-        }
-        if (!okKategoriKasus){
-             continue;
-        }
-
-         // Filter Kategori Pasien
-        kategori_pasiens = kasus["Kategori Pasien"].split(',');
-        for (let index in kategori_pasiens) {
-          // Bayi - Anak 
-          if (kategori_pasiens[index] === "1") {
-            listValidIndexKasusBayiAnak.push(key);
-          } else if (kategori_pasiens[index] === "2") { // Dewasa
-            listValidIndexKasusDewasa.push(key);
-          } else if (kategori_pasiens[index] === "3") { // Lansia
-            listValidIndexKasusLansia.push(key);
-          }
-        }
-      }
-
-      return [listValidIndexKasusBayiAnak, listValidIndexKasusDewasa, listValidIndexKasusLansia];
-  }
+  
 
   function intersect(a, b) {
     var setA = new Set(a);
@@ -653,110 +369,44 @@
     return "";
   };
 
-  function viewGeneratedData(row){
-    let index = row.getAttribute("data-index");
-    $("#tgl-pelayanan").val(data[index]["Tanggal"]);
-    $("#kode-kegiatan").val(data[index]["txtKodeKegiatan"]);
-    $("#unit-pelayanan").val(data[index]["txtUnitPelayanan"]);
-
-    $("#kode-pasien").val(data[index]["txtKodePasien"]);
-    $("#kode-kasus").val(data[index]["txtKodeKasus"]);
-    $("#jenis-kelamin").val(data[index]["txtJenisKelamin"]);
-    $("#dokter-pendamping").val(data[index]["txtDokterPendamping"]);
-
-    $("#pasien").val(data[index]["Data Dasar Pasien"]);
-    $("#penyakit").val(data[index]["Data Ringkasan Penyakit"]);
-    $("#penatalaksanaan").val(data[index]["Penatalaksanaan"]);
-    $("#selectTindakanMedis").val(data[index]["Tindakan Medis"].split(","));
-    $("#selectDiagnosis").val(data[index]["Diagnosis"].split(","));
-    $("#no-kasus").html("Kasus No. " + ++index);
-    $('.select2').select2();
-  }
-
-  function loadTableData(items){
-    data = items;
-    $('#example').DataTable().clear().destroy();
-    const table = document.getElementById("testBody");
-    table.innerHTML = "";
-    let i = 0;
-    for (let key in items) {
-      let item = items[key];
-      let row = table.insertRow();
-      row.setAttribute("data-index", i);
-      row.setAttribute("onclick","viewGeneratedData(this)");
-      let x = row.insertCell(0);
-      x.innerHTML = ++i;
-      x = row.insertCell(1);
-      x.innerHTML = "Kasus " + item["No"];
-      x = row.insertCell(2);
-      let kodePasien = item["txtKodePasien"];
-      if (kodePasien === 1){
-        x.innerHTML = "Bayi - Anak";
-      } else if (kodePasien === 2){
-        x.innerHTML = "Dewasa";
-      } else {
-        x.innerHTML = "Lansia";
-      }
-      x = row.insertCell(3);
-      x.innerHTML = getNameOptionSelect2($('select[name="selectKodeKegiatan"]'), item["txtKodeKegiatan"]);
-      x = row.insertCell(4);
-      x.innerHTML = getNameOptionSelect2($('select[name="selectUnitPelayanan"]'), item["txtUnitPelayanan"]);
-      x = row.insertCell(5);
-      x.innerHTML = getNameOptionSelect2($('select[name="selectKategoriKasus"]'), item["txtKodeKasus"]);
-      x = row.insertCell(6);
-      x.innerHTML = item["Data Dasar Pasien"];
-    }
-    $('#example').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-    });
-  }
-
-  function randomKasus(jumlahKasus, listValidKasus, payload, kategoriPasien){
+  function randomKasus(jumlahKasus, listValidKasus, kategoriPasien){
       var cases = []
       var i;
       for (i = 1; i <= jumlahKasus; i++) {
           var keyKasus = getRndInteger(0, listValidKasus.length-1)
-          cases.push(randomVariable(bankKasus[keyKasus], payload, kategoriPasien))
+          cases.push(randomVariable(bankKasus[keyKasus], kategoriPasien))
       }
       return cases;
   }
 
-
-  function randomVariable(kasus, payload, kategoriPasien){
+  function randomVariable(kasus, kategoriPasien){
     let newKasus = Object.create(kasus)
     newKasus["txtKodePasien"] = kategoriPasien;
 
     // jenis kelamin
-    let jenisKelamin = parseInt(payload.jenis_kelamin, 10);
-    if (jenisKelamin == 0){
-        jenisKelamin = getRndInteger(1, 2);
+    let jenisKelamins = toArrayInt(newKasus["Kategori Jenis Kelamin Pasien"]);
+    let jenisKelamin;
+    if (jenisKelamins.length > 0) {
+        jenisKelamin = jenisKelamins[getRndInteger(0, jenisKelamins.length -1)];
+        newKasus["txtJenisKelamin"] = parseInt(jenisKelamin, 10);
     }
-    newKasus["txtJenisKelamin"] = jenisKelamin;
-
-    newKasus["txtDokterPendamping"] = payload.dokter;
 
     // kode kegiatan
-    let kodeKegiatans = intersect(newKasus["Kode Kegiatan"], payload.kode_kegiatan);
+    let kodeKegiatans = toArrayInt(newKasus["Kode Kegiatan"]);
     if (kodeKegiatans.length > 0) {
         let randomKodeKegiatan = kodeKegiatans[getRndInteger(0, kodeKegiatans.length -1)];
         newKasus["txtKodeKegiatan"] = parseInt(randomKodeKegiatan, 10);
     }
    
     // unit pelayanan
-    let unitPelayanan = intersect(newKasus["Unit Pelayanan"], payload.unit_pelayanan);
+    let unitPelayanan = toArrayInt(newKasus["Unit Pelayanan"]);
     if (unitPelayanan.length > 0) {
         let randomUnitPelayanan = unitPelayanan[getRndInteger(0, unitPelayanan.length-1)];
         newKasus["txtUnitPelayanan"] = parseInt(randomUnitPelayanan, 10);
     }
 
     // kategori Kasus
-    let kategoriKasus = intersect(newKasus["Kategori Kasus"], payload.kategori_kasus);
+    let kategoriKasus = toArrayInt(newKasus["Kategori Kasus"]);
     if (kategoriKasus.length > 0) {
         let randomKategoriKasus = kategoriKasus[getRndInteger(0, kategoriKasus.length-1)];
         newKasus["txtKodeKasus"] = parseInt(randomKategoriKasus, 10);
@@ -862,16 +512,12 @@
     }
   }
 
-  function initDokterPendamping(dokterPendamping){
-    var selectDokterPendamping = $('#selectDokterPendamping');
-    var selectViewDokterPendamping = $('#dokter-pendamping');
-    for (let key in dokterPendamping) {
-      let dokter = dokterPendamping[key];
-      selectDokterPendamping.append(
-        $('<option></option>').val(dokter["val"]).html(dokter["text"])
-      );
-      selectViewDokterPendamping.append(
-        $('<option></option>').val(dokter["val"]).html(dokter["text"])
+  function initBankKasus(bankKasus){
+    var selectKasus = $('#selectKasus');
+    for (let key in bankKasus) {
+      let kasus = bankKasus[key];
+      selectKasus.append(
+        $('<option></option>').val(key).html("Kasus " + kasus["No"])
       );
     }
     $('.select2').select2();
@@ -899,67 +545,40 @@
     $('.select2').select2();
   } 
   $(document).ready(function() {
-    checkValidKasus();
-    initDokterPendamping(dokterPendamping);
+    initBankKasus(bankKasus);
     initDiagnosis(diagnosis);
     initTindakanMedis(tindakanMedis);
-    // $.getJSON('data/bank_kasus.json', function(data) {         
-    //     bankKasus = data;
-    //     for (let key in bankKasus) {
-    //       let kasus = bankKasus[key];
-    //       setVariableKasus(kasus["No"]);
-    //     }
-       
-    // });
-
-    $('#example').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-    });
   });
 
-  function getValidTanggal(rangeDate, hari){
-      try {
-        let dates = rangeDate.split(' - ');
-        let startDate = moment(dates[0], "DD/MM/YYYY"); 
-        let endDate = moment(dates[1], "DD/MM/YYYY"); 
+  
+  function getValidKasus(keyKasus){
+      let listValidIndexKasusBayiAnak = []
+      let listValidIndexKasusDewasa = []
+      let listValidIndexKasusLansia = []
 
-        var validTanggal = [];
-        var loop = new Date(startDate);
-        while(loop <= endDate){
-          if (hari.includes(""+ loop.getDay())){
-            validTanggal.push(new Date(loop));         
+      let kasus = bankKasus[keyKasus];
+
+      // Filter Kategori Pasien
+      kategori_pasiens = kasus["Kategori Pasien"].split(',');
+      for (let index in kategori_pasiens) {
+          // Bayi - Anak 
+          if (kategori_pasiens[index] === "1") {
+            listValidIndexKasusBayiAnak.push(keyKasus);
+          } else if (kategori_pasiens[index] === "2") { // Dewasa
+            listValidIndexKasusDewasa.push(keyKasus);
+          } else if (kategori_pasiens[index] === "3") { // Lansia
+            listValidIndexKasusLansia.push(keyKasus);
           }
-          var newDate = loop.setDate(loop.getDate() + 1);
-          loop = new Date(newDate);
-        }
-        return validTanggal;
       }
-      catch(err) {
-        console.log(err.message);
-      }
+      return [listValidIndexKasusBayiAnak, listValidIndexKasusDewasa, listValidIndexKasusLansia];
   }
 
   $(function () {
     $('#generateForm').validate({
       rules: {
-        selectJenisKelamin: {
+        selectKasus: {
           required: true,
         }, 
-        selectKodeKegiatan: {
-          required: true,
-        },
-        selectUnitPelayanan: {
-          required: true,
-        },
-        selectKategoriKasus: {
-          required: true
-        },
       },
       errorElement: 'span',
       errorPlacement: function (error, element) {
@@ -973,49 +592,37 @@
         $(element).removeClass('is-invalid');
       },
       submitHandler: function(form) {
-        var inputs=$(form).find(':input');
-        var payload = {
-            date_range: $('#rangeDate').val(),
-            hari: $('select[name="selectHari"]').val(),
-            jenis_kelamin: $('select[name="selectJenisKelamin"]').val(),
-            kode_kegiatan: $('select[name="selectKodeKegiatan"]').val(),
-            unit_pelayanan: $('select[name="selectUnitPelayanan"]').val(),
-            kategori_kasus: $('select[name="selectKategoriKasus"]').val(),
-            bayi_anak : inputs.filter('[name=txtBayiAnak]').val(), 
-            dewasa : inputs.filter('[name=txtDewasa]').val(),
-            lansia : inputs.filter('[name=txtLansia]').val(),
-            dokter : $('select[name="selectDokterPendamping"]').val(),
-        }
-        let validTanggal = getValidTanggal(payload.date_range, payload.hari);
-        let validData = getValidKasus(payload);
+        let validData = getValidKasus($('#selectKasus').val());
         let cases = [];
-        if (validData[0] !== undefined && validData[0].length > 0 && payload.bayi_anak > 0){
-            let x = randomKasus(payload.bayi_anak, validData[0], payload, 1);
+        if (validData[0] !== undefined && validData[0].length > 0){
+            let x = randomKasus(1, validData[0], 1);
             cases = cases.concat(x);
         }
-        if (validData[1] !== undefined && validData[1].length > 0 && payload.dewasa > 0){
-            let y = randomKasus(payload.dewasa, validData[1], payload, 2);
+        if (validData[1] !== undefined && validData[1].length > 0){
+            let y = randomKasus(1, validData[1], 2);
             cases = cases.concat(y);
         }
-        if (validData[2] !== undefined && validData[2].length > 0 && payload.lansia > 0){
-            let z = randomKasus(payload.lansia, validData[2], payload, 3);
+        if (validData[2] !== undefined && validData[2].length > 0){
+            let z = randomKasus(1, validData[2], 3);
             cases = cases.concat(z);
         }
 
-        try {
-          if (cases.length <= validTanggal.length){
-            for (let key in cases) {
-              cases[key]["Tanggal"] = moment(validTanggal[key]).format('DD/MM/YYYY');
-            }
-          }else{
-            for (let key in cases) {
-              cases[key]["Tanggal"] = moment(validTanggal[Math.floor(key/(cases.length/validTanggal.length))]).format('DD/MM/YYYY');
-            }
-          }
-          loadTableData(cases);
-        } catch (error) {
-          console.log(error,message);
-        }
+        let index = getRndInteger(0, cases.length-1);
+ 
+        $("#kode-kegiatan").val(cases[index]["txtKodeKegiatan"]);
+        $("#unit-pelayanan").val(cases[index]["txtUnitPelayanan"]);
+
+        $("#kode-pasien").val(cases[index]["txtKodePasien"]);
+        $("#kode-kasus").val(cases[index]["txtKodeKasus"]);
+        $("#jenis-kelamin").val(cases[index]["txtJenisKelamin"]);
+
+        $("#pasien").val(cases[index]["Data Dasar Pasien"]);
+        $("#penyakit").val(cases[index]["Data Ringkasan Penyakit"]);
+        $("#penatalaksanaan").val(cases[index]["Penatalaksanaan"]);
+        $("#selectTindakanMedis").val(cases[index]["Tindakan Medis"].split(","));
+        $("#selectDiagnosis").val(cases[index]["Diagnosis"].split(","));
+
+        $('.select2').select2();
       }
     });
     

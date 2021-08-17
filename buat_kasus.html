@@ -216,7 +216,7 @@
                   <div class="form-group">
                     <label>Bayi - Anak [<label id="validBayiAnak">0</label>]</label> 
                     <div class="input-group mb-3">
-                      <input type="number" class="form-control" min=0 value=10 name="txtBayiAnak">
+                      <input type="number" class="form-control" min=0 value=0 name="txtBayiAnak">
                       <div class="input-group-append">
                         <span class="input-group-text">kasus</span>
                       </div>
@@ -227,7 +227,7 @@
                   <div class="form-group">
                     <label>Dewasa [<label id="validDewasa">0</label>]</label>
                     <div class="input-group mb-3">
-                      <input type="number" class="form-control" min=0 value=10 name="txtDewasa">
+                      <input type="number" class="form-control" min=0 value=0 name="txtDewasa">
                       <div class="input-group-append">
                         <span class="input-group-text">kasus</span>
                       </div>
@@ -238,7 +238,7 @@
                   <div class="form-group">
                     <label>Lansia [<label id="validLansia">0</label>]</label>
                     <div class="input-group mb-3">
-                      <input type="number" class="form-control" min=0 value=10 name="txtLansia">
+                      <input type="number" class="form-control" min=0 value=0 name="txtLansia">
                       <div class="input-group-append">
                         <span class="input-group-text">kasus</span>
                       </div>
@@ -316,8 +316,6 @@
                   </div>
                   </div>
                 </div>
-              </div>
-              <div class="row">
                 <div class="col-md-3">
                   <div class="form-group">
                     <label>Kode Kegiatan</label>
@@ -332,8 +330,6 @@
                     </select>
                   </div>
                 </div>
-              </div>
-              <div class="row">
                 <div class="col-md-3">
                   <div class="form-group">
                     <label>Unit Pelayanan</label>
@@ -345,8 +341,6 @@
                     </select>
                   </div>
                 </div>
-              </div>
-              <div class="row">
                 <div class="col-md-3">
                   <div class="form-group">
                     <label>Pendamping</label>
@@ -368,8 +362,6 @@
                     </select>
                   </div>
                 </div>
-              </div>
-              <div class="row">
                 <div class="col-md-3">
                   <div class="form-group">
                     <label>Kategori Kasus</label>
@@ -383,8 +375,6 @@
                     </select>
                   </div>
                 </div>
-              </div>
-              <div class="row">
                 <div class="col-md-3">
                   <div class="form-group">
                     <label>Jenis Kelamin</label>
@@ -707,6 +697,7 @@
       x.innerHTML = item["Data Dasar Pasien"];
     }
     $('#example').DataTable({
+        "pageLength": 5,
         "paging": true,
         "lengthChange": false,
         "searching": false,
@@ -903,16 +894,9 @@
     initDokterPendamping(dokterPendamping);
     initDiagnosis(diagnosis);
     initTindakanMedis(tindakanMedis);
-    // $.getJSON('data/bank_kasus.json', function(data) {         
-    //     bankKasus = data;
-    //     for (let key in bankKasus) {
-    //       let kasus = bankKasus[key];
-    //       setVariableKasus(kasus["No"]);
-    //     }
-       
-    // });
 
     $('#example').DataTable({
+        "pageLength": 5,
         "paging": true,
         "lengthChange": false,
         "searching": false,
