@@ -845,6 +845,9 @@
       if (exp !== undefined && exp[0] === "#"){
         let newExp = exp.substring(1, exp.length);
         eval( "result = " + newExp + ";");
+        if (result !== undefined && result[0] === "#"){
+            return EVAL(result, property)
+        } 
         return result;
       }
       return exp;

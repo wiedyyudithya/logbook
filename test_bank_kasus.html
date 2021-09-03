@@ -227,13 +227,13 @@
               <div class="row">
                 <div class="col-md-12 mb-3">
                   <label>Data Dasar Pasien (Contoh: Tn.X; 30th; 170cm; 70kg)</label>
-                  <textarea class="form-control" id="pasien" rows="3"  maxlength="250" placeholder="Ketik Data Dasar Pasien di sini (maks. 250 karakter)"></textarea>
+                  <textarea class="form-control" id="pasien" rows="3"  placeholder="Ketik Data Dasar Pasien di sini (maks. 250 karakter)"></textarea>
                 </div>
               </div>
               <div class="row">
                   <div class="col-md-12 mb-3">
                     <label>Data Ringkasan Penyakit</label>
-                    <textarea class="form-control" id="penyakit" rows="10" maxlength="500" placeholder="Ketik Data Ringkasan Penyakit di sini (boleh lebih dari 500 karakter)"></textarea>
+                    <textarea class="form-control" id="penyakit" rows="10" placeholder="Ketik Data Ringkasan Penyakit di sini (boleh lebih dari 500 karakter)"></textarea>
                   </div>
               </div>
               <div class="row">
@@ -246,7 +246,7 @@
               <div class="row">
                   <div class="col-md-12 mb-3">
                     <label>Data Penatalaksanaan</label>
-                    <textarea class="form-control" id="penatalaksanaan" rows="3" maxlength="500" placeholder="Ketik Data Penatalaksanaan di sini (boleh lebih dari 500 karakter)"></textarea>
+                    <textarea class="form-control" id="penatalaksanaan" rows="3"  placeholder="Ketik Data Penatalaksanaan di sini (boleh lebih dari 500 karakter)"></textarea>
                   </div>
               </div>
               <div class="row">
@@ -496,6 +496,9 @@
       if (exp !== undefined && exp[0] === "#"){
         let newExp = exp.substring(1, exp.length);
         eval( "result = " + newExp + ";");
+        if (result !== undefined && result[0] === "#"){
+            return EVAL(result, property)
+        } 
         return result;
       }
       return exp;
