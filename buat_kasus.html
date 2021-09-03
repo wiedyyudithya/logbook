@@ -992,13 +992,18 @@
         }
 
         try {
-          if (cases.length <= validTanggal.length){
+          // if (cases.length <= validTanggal.length){
+          //   for (let key in cases) {
+          //     cases[key]["Tanggal"] = moment(validTanggal[key]).format('MM/DD/YYYY');
+          //   }
+          // }else{
+          //   for (let key in cases) {
+          //     cases[key]["Tanggal"] = moment(validTanggal[Math.floor(key/(cases.length/validTanggal.length))]).format('MM/DD/YYYY');
+          //   }
+          // }
+          if (validTanggal.length > 0){
             for (let key in cases) {
-              cases[key]["Tanggal"] = moment(validTanggal[key]).format('MM/DD/YYYY');
-            }
-          }else{
-            for (let key in cases) {
-              cases[key]["Tanggal"] = moment(validTanggal[Math.floor(key/(cases.length/validTanggal.length))]).format('MM/DD/YYYY');
+              cases[key]["Tanggal"] = moment(validTanggal[getRndInteger(0, validTanggal.length - 1)]).format('MM/DD/YYYY');
             }
           }
           loadTableData(cases);
