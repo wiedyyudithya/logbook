@@ -288,6 +288,18 @@
                   <tbody id="testBody"></tbody>
                   </tbody>
                 </table>
+                <form id="generateForm">
+                  <div class="row">
+                    <div class="col-md-9">
+                      <div class="form-group">
+                        <label>Nomor Kasus</label>
+                        <select class="select2" multiple="multiple" id="selectNomorKasus" data-placeholder="Pilih Nomor Kasus" style="width: 100%;">
+                        </select>
+                      </div>
+                    </div>
+                    <button type="button" onclick="copyMultiple()" class="btn btn-primary" style="margin:20px">Copy Script Multiple Kasus</button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
@@ -671,6 +683,8 @@
     const table = document.getElementById("testBody");
     table.innerHTML = "";
     let i = 0;
+
+    var selectNomorKasus = $('#selectNomorKasus');
     for (let key in items) {
       let item = items[key];
       let row = table.insertRow();
@@ -697,7 +711,11 @@
       x.innerHTML = getNameOptionSelect2($('select[name="selectKategoriKasus"]'), item["txtKodeKasus"]);
       x = row.insertCell(6);
       x.innerHTML = item["Data Dasar Pasien"];
+      selectNomorKasus.append(
+        $('<option selected></option>').val(i).html(i)
+      );
     }
+    $('.select2').select2();
     $('#example').DataTable({
         "pageLength": 5,
         "paging": true,
@@ -894,6 +912,69 @@
         }
     $('.select2').select2();
   } 
+
+  function copyMultiple(){
+    var copyData = ""
+    
+    nomorKasus= $('#selectNomorKasus').val();
+    for (let key in nomorKasus) {
+        console.log(data[key-1]);
+    }
+    // var params = {
+    //         "txtTglBorang": $("#tgl-pelayanan").val(),
+    //         "txtKodeKegiatan":  $("#kode-kegiatan").val(),
+    //         "txtUnitPelayanan":   $("#unit-pelayanan").val(),
+    //         "txtDokterPendamping": $("#txtDokterPendamping").val(),
+    //         "txtKodePasien":  $("#kode-pasien").val(),
+    //         "txtKodeKasus":   $("#kode-kasus").val(),
+    //         "txtJenisKelamin":  $("#jenis-kelamin").val(),
+    //         "txtDataDasar":  $("#pasien").val(),
+    //         "txtRingkasan":   $("#penyakit").val(),
+    //         "txtKodeDiagnosis": $("#selectDiagnosis").val(),
+    //         "txtPenatalaksanaan": $("#penatalaksanaan").val(),
+    //         "txtTindakanMedis":    $("#selectTindakanMedis").val(),
+    //         "txtUsulan":  $("#usulan").val(),
+    // };
+
+    // serialize = function(obj, prefix) {
+    //       var str = [],
+    //         p;
+    //       for (p in obj) {
+    //         if (obj.hasOwnProperty(p)) {
+    //           var k = prefix ? prefix + "[" + p + "]" : p,
+    //             v = obj[p];
+    //           str.push((v !== null && typeof v === "object") ?
+    //             serialize(v, k) :
+    //             encodeURIComponent(k) + "=" + encodeURIComponent(v));
+    //         }
+    //       }
+    //       return str.join("&");
+    // }
+
+    // copyData = `
+    //       fetch("http://logbook.internsip.kemkes.go.id/borang/aksi.php?module=peserta&submodule=bukuborang&act=catatBorang", {
+    //         "headers": {
+    //           "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+    //           "accept-language": "en-US,en;q=0.9",
+    //           "cache-control": "max-age=0",
+    //           "content-type": "application/x-www-form-urlencoded",
+    //           "upgrade-insecure-requests": "1"
+    //         },
+    //         "referrer": "http://logbook.internsip.kemkes.go.id/borang/utama.php?module=peserta&submodule=bukuborang",
+    //         "referrerPolicy": "strict-origin-when-cross-origin",
+    //         "body": "`+ serialize(params) +`",
+    //         "method": "POST",
+    //         "mode": "cors",
+    //         "credentials": "include"
+    //       });
+    //     `  
+        
+
+        /* Copy the text inside the text field */
+        navigator.clipboard.writeText(copyData)
+        alert("Data sudah dicopy di clipboard. Silahkan pindah ke halaman http://logbook.internsip.kemkes.go.id");
+  }
+
   $(document).ready(function() {
     checkValidKasus();
     //initDokterPendamping(dokterPendamping);
