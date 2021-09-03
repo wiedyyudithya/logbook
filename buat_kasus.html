@@ -159,9 +159,12 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Dokter Pendamping</label>
-                    <select class="form-control select2" style="width: 100%;" name="selectDokterPendamping" id="selectDokterPendamping">
+                    <!-- <select class="form-control select2" style="width: 100%;" name="selectDokterPendamping" id="selectDokterPendamping">
                       <option value="0">Mohon Pilih Dokter Pendamping</option>
-                    </select>
+                    </select> -->
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" id="dokter-pendamping" name="dokter-pendamping">
+                    </div>
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -344,9 +347,7 @@
                 <div class="col-md-3">
                   <div class="form-group">
                     <label>Pendamping</label>
-                    <select name="txtDokterPendamping" class="form-control select2" style="width: 100%;"id="dokter-pendamping">
-                      <option value="0">Mohon Pilih Dokter Pendamping</option>
-                    </select>
+                    <input type="text" class="form-control" id="txtDokterPendamping">
                   </div>
                 </div>
               </div>
@@ -652,7 +653,7 @@
     $("#kode-pasien").val(data[index]["txtKodePasien"]);
     $("#kode-kasus").val(data[index]["txtKodeKasus"]);
     $("#jenis-kelamin").val(data[index]["txtJenisKelamin"]);
-    $("#dokter-pendamping").val(data[index]["txtDokterPendamping"]);
+    $("#txtDokterPendamping").val(data[index]["txtDokterPendamping"]);
 
     $("#pasien").val(data[index]["Data Dasar Pasien"]);
     $("#penyakit").val(data[index]["Data Ringkasan Penyakit"]);
@@ -857,20 +858,20 @@
     }
   }
 
-  function initDokterPendamping(dokterPendamping){
-    var selectDokterPendamping = $('#selectDokterPendamping');
-    var selectViewDokterPendamping = $('#dokter-pendamping');
-    for (let key in dokterPendamping) {
-      let dokter = dokterPendamping[key];
-      selectDokterPendamping.append(
-        $('<option></option>').val(dokter["val"]).html(dokter["text"])
-      );
-      selectViewDokterPendamping.append(
-        $('<option></option>').val(dokter["val"]).html(dokter["text"])
-      );
-    }
-    $('.select2').select2();
-  }
+  // function initDokterPendamping(dokterPendamping){
+  //   var selectDokterPendamping = $('#selectDokterPendamping');
+  //   var selectViewDokterPendamping = $('#dokter-pendamping');
+  //   for (let key in dokterPendamping) {
+  //     let dokter = dokterPendamping[key];
+  //     selectDokterPendamping.append(
+  //       $('<option></option>').val(dokter["val"]).html(dokter["text"])
+  //     );
+  //     selectViewDokterPendamping.append(
+  //       $('<option></option>').val(dokter["val"]).html(dokter["text"])
+  //     );
+  //   }
+  //   $('.select2').select2();
+  // }
 
   function initDiagnosis(data){
     var selectDiagnosis = $('#selectDiagnosis');
@@ -895,7 +896,7 @@
   } 
   $(document).ready(function() {
     checkValidKasus();
-    initDokterPendamping(dokterPendamping);
+    //initDokterPendamping(dokterPendamping);
     initDiagnosis(diagnosis);
     initTindakanMedis(tindakanMedis);
 
@@ -914,8 +915,8 @@
   function getValidTanggal(rangeDate, hari){
       try {
         let dates = rangeDate.split(' - ');
-        let startDate = moment(dates[0], "DD/MM/YYYY"); 
-        let endDate = moment(dates[1], "DD/MM/YYYY"); 
+        let startDate = moment(dates[0], "MM/DD/YYYY"); 
+        let endDate = moment(dates[1], "MM/DD/YYYY"); 
 
         var validTanggal = [];
         var loop = new Date(startDate);
@@ -972,7 +973,7 @@
             bayi_anak : inputs.filter('[name=txtBayiAnak]').val(), 
             dewasa : inputs.filter('[name=txtDewasa]').val(),
             lansia : inputs.filter('[name=txtLansia]').val(),
-            dokter : $('select[name="selectDokterPendamping"]').val(),
+            dokter : $('#dokter-pendamping').val(),
         }
         let validTanggal = getValidTanggal(payload.date_range, payload.hari);
         let validData = getValidKasus(payload);
@@ -1046,7 +1047,7 @@
             "txtTglBorang": $("#tgl-pelayanan").val(),
             "txtKodeKegiatan":  $("#kode-kegiatan").val(),
             "txtUnitPelayanan":   $("#unit-pelayanan").val(),
-            "txtDokterPendamping": $("#dokter-pendamping").val(),
+            "txtDokterPendamping": $("#txtDokterPendamping").val(),
             "txtKodePasien":  $("#kode-pasien").val(),
             "txtKodeKasus":   $("#kode-kasus").val(),
             "txtJenisKelamin":  $("#jenis-kelamin").val(),
