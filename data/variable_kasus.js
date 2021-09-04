@@ -2,7 +2,7 @@ var variableKasus = {
   "1": [
     {
       "jabatan_pasien": "#IFTHENELSE('{{jenis_kelamin}} == 1', 'Tn.', 'Ny. ')",
-      "nama_pasien": "#RANDOMCHAR('ABCDEFGHIJKLMNOPQRSTUVWXYZ')",
+      "nama_pasien": "#RANDOMCHAR('ABCDEFGHIJKLMNOPRSTUVWYZ')",
       "umur_pasien": "#RANGENUMBERUMUR({{kategori_pasien}}, 18, 75, 1)",
       "berat_pasien": "#IFTHENELSE('{{jenis_kelamin}} == 2', '#RANGENUMBER(45, 80, 1)', '#RANGENUMBER(50, 80, 1)')",
       "tinggi_pasien": "#IFTHENELSE('{{jenis_kelamin}} == 2', '#RANGENUMBER(150, 170, 1)', '#RANGENUMBER(150, 180, 1)')",
@@ -21,7 +21,7 @@ var variableKasus = {
   "2": [
     {
       "jabatan_pasien": "#IFTHENELSE('{{jenis_kelamin}} == 1', 'Tn.', 'Ny. ')",
-      "nama_pasien": "#RANDOMCHAR('ABCDEFGHIJKLMNOPQRSTUVWXYZ')",
+      "nama_pasien": "#RANDOMCHAR('ABCDEFGHIJKLMNOPRSTUVWYZ')",
       "umur_pasien": "#RANGENUMBERUMUR({{kategori_pasien}}, 18, 75, 1)",
       "berat_pasien": "#IFTHENELSE('{{jenis_kelamin}} == 2', '#RANGENUMBER(45, 80, 1)', '#RANGENUMBER(50, 80, 1)')",
       "tinggi_pasien": "#IFTHENELSE('{{jenis_kelamin}} == 2', '#RANGENUMBER(150, 170, 1)', '#RANGENUMBER(150, 180, 1)')",
@@ -42,7 +42,7 @@ var variableKasus = {
   "3": [
     {
       "jabatan_pasien": "#IFTHENELSE('{{jenis_kelamin}} == 1', 'Tn.', 'Ny. ')",
-      "nama_pasien": "#RANDOMCHAR('ABCDEFGHIJKLMNOPQRSTUVWXYZ')",
+      "nama_pasien": "#RANDOMCHAR('ABCDEFGHIJKLMNOPRSTUVWYZ')",
       "umur_pasien": "#RANGENUMBERUMUR({{kategori_pasien}}, 45, 85, 1)",
       "berat_pasien": "#IFTHENELSE('{{jenis_kelamin}} == 2', '#RANGENUMBER(45, 80, 1)', '#RANGENUMBER(50, 80, 1)')",
       "tinggi_pasien": "#IFTHENELSE('{{jenis_kelamin}} == 2', '#RANGENUMBER(150, 170, 1)', '#RANGENUMBER(150, 180, 1)')",
@@ -61,7 +61,7 @@ var variableKasus = {
   "4": [
     {
       "jabatan_pasien": "#IFTHENELSE('{{jenis_kelamin}} == 1', 'Tn.', 'Ny. ')",
-      "nama_pasien": "#RANDOMCHAR('ABCDEFGHIJKLMNOPQRSTUVWXYZ')",
+      "nama_pasien": "#RANDOMCHAR('ABCDEFGHIJKLMNOPRSTUVWYZ')",
       "umur_pasien": "#RANGENUMBERUMUR({{kategori_pasien}}, 45, 85, 1)",
       "berat_pasien": "#IFTHENELSE('{{jenis_kelamin}} == 2', '#RANGENUMBER(45, 80, 1)', '#RANGENUMBER(50, 80, 1)')",
       "tinggi_pasien": "#IFTHENELSE('{{jenis_kelamin}} == 2', '#RANGENUMBER(150, 170, 1)', '#RANGENUMBER(150, 180, 1)')",
@@ -79,7 +79,7 @@ var variableKasus = {
   "5": [
     {
       "jabatan_pasien": "#IFTHENELSE('{{jenis_kelamin}} == 1', 'Tn.', 'Ny. ')",
-      "nama_pasien": "#RANDOMCHAR('ABCDEFGHIJKLMNOPQRSTUVWXYZ')",
+      "nama_pasien": "#RANDOMCHAR('ABCDEFGHIJKLMNOPRSTUVWYZ')",
       "umur_pasien": "#RANGENUMBERUMUR({{kategori_pasien}}, 18, 75, 1)",
       "berat_pasien": "#IFTHENELSE('{{jenis_kelamin}} == 2', '#RANGENUMBER(45, 80, 1)', '#RANGENUMBER(50, 80, 1)')",
       "tinggi_pasien": "#IFTHENELSE('{{jenis_kelamin}} == 2', '#RANGENUMBER(150, 170, 1)', '#RANGENUMBER(150, 180, 1)')",
@@ -99,7 +99,7 @@ var variableKasus = {
   "6": [
     {
       "jabatan_pasien": "#IFTHENELSE('{{jenis_kelamin}} == 1', 'Tn.', 'Ny. ')",
-      "nama_pasien": "#RANDOMCHAR('ABCDEFGHIJKLMNOPQRSTUVWXYZ')",
+      "nama_pasien": "#RANDOMCHAR('ABCDEFGHIJKLMNOPRSTUVWYZ')",
       "umur_pasien": "#RANGENUMBERUMUR({{kategori_pasien}}, 45, 85, 1)",
       "berat_pasien": "#IFTHENELSE('{{jenis_kelamin}} == 2', '#RANGENUMBER(60, 80, 1)', '#RANGENUMBER(70, 90, 1)')",
       "tinggi_pasien": "#IFTHENELSE('{{jenis_kelamin}} == 2', '#RANGENUMBER(150, 170, 1)', '#RANGENUMBER(150, 180, 1)')",
