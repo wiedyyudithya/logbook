@@ -740,7 +740,7 @@
       var cases = []
       var i;
       for (i = 1; i <= jumlahKasus; i++) {
-          var keyKasus = getRndInteger(0, listValidKasus.length-1)
+          var keyKasus = listValidKasus[getRndInteger(0, listValidKasus.length-1)]
           cases.push(randomVariable(bankKasus[keyKasus], payload, kategoriPasien))
       }
       return cases;
