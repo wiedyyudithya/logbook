@@ -645,6 +645,13 @@
     return result
   }
   
+  function toArray(str){
+    var result = str.split(',').map(function(item) {
+        return item;
+    });
+    return result
+  }
+
   function getNameOptionSelect2(dom, val){
     var datas = $(dom).select2("data");
     for (let key in datas) {
@@ -919,61 +926,55 @@
     
     nomorKasus= $('#selectNomorKasus').val();
     for (let key in nomorKasus) {
-        console.log(data[key-1]);
+        var params = {
+            "txtTglBorang": data[key]["Tanggal"],
+            "txtKodeKegiatan":  data[key]["txtKodeKegiatan"],
+            "txtUnitPelayanan":   data[key]["txtUnitPelayanan"],
+            "txtDokterPendamping": data[key]["txtDokterPendamping"],
+            "txtKodePasien":  data[key]["txtKodePasien"],
+            "txtKodeKasus":   data[key]["txtKodeKasus"],
+            "txtJenisKelamin": data[key]["txtJenisKelamin"],
+            "txtDataDasar":  data[key]["Data Dasar Pasien"],
+            "txtRingkasan":  data[key]["Data Ringkasan Penyakit"],
+            "txtKodeDiagnosis": toArrayInt(data[key]["Diagnosis"]),
+            "txtPenatalaksanaan": data[key]["Penatalaksanaan"],
+            "txtTindakanMedis": toArrayInt(data[key]["Tindakan Medis"])
+        };
+        serialize = function(obj, prefix) {
+              var str = [],p;
+              for (p in obj) {
+                if (obj.hasOwnProperty(p)) {
+                  var k = prefix ? prefix + "[" + p + "]" : p,
+                    v = obj[p];
+                  str.push((v !== null && typeof v === "object") ?
+                    serialize(v, k) :
+                    encodeURIComponent(k) + "=" + encodeURIComponent(v));
+                }
+              }
+              return str.join("&");
+        }
+
+        copyData += `
+          fetch("http://logbook.internsip.kemkes.go.id/borang/aksi.php?module=peserta&submodule=bukuborang&act=catatBorang", {
+            "headers": {
+              "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+              "accept-language": "en-US,en;q=0.9",
+              "cache-control": "max-age=0",
+              "content-type": "application/x-www-form-urlencoded",
+              "upgrade-insecure-requests": "1"
+            },
+            "referrer": "http://logbook.internsip.kemkes.go.id/borang/utama.php?module=peserta&submodule=bukuborang",
+            "referrerPolicy": "strict-origin-when-cross-origin",
+            "body": "`+ serialize(params) +`",
+            "method": "POST",
+            "mode": "cors",
+            "credentials": "include"
+          });
+        `  
     }
-    // var params = {
-    //         "txtTglBorang": $("#tgl-pelayanan").val(),
-    //         "txtKodeKegiatan":  $("#kode-kegiatan").val(),
-    //         "txtUnitPelayanan":   $("#unit-pelayanan").val(),
-    //         "txtDokterPendamping": $("#txtDokterPendamping").val(),
-    //         "txtKodePasien":  $("#kode-pasien").val(),
-    //         "txtKodeKasus":   $("#kode-kasus").val(),
-    //         "txtJenisKelamin":  $("#jenis-kelamin").val(),
-    //         "txtDataDasar":  $("#pasien").val(),
-    //         "txtRingkasan":   $("#penyakit").val(),
-    //         "txtKodeDiagnosis": $("#selectDiagnosis").val(),
-    //         "txtPenatalaksanaan": $("#penatalaksanaan").val(),
-    //         "txtTindakanMedis":    $("#selectTindakanMedis").val(),
-    //         "txtUsulan":  $("#usulan").val(),
-    // };
-
-    // serialize = function(obj, prefix) {
-    //       var str = [],
-    //         p;
-    //       for (p in obj) {
-    //         if (obj.hasOwnProperty(p)) {
-    //           var k = prefix ? prefix + "[" + p + "]" : p,
-    //             v = obj[p];
-    //           str.push((v !== null && typeof v === "object") ?
-    //             serialize(v, k) :
-    //             encodeURIComponent(k) + "=" + encodeURIComponent(v));
-    //         }
-    //       }
-    //       return str.join("&");
-    // }
-
-    // copyData = `
-    //       fetch("http://logbook.internsip.kemkes.go.id/borang/aksi.php?module=peserta&submodule=bukuborang&act=catatBorang", {
-    //         "headers": {
-    //           "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
-    //           "accept-language": "en-US,en;q=0.9",
-    //           "cache-control": "max-age=0",
-    //           "content-type": "application/x-www-form-urlencoded",
-    //           "upgrade-insecure-requests": "1"
-    //         },
-    //         "referrer": "http://logbook.internsip.kemkes.go.id/borang/utama.php?module=peserta&submodule=bukuborang",
-    //         "referrerPolicy": "strict-origin-when-cross-origin",
-    //         "body": "`+ serialize(params) +`",
-    //         "method": "POST",
-    //         "mode": "cors",
-    //         "credentials": "include"
-    //       });
-    //     `  
-        
-
-        /* Copy the text inside the text field */
-        navigator.clipboard.writeText(copyData)
-        alert("Data sudah dicopy di clipboard. Silahkan pindah ke halaman http://logbook.internsip.kemkes.go.id");
+    /* Copy the text inside the text field */
+    navigator.clipboard.writeText(copyData)
+    alert("Data sudah dicopy di clipboard. Silahkan pindah ke halaman http://logbook.internsip.kemkes.go.id");
   }
 
   $(document).ready(function() {
