@@ -297,6 +297,17 @@
                         </select>
                       </div>
                     </div>
+                    <div class="col-md-1">
+                      <div class="form-group">
+                        <label>Delay</label>
+                        <div class="input-group mb-3">
+                          <input type="number" class="form-control" min=0 value=0 id="txtDelay">
+                          <div class="input-group-append">
+                            <span class="input-group-text">detik</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     <button type="button" onclick="copyMultiple()" class="btn btn-primary" style="margin:20px">Copy Script Multiple Kasus</button>
                   </div>
                 </form>
@@ -312,9 +323,10 @@
           <div class="card-header">
             <h3 class="card-title">Detail <label id="no-kasus"></label></h3>
             <div class="card-tools">
-              <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                <i class="fas fa-minus"></i>
-              </button>
+              <ul class="pagination pagination-sm float-right">
+                <li class="page-item"><a class="page-link" onclick="prev()">Previous</a></li>
+                <li class="page-item"><a class="page-link" onclick="next()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+              </ul>
             </div>
           </div>
           <div class="card-body">
@@ -398,34 +410,18 @@
                     </select>
                   </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12 mb-3">
-                  <label>Data Dasar Pasien (Contoh: Tn.X; 30th; 170cm; 70kg)</label>
-                  <textarea class="form-control" id="pasien" rows="3"  maxlength="250" placeholder="Ketik Data Dasar Pasien di sini (maks. 250 karakter)"></textarea>
+                <div class="col-md-3">
+                  <label>Diagnosis</label>
+                  <select class="select2" multiple="multiple" id="selectDiagnosis"  data-placeholder="Pilih Diagnosis" style="width: 100%;">
+                  </select>
                 </div>
               </div>
               <div class="row">
-                  <div class="col-md-12 mb-3">
-                    <label>Data Ringkasan Penyakit</label>
-                    <textarea class="form-control" id="penyakit" rows="10" maxlength="500" placeholder="Ketik Data Ringkasan Penyakit di sini (boleh lebih dari 500 karakter)"></textarea>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-md-12 mb-3">
-                    <label>Diagnosis</label>
-                    <select class="select2" multiple="multiple" id="selectDiagnosis"  data-placeholder="Pilih Diagnosis" style="width: 100%;">
-                    </select>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-md-12 mb-3">
-                    <label>Data Penatalaksanaan</label>
-                    <textarea class="form-control" id="penatalaksanaan" rows="3" maxlength="500" placeholder="Ketik Data Penatalaksanaan di sini (boleh lebih dari 500 karakter)"></textarea>
-                  </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12 mb-3">
+                <div class="col-md-6">
+                  <label>Data Dasar Pasien (Contoh: Tn.X; 30th; 170cm; 70kg)</label>
+                  <textarea class="form-control" id="pasien" rows="1"  maxlength="250" placeholder="Ketik Data Dasar Pasien di sini (maks. 250 karakter)"></textarea>
+                </div>
+                <div class="col-md-6">
                   <label>Tindakan Medis</label>
                   <select class="select2" multiple="multiple" id="selectTindakanMedis" data-placeholder="Pilih Tindakan Medis" style="width: 100%;">
                   </select>
@@ -433,9 +429,18 @@
               </div>
               <div class="row">
                   <div class="col-md-12 mb-3">
-                    <label>Isi Data Penatalaksanaan catatan & Usulan dokter pendamping terhadap kinerja</label>
-                    <textarea class="form-control" id="usulan" rows="3" maxlength="500" placeholder="Ketik Data Penatalaksanaan di sini (boleh lebih dari 500 karakter)"></textarea>
+                    <label>Data Ringkasan Penyakit</label>
+                    <textarea class="form-control" id="penyakit" rows="5" placeholder="Ketik Data Ringkasan Penyakit di sini (boleh lebih dari 500 karakter)"></textarea>
                   </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12 mb-3">
+                    <label>Data Penatalaksanaan</label>
+                    <textarea class="form-control" id="penatalaksanaan" rows="5" placeholder="Ketik Data Penatalaksanaan di sini (boleh lebih dari 500 karakter)"></textarea>
+                  </div>
+              </div>
+              <div class="row">
+        
               </div>
               <button type="submit" class="btn btn-primary">Copy Script</button>
             </form>
@@ -514,6 +519,7 @@
 <!-- Page specific script -->
 <script>
   var data;
+  var view;
   // var variableKasus = new Map();
   function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
@@ -527,6 +533,15 @@
   //     });
   //   };
   // }
+  function next(){
+      view++;
+      viewData(view);
+  }
+
+  function prev(){
+      view--;
+      viewData(view);
+  }
 
   function checkValidKasus(){
     let payload = {
@@ -583,7 +598,6 @@
         if (!okKodeKegiatan){
              continue;
         }
-
 
         // Filter Unit Pelayanan
         unit_pelayanans = kasus["Unit Pelayanan"].split(',');
@@ -665,6 +679,11 @@
 
   function viewGeneratedData(row){
     let index = row.getAttribute("data-index");
+    view = index
+    viewData(view)
+  }
+
+  function viewData(index){
     $("#tgl-pelayanan").val(data[index]["Tanggal"]);
     $("#kode-kegiatan").val(data[index]["txtKodeKegiatan"]);
     $("#unit-pelayanan").val(data[index]["txtUnitPelayanan"]);
@@ -681,7 +700,6 @@
     $("#selectDiagnosis").val(data[index]["Diagnosis"].split(","));
     $("#no-kasus").html("Kasus No. " + ++index);
     $('.select2').select2();
-    $('#usulan').val();
   }
 
   function loadTableData(items){
@@ -922,8 +940,17 @@
   } 
 
   function copyMultiple(){
-    var copyData = ""
-    
+    var copyData = `
+      function sleep(milliseconds) {
+        var start = new Date().getTime();
+        for (var i = 0; i < 1e7; i++) {
+          if ((new Date().getTime() - start) > milliseconds){
+            break;
+          }
+        }
+      }
+    `
+    delay = $("#txtDelay").val() * 1000
     nomorKasus= $('#selectNomorKasus').val();
     for (let key in nomorKasus) {
         var params = {
@@ -952,6 +979,10 @@
                 }
               }
               return str.join("&");
+        }
+
+        if (delay > 0){
+            copyData += "sleep("+ delay + ");"
         }
 
         copyData += `
