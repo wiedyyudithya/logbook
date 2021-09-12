@@ -450,6 +450,7 @@
         $(element).removeClass('is-invalid');
       },
       submitHandler: function(form) {
+        resetForm();
         let validData = bankKasus[$('#selectKasus').val()];
 
         str = validData["Data Dasar Pasien"].split("{{");
@@ -489,6 +490,9 @@
           var value = "";
           try{
             value = variableKasus[validData["No"]][0][variable[i]];
+            if (value === undefined){
+              value = "";
+            }
           }catch(err){
             console.log(err.message);
           }  
