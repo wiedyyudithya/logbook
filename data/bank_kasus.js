@@ -1,5 +1,5 @@
 var bankKasus = [
-    {
+  {
       "No": 1,
       "Kategori Jenis Kelamin Pasien": "1,2",
       "Kategori Kasus": "5",
@@ -11,8 +11,8 @@ var bankKasus = [
       "Diagnosis": "4137,68,4580",
       "Penatalaksanaan": "VFD RL 500 cc habis dalam 6 jam, lanjut RL 20 tpm\nInj Ondansetron 4 mg IV\nOseltamivir 2 x 75mg PO 5 hari\nAzitromisin 1 x 500mg PO 5 hari\nZinc 1x 20mg PO\nD3 1 x 1000 IU PO\nBecefort 2 x 1 PO\nNAC 3 x 200 mg PO\nAttapulgite 2 tab setiap setelah BAB\nOmeprazole 1x20 mg PO",
       "Tindakan Medis": "1"
-    },
-    {
+  },
+  {
       "No": 2,
       "Kategori Jenis Kelamin Pasien": "1,2",
       "Kategori Kasus": "5",
@@ -24,8 +24,8 @@ var bankKasus = [
       "Diagnosis": "4580,2013,4199",
       "Penatalaksanaan": "Omeprazole 1x20 mg PO\nOndansetron 3x1 tab PO\nMetformin 3x500 mg PO dilanjutkan\nOseltamivir 2 x 75mg PO 5 hari\nAzitromisin 1 x 500mg PO 5 hari\nZinc 1x 20mg PO\nD3 1 x 1000 iu PO\nBecefort 2 x 1 PO\nNAC 3 x 200 mg PO\nCetirizine 1x10 mg PO\n\nEdukasi:\nMenghindari penyebab alergi\nMenghindari makan banyak dalam sekali waktu, mengurangi konsumsi makanan asam",
       "Tindakan Medis": "1"
-    },
-    {
+  },
+  {
       "No": 3,
       "Kategori Jenis Kelamin Pasien": "1,2",
       "Kategori Kasus": "5",
@@ -37,8 +37,8 @@ var bankKasus = [
       "Diagnosis": "426",
       "Penatalaksanaan": "IVFD RL 500 cc habis dalam 6 jam, lanjut 20 tpm\nInj. Ondansetron 3x4 mg IV k/p mual muntah\nOseltamivir 2 x 75mg 5 hari\nAzitromisin 1 x 500mg 5 hari\nZinc 1x 20mg\nD3 1 x 1000 iu\nBecefort 2 x 1\nNAC 3 x 200 mg\nPantau trombosit perhari",
       "Tindakan Medis": "1"
-    },
-    {
+  },
+  {
       "No": 4,
       "Kategori Jenis Kelamin Pasien": "1,2",
       "Kategori Kasus": "5",
@@ -50,8 +50,8 @@ var bankKasus = [
       "Diagnosis": "3723,3700",
       "Penatalaksanaan": "IVFD RL 500 cc/24 jam\nOseltamivir 2 x 75mg 5 hari\nAzitromisin 1 x 500mg 5 hari\nZinc 1x 20mg\nD3 1 x 1000 iu\nBecefort 2 x 1\nNAC 3 x 200 mg\nISDN 5 mg\nAmlodipin 10 mg\nRamipril 1 x 5 mg\nBisoprolol 1 x 5 mg",
       "Tindakan Medis": "1"
-    },
-    {
+  },
+  {
       "No": 5,
       "Kategori Jenis Kelamin Pasien": "1,2",
       "Kategori Kasus": "5",
@@ -63,8 +63,8 @@ var bankKasus = [
       "Diagnosis": "4330,4149",
       "Penatalaksanaan": "P:\nPro IMCU\nIV Asering 500 cc / 24 jam\nDiet Lunak\nO2 SM 8 LPM\nRemdesivir 2 x 100 mg H1; 1 x 100 mg H2-5 IV\nLevofloxacin 1 x 750 mg 7 hari IV\nResfar 1 x 5 gr IV\nInjeksi Heparin bolus IU, lalu drip Heparin / 12 jam\nDexamethasone 1 x 5 mg IV\nSpironolactone 2 x 100 mg\nColchisine PO loading 1,5 mg, lanjut 0,5 mg 30 menit kemudian, lalu 2 x 0,5 mg selanjutnya\nOmeprazole 2 x 40 mg IV\nOndansetron 2 x 8 mg IV KP\nMecobalamin 2 x 1 PO\nCek aPTT 10 jam post heparin",
       "Tindakan Medis": "1,2"
-    },
-    {
+  },
+  {
       "No": 6,
       "Kategori Jenis Kelamin Pasien": "1,2",
       "Kategori Kasus": "5",
@@ -76,5 +76,5 @@ var bankKasus = [
       "Diagnosis": "2002",
       "Penatalaksanaan": "IV NaCl 0,9% 500 cc loading\nDiet DM\nRemdesivir 2 x 100 mg H1; 1 x 100 mg H2-5 IV\nLevofloxacin 1 x 750 mg 7 hari IV\nResfar 1 x 5 gr IV\nInjeksi Heparin bolus iu, lalu drip Heparin / 12 jam\nDexamethasone 1 x 5 mg IV\nSpironolactone 2 x 100 mg\nColchisine PO loading 1,5 mg, lanjut 0,5 mg 30 menit kemudian, lalu 2 x 0,5 mg selanjutnya\nOmeprazole 2 x 40 mg IV\nOndansetron 2 x 8 mg IV KP\nMecobalamin 2 x 1 PO\nCek aPTT 10 jam post heparin\nCek ulang GDS setelah loading\nKonsul Sp.PD perihal dosis insulin drip",
       "Tindakan Medis": "1,2"
-    }
-  ]
+  }
+]
