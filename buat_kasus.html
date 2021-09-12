@@ -1003,6 +1003,8 @@
           });
         `  
     }
+
+    copyData += "alert('Sudah selesai. Mohon refresh kembali halaman anda');";
     /* Copy the text inside the text field */
     navigator.clipboard.writeText(copyData)
     alert("Data sudah dicopy di clipboard. Silahkan pindah ke halaman http://logbook.internsip.kemkes.go.id");
@@ -1122,7 +1124,7 @@
           }
           loadTableData(cases);
         } catch (error) {
-          console.log(error,message);
+          console.log(error.message);
         }
       }
     });
