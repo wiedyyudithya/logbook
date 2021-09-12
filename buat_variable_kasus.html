@@ -323,6 +323,19 @@
   }
 
   function reloadData(){
+    for (const property in variableKasus) {
+       var hasBankKasus = false;
+       for (let key in bankKasus) {
+          let kasus = bankKasus[key];
+          if (property == kasus["No"]){
+             hasBankKasus = true;
+             break;
+          }
+       }
+       if (!hasBankKasus){
+          delete variableKasus[property];
+       }
+    }
     $("#data_variable_kasus").val(JSON.stringify(variableKasus));
     $('#data_variable_kasus').json_beautify();
     $("#data_variable_kasus").val("var variableKasus = " + $("#data_variable_kasus").val());
@@ -537,10 +550,10 @@
       }
     });
     
-    //Initialize Select2 Elements
+    // Initialize Select2 Elements
     $('.select2').select2()
 
-    //Initialize Select2 Elements
+    // Initialize Select2 Elements
     $('.select2bs4').select2({
       theme: 'bootstrap4'
     })
