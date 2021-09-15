@@ -537,7 +537,7 @@
 <script>
   var data;
   var view;
-  // var variableKasus = new Map();
+  var mapDiagnosis = new Map();
   function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
   }
@@ -755,7 +755,15 @@
       x = row.insertCell(6);
       x.innerHTML = item["Data Dasar Pasien"];
       x = row.insertCell(7);
-      x.innerHTML = item["Diagnosis"];
+
+      let text = "<ul>";
+      let diagnosiss = toArrayInt(item["Diagnosis"]);
+      for (const index in diagnosiss){
+          text = text + "<li>" + mapDiagnosis.get(diagnosiss[index]) + "</li>"
+      }
+      text = text + "</ul>";
+      x.innerHTML = text;
+
       selectNomorKasus.append(
         $('<option selected></option>').val(i).html(i)
       );
@@ -948,7 +956,8 @@
     var selectDiagnosis = $('#selectDiagnosis');
     for (let key in data) {
         let diagnosis = data[key];
-          selectDiagnosis.append(
+        mapDiagnosis.set(diagnosis["val"], diagnosis["text"]);
+        selectDiagnosis.append(
           $('<option></option>').val(diagnosis["val"]).html(diagnosis["text"])
         );
     }
