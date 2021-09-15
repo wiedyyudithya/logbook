@@ -228,6 +228,14 @@
                     </select>
                   </div>
                 </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Pilih Bank Kasus yang mau diskip</label>
+                    <select class="select2" multiple="multiple" name="selectKasus" onchange="checkValidKasus()" data-placeholder="Pilih Kasus yang mau diskip" style="width: 100%;" id="selectKasus">
+                      <option value="">Pilih Bank Kasus yang mau diskip</option>
+                    </select>
+                  </div>
+                </div>
               </div>
               <h5><b>Jumlah Kasus</b></h5>
               <div class="row">
@@ -565,7 +573,8 @@
         jenis_kelamin: $('select[name="selectJenisKelamin"]').val(),
         kode_kegiatan: $('select[name="selectKodeKegiatan"]').val(),
         unit_pelayanan: $('select[name="selectUnitPelayanan"]').val(),
-        kategori_kasus: $('select[name="selectKategoriKasus"]').val()
+        kategori_kasus: $('select[name="selectKategoriKasus"]').val(),
+        skip_kasus: $('select[name="selectKasus"]').val(),
     }
     let validData = getValidKasus(payload);
     
@@ -587,6 +596,18 @@
 
       for (let key in bankKasus) {
         let kasus = bankKasus[key];
+
+        skipKasus = false
+        for (let keySkipKasus in payload.skip_kasus) { 
+            if (payload.skip_kasus[key]==kasus["No"]){
+              skipKasus = true;
+              continue;
+            }
+        }
+
+        if (skipKasus){
+           continue;
+        }
 
         // Filter Jenis Kelamin
         if (payload.jenis_kelamin != 0){
@@ -659,6 +680,17 @@
       }
 
       return [listValidIndexKasusBayiAnak, listValidIndexKasusDewasa, listValidIndexKasusLansia];
+  }
+
+  function initBankKasus(bankKasus){
+    var selectKasus = $('#selectKasus');
+    for (let key in bankKasus) {
+      let kasus = bankKasus[key];
+      selectKasus.append(
+        $('<option></option>').val(key).html(kasus["No"])
+      );
+    }
+    $('.select2').select2();
   }
 
   function intersect(a, b) {
@@ -1048,7 +1080,7 @@
 
   $(document).ready(function() {
     checkValidKasus();
-    //initDokterPendamping(dokterPendamping);
+    initBankKasus(bankKasus);
     initDiagnosis(diagnosis);
     initTindakanMedis(tindakanMedis);
 
@@ -1122,6 +1154,7 @@
             kode_kegiatan: $('select[name="selectKodeKegiatan"]').val(),
             unit_pelayanan: $('select[name="selectUnitPelayanan"]').val(),
             kategori_kasus: $('select[name="selectKategoriKasus"]').val(),
+            skip_kasus: $('select[name="selectKasus"]').val(),
             bayi_anak : inputs.filter('[name=txtBayiAnak]').val(), 
             dewasa : inputs.filter('[name=txtDewasa]').val(),
             lansia : inputs.filter('[name=txtLansia]').val(),
