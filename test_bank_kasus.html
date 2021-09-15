@@ -271,7 +271,6 @@
             </form>
           </div>
           <div class="card-footer">
-              
           </div>
         </div>
         <!-- /.card -->
@@ -465,7 +464,15 @@
   }
 
   function RANGENUMBER(minValue, maxValue, inc){
-    return Math.floor(Math.random() * (maxValue - minValue + inc) ) + minValue; 
+    let multiple = 10000000000
+    let numbers = []
+    let number = minValue
+    while(number <= maxValue){
+        numbers.push(number);
+        number = ((number * multiple) + (inc * multiple)) / multiple
+    }
+    rdm = getRndInteger(0, numbers.length -1)
+    return numbers[rdm];
   }
 
   function RANGENUMBERUMUR(kategoriPasien, minValue, maxValue, inc){
@@ -492,7 +499,7 @@
             minValue = 56;
         }
     } 
-    return Math.floor(Math.random() * (maxValue - minValue + inc) ) + minValue; 
+    return RANGENUMBER(minValue, maxValue, inc); 
   }
 
   function SELECTION(...options){
