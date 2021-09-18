@@ -178,12 +178,13 @@
                 <table id="example" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                    <th>No.</th>
-                    <th>Kategori Pasien</th>
-                    <th>Kode Kegiatan</th>
-                    <th>Unit Pelayanan</th>
-                    <th>Kategori Kasus</th>
-                    <th>Action</th>
+                    <th style="width: 10px;">No.</th>
+                    <th style="width: 150px;">Kategori Pasien</th>
+                    <th style="width: 180px;">Kode Kegiatan</th>
+                    <th style="width: 177px;">Unit Pelayanan</th>
+                    <th style="width: 150px;">Kategori Kasus</th>
+                    <th style="width: 500px;">Diagnosis</th>
+                    <th style="width: 10px;">Action</th>
                   </tr>
                   </thead>
                   <tbody id="testBody"></tbody>
@@ -296,13 +297,13 @@
               <div class="row">
                   <div class="col-md-12 mb-3">
                     <label>Data Ringkasan Penyakit</label>
-                    <textarea class="form-control" id="penyakit" rows="5" placeholder="Ketik Data Ringkasan Penyakit di sini (boleh lebih dari 500 karakter)"></textarea>
+                    <textarea class="form-control" id="penyakit" rows="20" placeholder="Ketik Data Ringkasan Penyakit di sini (boleh lebih dari 500 karakter)"></textarea>
                   </div>
               </div>
               <div class="row">
                   <div class="col-md-12 mb-3">
                     <label>Data Penatalaksanaan</label>
-                    <textarea class="form-control" id="penatalaksanaan" rows="5" placeholder="Ketik Data Penatalaksanaan di sini (boleh lebih dari 500 karakter)"></textarea>
+                    <textarea class="form-control" id="penatalaksanaan" rows="10" placeholder="Ketik Data Penatalaksanaan di sini (boleh lebih dari 500 karakter)"></textarea>
                   </div>
               </div>
               <div class="row">
@@ -385,6 +386,8 @@
 <script>
   var data;
   var view;
+  var mapDiagnosis = new Map();
+
   // var variableKasus = new Map();
   function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
@@ -612,75 +615,88 @@
 
       x = row.insertCell(1);
       let kodePasiens = toArray(item["Kategori Pasien"]);
-      txtKodePasien = "";
+      txtKodePasien = "<ul>";
       for (let key in kodePasiens) {
           kodePasien = kodePasiens[key];
           if (kodePasien === "1"){
-            txtKodePasien += "Bayi - Anak;";
+            txtKodePasien += "<li>" + "Bayi - Anak" + "</li>";
           } else if (kodePasien === "2"){
-            txtKodePasien +=  "Dewasa;";
+            txtKodePasien += "<li>" + "Dewasa" + "</li>";
           } else if (kodePasien === "3"){
-            txtKodePasien += "Lansia;";
+            txtKodePasien += "<li>" +"Lansia" + "</li>";
           }
       }
+      txtKodePasien += "</ul>";
       x.innerHTML = txtKodePasien;
 
       x = row.insertCell(2);
       let kodeKegiatans = toArray(item["Kode Kegiatan"]);
-      txtKodeKegiatan = "";
+      txtKodeKegiatan = "<ul>";
       for (let key in kodeKegiatans) {
           kodeKegiatan = kodeKegiatans[key];
           if (kodeKegiatan === "1"){
-            txtKodeKegiatan += "MEDIK;";
+            txtKodeKegiatan += "<li>" + "MEDIK" + "</li>";
           } else if (kodeKegiatan === "2"){
-            txtKodeKegiatan +=  "BEDAH;";
+            txtKodeKegiatan +=  "<li>" + "BEDAH" + "</li>";
           } else if (kodeKegiatan === "3"){
-            txtKodeKegiatan += "KEGAWAT-DARURATAN;";
+            txtKodeKegiatan += "<li>" + "KEGAWAT-DARURATAN" + "</li>";
           } else if (kodeKegiatan === "4"){
-            txtKodeKegiatan += "KEBIDANAN DAN PERINATAL;";
+            txtKodeKegiatan += "<li>" + "KEBIDANAN DAN PERINATAL" + "</li>";
           } else if (kodeKegiatan === "5"){
-            txtKodeKegiatan +=  "KEJIWAAN;";
+            txtKodeKegiatan +=  "<li>" + "KEJIWAAN" + "</li>";
           } else if (kodeKegiatan === "6"){
-            txtKodeKegiatan += "MEDIKOLEGAL;";
+            txtKodeKegiatan += "<li>" + "MEDIKOLEGAL" + "</li>";
           }
       }
+      txtKodeKegiatan += "</ul>";
       x.innerHTML = txtKodeKegiatan;
 
       x = row.insertCell(3);
       let unitPelayans = toArray(item["Unit Pelayanan"]);
-      txtUnitPelayan = "";
+      txtUnitPelayan = "<ul>";
       for (let key in unitPelayans) {
           unitPelayan = unitPelayans[key];
           if (unitPelayan === "1"){
-            txtUnitPelayan += "Stase 1 - RS - Poli;";
+            txtUnitPelayan += "<li>" + "Stase 1 - RS - Poli" + "</li>";
           } else if (unitPelayan === "2"){
-            txtUnitPelayan +=  "Stase 2 - RS - UGD;";
+            txtUnitPelayan +=  "<li>" + "Stase 2 - RS - UGD" + "</li>";
           } else if (unitPelayan === "3"){
-            txtUnitPelayan += "Stase 3 - Puskesmas;";
+            txtUnitPelayan += "<li>" + "Stase 3 - Puskesmas" + "</li>";
           }
       }
+      txtUnitPelayan += "</ul>";
       x.innerHTML = txtUnitPelayan;
 
       x = row.insertCell(4);
       let kategoriKasuses = toArray(item["Kategori Kasus"]);
-      txtKategoriKasus = "";
+      txtKategoriKasus = "<ul>"
       for (let key in kategoriKasuses) {
           kategoriKasus = kategoriKasuses[key];
           if (kategoriKasus === "1"){
-            txtKategoriKasus += "Non-Covid;";
+            txtKategoriKasus += "<li>" + "Non-Covid" + "</li>";
           } else if (kategoriKasus === "2"){
-            txtKategoriKasus +=  "Kasus Suspek;";
+            txtKategoriKasus +=  "<li>" + "Kasus Suspek" + "</li>";
           } else if (kategoriKasus === "3"){
-            txtKategoriKasus += "Kasus Probable;";
+            txtKategoriKasus += "<li>" + "Kasus Probable" + "</li>";
           } else if (kategoriKasus === "4"){
-            txtKategoriKasus += "Kontak Erat;";
+            txtKategoriKasus += "<li>" + "Kontak Erat" + "</li>";
           } else if (kategoriKasus === "5"){
-            txtKategoriKasus += "Kasus Konfirmasi;";
+            txtKategoriKasus += "<li>" + "Kasus Konfirmasi" + "</li>";
           }
       }
+      txtKategoriKasus = txtKategoriKasus + "</ul>";
       x.innerHTML = txtKategoriKasus;
 
       x = row.insertCell(5);
+      let text = "<ul>";
+      let diagnosiss = toArrayInt(item["Diagnosis"]);
+      for (const index in diagnosiss){
+          text = text + "<li>" + mapDiagnosis.get(diagnosiss[index]) + "</li>"
+      }
+      text = text + "</ul>";
+      x.innerHTML = text;
+
+      x = row.insertCell(6);
       x.innerHTML = "<i class='fas fa-trash' onclick='deleteData("+ i +")'></i>"
       i++;
     }
@@ -848,7 +864,8 @@
     var selectDiagnosis = $('#selectDiagnosis');
     for (let key in data) {
         let diagnosis = data[key];
-          selectDiagnosis.append(
+        mapDiagnosis.set(diagnosis["val"], diagnosis["text"]);
+        selectDiagnosis.append(
           $('<option></option>').val(diagnosis["val"]).html(diagnosis["text"])
         );
     }
