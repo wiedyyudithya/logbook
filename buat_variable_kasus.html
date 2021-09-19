@@ -499,25 +499,28 @@
             return self.indexOf(item) == pos;
         }) 
         var dataForm = "";
-        for (i = 0; i < variable.length; i++) {
-          var value = "";
-          try{
-            value = variableKasus[validData["No"]][0][variable[i]];
-            if (value === undefined){
-              value = "";
-            }
-          }catch(err){
-            console.log(err.message);
-          }  
+        for (i = 0; i < variable.length; i++) { 
           dataForm += `<div class="col-md-6">
                 <div class="form-group">
                     <label>` + variable[i] +`</label>
-                    <input class="form-control" id="`+ variable[i] + `" value="`+ value +`">
+                    <input class="form-control" id="`+ variable[i] + `" value="">
                 </div>
             </div>`
         }
         $("#viewDataForm").html(dataForm);
 
+        for (i = 0; i < variable.length; i++) {
+            var value = "";
+            try{
+              value = variableKasus[validData["No"]][0][variable[i]];
+              if (value === undefined){
+                value = "";
+              }
+              $("#" + variable[i]).val(value);
+            }catch(err){
+              console.log(err.message);
+            }  
+        }
         $("#no").val(validData["No"]);
         $("#no-kasus").html(validData["No"]);
       }
