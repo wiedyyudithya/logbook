@@ -831,7 +831,9 @@
     // jenis kelamin
     let jenisKelamin = parseInt(payload.jenis_kelamin, 10);
     if (jenisKelamin == 0){
-        jenisKelamin = getRndInteger(1, 2);
+        let jenisKelamins = toArrayInt(newKasus["Kategori Jenis Kelamin Pasien"]);
+        jenisKelamin = jenisKelamins[getRndInteger(0, jenisKelamins.length -1)];
+        jenisKelamin = parseInt(jenisKelamin, 10);
     }
     newKasus["txtJenisKelamin"] = jenisKelamin;
 
