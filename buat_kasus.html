@@ -145,7 +145,7 @@
           <div class="card-body">
             <form id="generateForm">
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                   <div class="form-group">
                     <label>Rentang Tanggal</label>
                     <div class="input-group">
@@ -158,7 +158,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-5">
                   <div class="form-group">
                     <label>Pilihan Hari</label>
                     <select class="select2" multiple="multiple" name="selectHari" data-placeholder="Pilih Hari" style="width: 100%;">
@@ -172,7 +172,7 @@
                     </select>
                   </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                   <div class="form-group">
                     <label>Dokter Pendamping</label>
                     <!-- <select class="form-control select2" style="width: 100%;" name="selectDokterPendamping" id="selectDokterPendamping">
@@ -227,6 +227,11 @@
                       <option value="5" selected>Kasus Konfirmasi</option>
                     </select>
                   </div>
+                </div>
+                <div class="col-md-6">
+                  <label>Tindakan Medis</label>
+                  <select class="select2" multiple="multiple" name="selectTindakanMedis2" id="selectTindakanMedis2" onchange="checkValidKasus()" data-placeholder="Pilih Tindakan Medis" style="width: 100%;">
+                  </select>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
@@ -574,6 +579,7 @@
         kode_kegiatan: $('select[name="selectKodeKegiatan"]').val(),
         unit_pelayanan: $('select[name="selectUnitPelayanan"]').val(),
         kategori_kasus: $('select[name="selectKategoriKasus"]').val(),
+        tindakan_medis: $('select[name="selectTindakanMedis2"]').val(),
         skip_kasus: $('select[name="selectKasus"]').val(),
     }
     let validData = getValidKasus(payload);
@@ -662,6 +668,23 @@
           }
         }
         if (!okKategoriKasus){
+             continue;
+        }
+
+        // Filter Tindakan Medis
+        tindakan_mediss = kasus["Tindakan Medis"].split(',');
+        var okTindakanMedis = false;
+        for (let indexPayLoad in payload.tindakan_medis) {
+          if (payload.tindakan_medis[indexPayLoad] == "-" && kasus["Tindakan Medis"] == ""){
+              okTindakanMedis = true
+          }
+          for (let index in tindakan_mediss) {
+              if (tindakan_mediss[index] === payload.tindakan_medis[indexPayLoad]) {
+                  okTindakanMedis = true
+              }
+          }
+        }
+        if (!okTindakanMedis){
              continue;
         }
 
@@ -1000,13 +1023,21 @@
 
   function initTindakanMedis(data){
     var selectTindakanMedis = $('#selectTindakanMedis');
+    var selectTindakanMedis2 = $('#selectTindakanMedis2');
+    selectTindakanMedis2.append(
+      $('<option selected></option>').val("-").html("TIDAK ADA")
+    );
         for (let key in data) {
           let tindakanMedis = data[key];
           selectTindakanMedis.append(
               $('<option></option>').val(tindakanMedis["val"]).html(tindakanMedis["text"])
           );
+          selectTindakanMedis2.append(
+              $('<option selected></option>').val(tindakanMedis["val"]).html(tindakanMedis["text"])
+          );
         }
     $('.select2').select2();
+    checkValidKasus();
   } 
 
   function copyMultiple(){
@@ -1156,6 +1187,7 @@
             kode_kegiatan: $('select[name="selectKodeKegiatan"]').val(),
             unit_pelayanan: $('select[name="selectUnitPelayanan"]').val(),
             kategori_kasus: $('select[name="selectKategoriKasus"]').val(),
+            tindakan_medis: $('select[name="selectTindakanMedis2"]').val(),
             skip_kasus: $('select[name="selectKasus"]').val(),
             bayi_anak : inputs.filter('[name=txtBayiAnak]').val(), 
             dewasa : inputs.filter('[name=txtDewasa]').val(),
