@@ -599,7 +599,7 @@
 
         skipKasus = false
         for (let keySkipKasus in payload.skip_kasus) { 
-            if (payload.skip_kasus[key]==kasus["No"]){
+            if (payload.skip_kasus[keySkipKasus]===key){
               skipKasus = true;
               continue;
             }
