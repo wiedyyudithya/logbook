@@ -133,36 +133,6 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <div class="card card-default">
-          <div class="card-header">
-            <h3 class="card-title">Data Bank Kasus</h3>
-            <div class="card-tools">
-              <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                <i class="fas fa-minus"></i>
-              </button>
-            </div>
-          </div>
-          <div class="card-body">
-            <form id="generateForm">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label>data/bank_kasus.js</label>
-                    <textarea class="form-control" id="data_bank_kasus" rows="5" onchange="loadTableData();"></textarea>
-                  </div>
-                </div>
-              </div>
-              <button type="button" class="btn btn-primary" onclick="navigator.clipboard.writeText($('#data_bank_kasus').val());alert('Data bank kasus sudah dicopy. Silahkan ganti data di data/bank_kasus.js.');">Copy to clipboard</button>
-            </form>
-          </div>
-          <div class="card-footer">
-          </div>
-        </div>
-        <!-- /.card -->
-      </div>
-    </section>
-    <section class="content">
-      <div class="container-fluid">
         <div class="row">
           <div class="col-12">
             <div class="card">
@@ -313,6 +283,36 @@
           </div>
           <div class="card-footer">
               
+          </div>
+        </div>
+        <!-- /.card -->
+      </div>
+    </section>
+    <section class="content">
+      <div class="container-fluid">
+        <div class="card card-default">
+          <div class="card-header">
+            <h3 class="card-title">Data Bank Kasus</h3>
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="card-body">
+            <form id="generateForm">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>data/bank_kasus.js</label>
+                    <textarea class="form-control" id="data_bank_kasus" rows="5" onchange="loadTableData();"></textarea>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="btn btn-primary" onclick="navigator.clipboard.writeText($('#data_bank_kasus').val());alert('Data bank kasus sudah dicopy. Silahkan ganti data di data/bank_kasus.js.');">Copy to clipboard</button>
+            </form>
+          </div>
+          <div class="card-footer">
           </div>
         </div>
         <!-- /.card -->
@@ -701,7 +701,7 @@
       i++;
     }
     $('#example').DataTable({
-        "pageLength": 5,
+        "pageLength": 10,
         "paging": true,
         "lengthChange": false,
         "searching": false,
